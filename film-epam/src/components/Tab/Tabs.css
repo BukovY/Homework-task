@@ -1,0 +1,15 @@
+.tabs {
+    border: 1px solid white;
+    border-radius: 5px;
+    display: inline;
+    padding: 0;
+}
+.tabs span{
+    height: 50px;
+}
+
+
+.tabs_active {
+    background-color: white;
+    color: black;
+}

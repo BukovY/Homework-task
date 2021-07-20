@@ -2,9 +2,7 @@ import React from "react";
 
 function Language() {
     return (
-        <>
-            <p>language tooltip</p>
-            </>
+        <div>EN select</div>
     );
 }
 

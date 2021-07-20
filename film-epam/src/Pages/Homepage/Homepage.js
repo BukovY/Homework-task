@@ -1,14 +1,14 @@
 import React from "react";
 import {store} from "../../redux/store";
-import Selectors from "./Selector/Selector";
-import FilmCard from "../cards/FilmCard/FilmCard";
+import Tab from "../../components/Tab/Tab";
+import FilmCard from "../../components/FilmCard/FilmCard";
 
 function Homepage() {
     const film = store.filmData
-    return (<>
-            <Selectors/>
+    return (<div>
+            <Tab/>
             {film.map(el => <FilmCard key={el.id} props={el}/>)}
-        </>
+        </div>
     );
 }
 

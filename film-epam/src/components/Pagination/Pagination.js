@@ -1,6 +1,6 @@
 import React from "react";
 import {store} from "../../redux/store";
-import {MAX_PAGINATION_PAGES} from "../../../redux/constants";
+import {MAX_PAGINATION_PAGES} from "../../redux/constants";
 
 function Homepage() {
     const maxPage = MAX_PAGINATION_PAGES

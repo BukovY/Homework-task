@@ -1,3 +1,4 @@
+// mock
 export const store = {
     filmData: [{
             "adult": false,
@@ -299,6 +300,7 @@ export const store = {
             "vote_average": 7.5,
             "vote_count": 3331
         }],
+
     paginationPage: 1,
     selectPage: 'main',
     language: 'en'
