@@ -1,0 +1,10 @@
+.pagination_box {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    -ms-flex-line-pack: center;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}

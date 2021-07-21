@@ -1,0 +1,11 @@
+.tab {
+    padding-bottom: 4px;
+    padding-top: 3px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.tab_active {
+    color: black;
+    background-color: white;
+}
