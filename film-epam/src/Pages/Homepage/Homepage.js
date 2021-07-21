@@ -20,7 +20,7 @@ const Homepage = () => {
     return (<div>
             <Tabs/>
             <div className='film_card_grid'>
-            {film.map(el => <FilmCard key={el.id} img={el.poster_path} rating={el.vote_average} title={el.original_title} genres={genresIndexToString(el.genre_ids, genresMap)}/>)}
+            {film.map(el => <FilmCard key={el.id} id={el.id} img={el.poster_path} rating={el.vote_average} title={el.original_title} genres={genresIndexToString(el.genre_ids, genresMap)}/>)}
             </div>
             <Paginations/>
         </div>

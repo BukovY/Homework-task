@@ -72,7 +72,7 @@ const Movie = () => {
         <div className='recomendations'>
             <h2>Recomendations</h2>
             <div className='recomendations_grid'>
-                {film.map(el => <FilmCard key={el.id} img={el.poster_path} rating={el.vote_average}
+                {film.map(el => <FilmCard key={el.id} id={el.id} img={el.poster_path} rating={el.vote_average}
                                           title={el.original_title}
                                           genres={genresIndexToString(el.genre_ids, genresMap)}/>)}
             </div>
