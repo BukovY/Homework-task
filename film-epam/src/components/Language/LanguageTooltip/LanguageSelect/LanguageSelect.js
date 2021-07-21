@@ -9,7 +9,8 @@ const LanguageSelect = ({language, isSelect}) => {
         store.isTooltipLanguageOpen = false
         rerender()
     }
-    return(<div onClick={()=>languageSelect(language)} className={isSelect? 'tooltip_language tooltip_select' : 'tooltip_language'}>
+    return (<div onClick={() => languageSelect(language)}
+                 className={isSelect ? 'tooltip_language tooltip_select' : 'tooltip_language'}>
         {language}
     </div>);
 }

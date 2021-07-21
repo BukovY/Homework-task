@@ -3,9 +3,9 @@ import './MetaBlock.css'
 
 const MetaBlock = ({title, meta, prefix}) => {
 
-    return(<div>
+    return (<div>
         <p className='meta_title'>{title}:</p>
-        <p>{prefix? prefix: ''}{meta}</p>
+        <p>{prefix ? prefix : ''}{meta}</p>
     </div>)
 }
 export default MetaBlock

@@ -7,14 +7,16 @@ import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 function Language() {
     const isOpen = store.isTooltipLanguageOpen
     const languageSelected = store.languageSelected
-    const openLanguageSelect = () =>{
+    const openLanguageSelect = () => {
         store.isTooltipLanguageOpen = !isOpen
         rerender();
     }
     return (
         <div>
-            <div onClick={()=>{openLanguageSelect()}} className={isOpen? 'language_select language_select_open' : 'language_select'}>{languageSelected}</div>
-            {isOpen? <LanguageTooltip/>:''}
+            <div onClick={() => {
+                openLanguageSelect()
+            }} className={isOpen ? 'language_select language_select_open' : 'language_select'}>{languageSelected}</div>
+            {isOpen ? <LanguageTooltip/> : ''}
         </div>
     );
 }

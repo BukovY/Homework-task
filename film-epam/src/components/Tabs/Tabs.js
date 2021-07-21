@@ -4,7 +4,7 @@ import {store} from "../../redux/store";
 import Tab from "./Tab/Tab";
 import {rerender} from "../../index";
 
-const Tabs = () =>  {
+const Tabs = () => {
     const tabs = store.tabs
     const changeTab = (label) => {
         let tabs = [["Popular"], ["Top rated"], ["Upcoming"]]
@@ -17,11 +17,12 @@ const Tabs = () =>  {
     }
     return (
         <div>
-        <div className='tabs'>
-            {tabs.map(el => <Tab key={el[0]} label={el[0]} status={el[1] === 'active' ? 'active' : 'default'} changeTab={changeTab}/>)}
-        </div>
-            <div className='clearfix'></div>
+            <div className='tabs'>
+                {tabs.map(el => <Tab key={el[0]} label={el[0]} status={el[1] === 'active' ? 'active' : 'default'}
+                                     changeTab={changeTab}/>)}
             </div>
+            <div className='clearfix'></div>
+        </div>
     );
 }
 

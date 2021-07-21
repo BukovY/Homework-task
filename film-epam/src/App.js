@@ -13,7 +13,6 @@ function App() {
             {page === 'main' ? <Homepage/> : ''}
             {page === 'actor' ? '' : ''}
             {page === 'movie' ? <Movie/> : ''}
-
         </div>
     );
 }
