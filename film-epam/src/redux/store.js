@@ -321,6 +321,8 @@ export const store = {
         {"id": 37, "name": "Western"}],
     paginationPage: 1,
     selectPage: 'main',
-    language: 'en',
+    languageSelected: 'EN',
     tabs: [["Popular", 'active'], ["Top rated"], ["Upcoming"]],
+    languages: ['EN', 'RU', 'FR'],
+    isTooltipLanguageOpen: false,
 }

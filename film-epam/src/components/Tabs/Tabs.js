@@ -12,6 +12,7 @@ const Tabs = () =>  {
         label === "Top rated" ? tabs[1].push('active') : '';
         label === "Upcoming" ? tabs[2].push('active') : '';
         store.tabs = tabs
+        store.isTooltipLanguageOpen = false
         rerender();
     }
     return (

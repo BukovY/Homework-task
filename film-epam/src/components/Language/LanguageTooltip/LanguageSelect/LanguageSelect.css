@@ -1,0 +1,10 @@
+.tooltip_select {
+    font-weight: 700;
+}
+.tooltip_language{
+    text-align: center;
+}
+.tooltip_language:hover{
+    color: white;
+    background-color: #282c34;
+}

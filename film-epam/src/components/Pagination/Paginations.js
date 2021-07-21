@@ -12,6 +12,7 @@ function Paginations() {
 
     const changePaginationPage = (el) => {
         store.paginationPage = el
+        store.isTooltipLanguageOpen = false
         rerender()
     }
     return (<div className='pagination_box'>

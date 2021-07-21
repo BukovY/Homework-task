@@ -11,6 +11,7 @@ const Header = () => {
         store.paginationPage = 1;
         store.selectPage = 'main';
         store.tabs = [["Popular", 'active'], ["Top rated"], ["Upcoming"]]
+        store.isTooltipLanguageOpen = false
         rerender()
     }
     return (
