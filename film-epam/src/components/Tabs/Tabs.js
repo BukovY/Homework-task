@@ -8,9 +8,15 @@ const Tabs = () => {
     const tabs = store.tabs
     const changeTab = (label) => {
         let tabs = [["Popular"], ["Top rated"], ["Upcoming"]]
-        label === "Popular" ? tabs[0].push('active') : '';
-        label === "Top rated" ? tabs[1].push('active') : '';
-        label === "Upcoming" ? tabs[2].push('active') : '';
+        if(label === "Popular"){
+            tabs[0].push('active')
+        }
+        if(label === "Top rated"){
+            tabs[1].push('active')
+        }
+        if(label === "Upcoming"){
+            tabs[2].push('active')
+        }
         store.tabs = tabs
         store.isTooltipLanguageOpen = false
         rerender();
