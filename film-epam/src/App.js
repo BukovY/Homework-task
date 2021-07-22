@@ -1,13 +1,12 @@
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <>
-      <h1>Someh121213</h1>
-      <div>sdfdfd</div>
-      sgssfg hjfjhfdhjd
+      <H1>Some h121213</H1>
+      <div>Format Window</div>
     </>
   );
-}
+};
 
 export default App;
