@@ -4,13 +4,7 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import "./Movie.css";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
-import { genresIndexToString } from "../HomePage/HomePage";
-
-function minToTime(num) {
-  let min = num % 60;
-  let hour = (num - min) / 60;
-  return String(hour) + ":" + String(min);
-}
+import { genresIndexToString, minToTime } from "../../utils/functrions";
 
 const MoviePage = () => {
   const selectedFilmId = store.selectedFilm;
