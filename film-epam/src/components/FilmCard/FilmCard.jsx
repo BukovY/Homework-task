@@ -16,7 +16,6 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
   } else {
       img = `https://image.tmdb.org/t/p/w500/${img}`
   }
-  console.log(img)
   return (
     <div className="card">
       <div className={rating < 7 ? "rating rating_down" : "rating rating_up"}>
