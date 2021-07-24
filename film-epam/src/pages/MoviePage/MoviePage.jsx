@@ -6,7 +6,6 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
 import { rerender } from "../../index";
-import k from '../../static/GridCard.module.sass'
 
 const MoviePage = () => {
   const selectedFilmId = store.selectedFilm;

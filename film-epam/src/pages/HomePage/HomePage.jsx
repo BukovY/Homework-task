@@ -5,7 +5,6 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import Paginations from "../../components/Pagination/Paginations";
 import { genresIndexToString } from "../../utils/functrions";
 import s from './HomePage.module.sass'
-import k from '../../static/GridCard.module.sass'
 
 const HomePage = () => {
   const film = store.filmData;
@@ -13,7 +12,7 @@ const HomePage = () => {
   return (
     <div>
       <Tabs />
-      <div className={`${s.film_card_grid} ${k.card_grid}`}>
+      <div className={s.film_card_grid}>
         {film.map((el) => (
           <FilmCard
             key={el.id}

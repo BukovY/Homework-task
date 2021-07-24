@@ -4,7 +4,6 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import s from "./ActorPage.module.sass";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import k from '../../static/GridCard.module.sass'
 
 const ActorPage = () => {
   const person = store.peopleDetails;
