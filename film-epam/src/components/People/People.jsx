@@ -8,7 +8,9 @@ const People = ({ img, title, department }) => {
       : `https://image.tmdb.org/t/p/w500/${img}`;
   return (
     <div className="people_card">
+        <div className='people_img'>
       <img src={imgPath} className="people_cover" alt={title} />
+        </div>
       <p className="people_title">{title}</p>
       <p>{department}</p>
     </div>

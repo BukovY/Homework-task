@@ -5,6 +5,7 @@ import "./Movie.css";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
+import {rerender} from "../../index";
 
 const MoviePage = () => {
   const selectedFilmId = store.selectedFilm;
@@ -15,6 +16,11 @@ const MoviePage = () => {
   const crewToRender = isAllCrewOpen ? store.crew : store.crew.slice(0, 6);
   const film = store.filmData.slice(0, 6);
   const genresMap = store.genresMap;
+
+  const changeOpenCrew = ()=> {
+    store.isAllCrewOpen = !store.isAllCrewOpen
+    rerender()
+  }
   return (
     <div>
       <div className="film_info">
@@ -39,14 +45,13 @@ const MoviePage = () => {
           <div className="crew_box">
             <div className="crew_box_head">
               <h2>Top Billied Cast</h2>
-              <button className={isAllCrewOpen ? "active" : ""}>
+              <button className={isAllCrewOpen ? "active" : ""} onClick={()=>{changeOpenCrew()}}>
                 Show All
               </button>
             </div>
             <div className="crew_box_cards">
               {crewToRender.map((el) => (
                 <People
-                  key={el.id}
                   img={el.profile_path}
                   title={el.original_name}
                   department={el.known_for_department}

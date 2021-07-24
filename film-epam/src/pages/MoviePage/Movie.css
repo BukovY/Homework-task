@@ -14,12 +14,16 @@
 .crew_box_head {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .crew_box_head button {
     border: 2px solid white;
     border-radius: 5px;
+    height: 26px;
+    background-color: black;
+    color: white;
 }
-.crew_box_head button .active{
+.crew_box_head .active{
     background-color: white;
     color: black;
 }

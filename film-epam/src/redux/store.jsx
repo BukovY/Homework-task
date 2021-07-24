@@ -3046,5 +3046,6 @@ export const store = {
       job: "Production Driver",
     },
   ],
+  filmImages: [],
   isAllCrewOpen: false,
 };

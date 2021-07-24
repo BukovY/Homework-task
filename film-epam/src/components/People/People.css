@@ -5,3 +5,8 @@
     width: 100%;
     height: auto;
 }
+.people_img {
+    width: 153px;
+    height: 250px;
+    display: flex;
+}
