@@ -1,6 +1,6 @@
 import React from "react";
 import './FilmCard.css'
-import play from '../../src/img/play.svg'
+import play from '../../static/img/play.svg'
 import {store} from "../../redux/store";
 import {rerender} from "../../index";
 

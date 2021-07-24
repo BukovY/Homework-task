@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../../src/img/logo.png'
+import logo from '../../static/img/logo.png'
 import Language from "../Language/Language";
 import './Header.css';
 import Search from "../Search/Search";

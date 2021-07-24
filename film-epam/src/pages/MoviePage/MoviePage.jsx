@@ -2,8 +2,8 @@ import React from "react";
 import { store } from "../../redux/store";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import "./Movie.css";
-import MetaBlock from "./MetaBlock/MetaBlock";
-import People from "./People/People";
+import MetaBlock from "../../components/MetaBlock/MetaBlock";
+import People from "../../components/People/People";
 import { genresIndexToString } from "../HomePage/HomePage";
 
 function minToTime(num) {

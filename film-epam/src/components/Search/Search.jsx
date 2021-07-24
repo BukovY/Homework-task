@@ -1,5 +1,5 @@
 import React from 'react';
-import search from './../../src/img/search.png'
+import search from '../../static/img/search.png'
 import './Search.css'
 
 const Search = () => {
