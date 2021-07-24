@@ -8,6 +8,7 @@
 .film_cover {
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
 .film_cover img {
 width: 100%;

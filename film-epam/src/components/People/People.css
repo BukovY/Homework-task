@@ -4,6 +4,7 @@
 .people_cover{
     width: 100%;
     height: auto;
+    cursor: pointer;
 }
 .people_img {
     width: 153px;
