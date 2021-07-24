@@ -1,6 +1,7 @@
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+.tabs {
+    display: flex;
+    float: right;
+    border: 2px solid white;
+    margin-top: 15px;
+    border-radius: 5px;
 }

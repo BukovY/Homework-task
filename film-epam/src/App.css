@@ -1,5 +1,5 @@
 body{
-  width: 990px;
+  width: 1280px;
   margin: 0 auto;
   background: #151515;
   color: white;
@@ -46,4 +46,10 @@ body{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }

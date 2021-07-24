@@ -32,7 +32,9 @@ const MoviePage = () => {
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
           <MetaBlock title="Duration" meta={minToTime(filmToRender.runtime)} />
           {genres.map((el) => (
-            <div className="genre">{el}</div>
+            <div key={el} className="genre">
+              {el}
+            </div>
           ))}
           <div className="crew_box">
             <div className="crew_box_head">
@@ -44,6 +46,7 @@ const MoviePage = () => {
             <div className="crew_box_cards">
               {crewToRender.map((el) => (
                 <People
+                  key={el.id}
                   img={el.profile_path}
                   title={el.original_name}
                   department={el.known_for_department}
