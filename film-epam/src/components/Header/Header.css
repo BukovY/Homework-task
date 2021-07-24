@@ -1,0 +1,11 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-content: center;
+  align-items: center;
+  background: #202020;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
