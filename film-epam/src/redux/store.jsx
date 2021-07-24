@@ -362,7 +362,7 @@ export const store = {
     { id: 37, name: "Western" },
   ],
   paginationPage: 1,
-  selectPage: "main",
+  selectPage: "movie",
   languageSelected: "EN",
   tabs: [["Popular", "active"], ["Top rated"], ["Upcoming"]],
   languages: ["EN", "RU", "FR"],

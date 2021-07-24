@@ -6,6 +6,7 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
 import { rerender } from "../../index";
+import k from '../../static/GridCard.module.sass'
 
 const MoviePage = () => {
   const selectedFilmId = store.selectedFilm;
@@ -52,7 +53,7 @@ const MoviePage = () => {
                 Show All
               </button>
             </div>
-            <div className={s.crew_box_cards}>
+            <div className={s.card_grid}>
               {crewToRender.map((el) => (
                 <People
                   img={el.profile_path}
@@ -65,7 +66,7 @@ const MoviePage = () => {
         </div>
       </div>
         <h2>Recomendations</h2>
-        <div className={s.recomendations_grid}>
+        <div className={s.card_grid}>
           {film.map((el) => (
             <FilmCard
               key={el.id}

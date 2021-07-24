@@ -4,6 +4,7 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import s from "./ActorPage.module.sass";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
+import k from '../../static/GridCard.module.sass'
 
 const ActorPage = () => {
   const person = store.peopleDetails;
@@ -22,7 +23,7 @@ const ActorPage = () => {
           <MetaBlock title="Place of birth" meta={person.place_of_birth} />
           <MetaBlock title="Biography" meta={person.biography} />
           <h2>Photos</h2>
-          <div className={s.photo_grid}>
+          <div className={s.actor_grid}>
             {photo.map((el) => (
               <PhotoCard key={el.file_path} path={el.file_path} />
             ))}
@@ -30,7 +31,7 @@ const ActorPage = () => {
         </div>
       </div>
       <h2>Knowh by</h2>
-      <div className={s.known_by}>
+      <div className={s.actor_grid}>
         {knownBy.map((el) => (
           <FilmCard
             key={el.id}

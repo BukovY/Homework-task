@@ -26,12 +26,19 @@
     background-color: white
     color: black
 
-.crew_box_cards
+.card_grid
   display: grid
   grid-template-columns: repeat(6, 1fr)
   grid-gap: 10px
 
-.recomendations_grid
-  display: grid
-  grid-template-columns: repeat(6, 1fr)
-  grid-gap: 10px
+@media screen and (max-width: 1300px)
+  .card_grid
+    grid-template-columns: repeat(3, 1fr)
+
+@media screen and (max-width: 850px)
+  .card_grid
+    grid-template-columns: repeat(2, 1fr)
+
+@media screen and (max-width: 670px)
+  .film_info
+    grid-template-columns: 1fr

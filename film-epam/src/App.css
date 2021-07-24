@@ -1,9 +1,15 @@
 body{
-  width: 1280px;
+  width: 1250px;
   margin: 0 auto;
   background: #151515;
   color: white;
 }
+@media screen and  (max-width: 1300px) {
+  body{
+    width: 95%;
+  }
+}
+
 .App {
   text-align: center;
 }

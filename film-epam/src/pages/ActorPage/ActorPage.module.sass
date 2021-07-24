@@ -6,12 +6,19 @@
   grid-template-columns: 300px 1fr
   grid-gap: 10px
 
-.photo_grid
+.actor_grid
   display: grid
   grid-template-columns: repeat(6, 1fr)
   grid-gap: 10px
 
-.known_by
-  display: grid
-  grid-template-columns: repeat(6, 1fr)
-  grid-gap: 10px
+@media screen and (max-width: 1300px)
+  .actor_grid
+    grid-template-columns: repeat(3, 1fr)
+
+@media screen and (max-width: 850px)
+  .actor_grid
+    grid-template-columns: repeat(2, 1fr)
+
+@media screen and (max-width: 670px)
+  .actor_info
+    grid-template-columns: 1fr
