@@ -14,7 +14,7 @@ export function genresIndexToString(arr, map) {
     return genresToRender
 }
 
-const Homepage = () => {
+const HomePage = () => {
     const film = store.filmData
     const genresMap = store.genresMap
     return (<div>
@@ -29,4 +29,4 @@ const Homepage = () => {
     );
 }
 
-export default Homepage;
+export default HomePage;

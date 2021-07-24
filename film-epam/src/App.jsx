@@ -1,18 +1,18 @@
 import React from "react";
 import "./App.css";
 import { store } from "./redux/store";
-import Homepage from "./Pages/Homepage/Homepage";
 import Header from "./components/Header/Header";
-import Movie from "./Pages/Movie/Movie";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 
 function App() {
   const page = store.selectPage;
   return (
     <div>
       <Header />
-      {page === "main" ? <Homepage /> : ""}
+      {page === "main" ? <HomePage/> : ""}
       {page === "actor" ? "" : ""}
-      {page === "movie" ? <Movie /> : ""}
+      {page === "movie" ? <MoviePage/> : ""}
     </div>
   );
 }
