@@ -12,7 +12,7 @@
 }
 .film_cover img {
 width: 100%;
-
+border-radius: 5px;
 }
 .film_cover .play_film {
     visibility: hidden;

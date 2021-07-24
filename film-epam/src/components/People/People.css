@@ -5,6 +5,7 @@
     width: 100%;
     height: auto;
     cursor: pointer;
+    border-radius: 5px;
 }
 .people_img {
     width: 153px;
