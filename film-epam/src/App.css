@@ -42,14 +42,3 @@ body{
     transform: rotate(360deg);
   }
 }
-.film_card_grid{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 10px;
-}
-
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}

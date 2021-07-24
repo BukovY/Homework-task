@@ -1,6 +1,6 @@
 import React from "react";
 import search from "../../static/img/search.png";
-import "./Search.css";
+import s from  "./Search.module.sass";
 
 const Search = () => {
   return (
@@ -8,9 +8,9 @@ const Search = () => {
       <input
         type="text"
         placeholder="Movies, person, movie, theaters"
-        className="search"
+        className={s.search}
       />
-      <img src={search} alt="search" className="search_icon" />
+      <img src={search} alt="search" className={s.search_icon} />
     </form>
   );
 };

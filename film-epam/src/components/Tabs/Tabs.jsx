@@ -1,5 +1,5 @@
 import React from "react";
-import "./Tabs.css";
+import s from "./Tabs.module.sass";
 import { store } from "../../redux/store";
 import Tab from "./Tab/Tab";
 import { rerender } from "../../index";
@@ -23,7 +23,7 @@ const Tabs = () => {
   };
   return (
     <div>
-      <div className="tabs">
+      <div className={s.tabs}>
         {tabs.map((el) => (
           <Tab
             key={el[0]}
@@ -33,7 +33,7 @@ const Tabs = () => {
           />
         ))}
       </div>
-      <div className="clearfix"></div>
+      <div className={s.clearfix}></div>
     </div>
   );
 };

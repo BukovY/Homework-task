@@ -1,8 +1,8 @@
 import React from "react";
 import { store } from "../../redux/store";
 import { rerender } from "../../index";
-import "./Language.css";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
+import s from './Language.module.sass'
 
 const Language = () => {
   const isOpen = store.isTooltipLanguageOpen;
@@ -18,7 +18,7 @@ const Language = () => {
           openLanguageSelect();
         }}
         className={
-          isOpen ? "language_select language_select_open" : "language_select"
+          isOpen ? `${s.language_select} ${s.open}` : `${s.language_select}`
         }
       >
         {languageSelected}

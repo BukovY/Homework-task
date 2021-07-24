@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "../../static/img/logo.png";
 import Language from "../Language/Language";
-import "./Header.css";
 import Search from "../Search/Search";
 import { store } from "../../redux/store";
 import { rerender } from "../../index";
+import s from './Header.module.css.sass'
 
 const Header = () => {
   const goHomepage = () => {

@@ -1,11 +1,11 @@
 import React from "react";
 import { store } from "../../redux/store";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import "./Movie.css";
+import s from "./MoviePage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
-import {rerender} from "../../index";
+import { rerender } from "../../index";
 
 const MoviePage = () => {
   const selectedFilmId = store.selectedFilm;
@@ -17,20 +17,18 @@ const MoviePage = () => {
   const film = store.filmData.slice(0, 6);
   const genresMap = store.genresMap;
 
-  const changeOpenCrew = ()=> {
-    store.isAllCrewOpen = !store.isAllCrewOpen
-    rerender()
-  }
+  const changeOpenCrew = () => {
+    store.isAllCrewOpen = !store.isAllCrewOpen;
+    rerender();
+  };
   return (
     <div>
-      <div className="film_info">
-        <div className="card">
-          <FilmCard
-            img={filmToRender.poster_path}
-            rating={filmToRender.vote_average}
-          />
-        </div>
-        <div className="info">
+      <div className={s.film_info}>
+        <FilmCard
+          img={filmToRender.poster_path}
+          rating={filmToRender.vote_average}
+        />
+        <div>
           <p>Title</p>
           <h1>{filmToRender.original_title}</h1>
           <MetaBlock title="Overview" meta={filmToRender.overview} />
@@ -38,18 +36,23 @@ const MoviePage = () => {
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
           <MetaBlock title="Duration" meta={minToTime(filmToRender.runtime)} />
           {genres.map((el) => (
-            <div key={el} className="genre">
+            <div key={el} className={s.genre}>
               {el}
             </div>
           ))}
-          <div className="crew_box">
-            <div className="crew_box_head">
+          <div>
+            <div className={s.crew_box_head}>
               <h2>Top Billied Cast</h2>
-              <button className={isAllCrewOpen ? "active" : ""} onClick={()=>{changeOpenCrew()}}>
+              <button
+                className={isAllCrewOpen ? `${s.active}` : ""}
+                onClick={() => {
+                  changeOpenCrew();
+                }}
+              >
                 Show All
               </button>
             </div>
-            <div className="crew_box_cards">
+            <div className={s.crew_box_cards}>
               {crewToRender.map((el) => (
                 <People
                   img={el.profile_path}
@@ -61,9 +64,8 @@ const MoviePage = () => {
           </div>
         </div>
       </div>
-      <div className="recomendations">
         <h2>Recomendations</h2>
-        <div className="recomendations_grid">
+        <div className={s.recomendations_grid}>
           {film.map((el) => (
             <FilmCard
               key={el.id}
@@ -75,7 +77,6 @@ const MoviePage = () => {
             />
           ))}
         </div>
-      </div>
     </div>
   );
 };
