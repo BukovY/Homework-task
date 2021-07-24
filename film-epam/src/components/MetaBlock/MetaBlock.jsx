@@ -1,5 +1,5 @@
 import React from "react";
-import s from './MetaBlock.module.sass'
+import s from "./MetaBlock.module.sass";
 
 const MetaBlock = ({ title, meta, prefix }) => {
   return (

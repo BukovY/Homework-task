@@ -2,7 +2,7 @@ import React from "react";
 import { store } from "../../redux/store";
 import { rerender } from "../../index";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
-import s from './Language.module.sass'
+import s from "./Language.module.sass";
 
 const Language = () => {
   const isOpen = store.isTooltipLanguageOpen;

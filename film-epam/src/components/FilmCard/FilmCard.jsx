@@ -2,7 +2,7 @@ import React from "react";
 import play from "../../static/img/play.svg";
 import { store } from "../../redux/store";
 import { rerender } from "../../index";
-import s from './FilmCard.module.sass'
+import s from "./FilmCard.module.sass";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
   const openFilm = (id) => {
@@ -11,14 +11,21 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
     store.selectPage = "movie";
     rerender();
   };
-  if(img == null){
-      img = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+  if (img == null) {
+    img =
+      "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
   } else {
-      img = `https://image.tmdb.org/t/p/w500/${img}`
+    img = `https://image.tmdb.org/t/p/w500/${img}`;
   }
   return (
     <div className={s.card}>
-      <div className={rating < 7 ? `${s.rating} ${s.rating_down}` : `${s.rating} ${s.rating_up}`}>
+      <div
+        className={
+          rating < 7
+            ? `${s.rating} ${s.rating_down}`
+            : `${s.rating} ${s.rating_up}`
+        }
+      >
         {rating}
       </div>
       <div className={s.film_cover}>

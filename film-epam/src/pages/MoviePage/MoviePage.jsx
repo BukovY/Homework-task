@@ -64,19 +64,19 @@ const MoviePage = () => {
           </div>
         </div>
       </div>
-        <h2>Recomendations</h2>
-        <div className={s.card_grid}>
-          {film.map((el) => (
-            <FilmCard
-              key={el.id}
-              id={el.id}
-              img={el.poster_path}
-              rating={el.vote_average}
-              title={el.original_title}
-              genres={genresIndexToString(el.genre_ids, genresMap)}
-            />
-          ))}
-        </div>
+      <h2>Recomendations</h2>
+      <div className={s.card_grid}>
+        {film.map((el) => (
+          <FilmCard
+            key={el.id}
+            id={el.id}
+            img={el.poster_path}
+            rating={el.vote_average}
+            title={el.original_title}
+            genres={genresIndexToString(el.genre_ids, genresMap)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

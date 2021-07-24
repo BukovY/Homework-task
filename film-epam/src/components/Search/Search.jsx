@@ -1,6 +1,6 @@
 import React from "react";
 import search from "../../static/img/search.png";
-import s from  "./Search.module.sass";
+import s from "./Search.module.sass";
 
 const Search = () => {
   return (

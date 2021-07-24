@@ -4,7 +4,7 @@ import Tabs from "../../components/Tabs/Tabs";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import Paginations from "../../components/Pagination/Paginations";
 import { genresIndexToString } from "../../utils/functrions";
-import s from './HomePage.module.sass'
+import s from "./HomePage.module.sass";
 
 const HomePage = () => {
   const film = store.filmData;
