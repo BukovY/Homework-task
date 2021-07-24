@@ -11,6 +11,12 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
     store.selectPage = "movie";
     rerender();
   };
+  if(img == null){
+      img = 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+  } else {
+      img = `https://image.tmdb.org/t/p/w500/${img}`
+  }
+  console.log(img)
   return (
     <div className="card">
       <div className={rating < 7 ? "rating rating_down" : "rating rating_up"}>
@@ -18,7 +24,7 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
       </div>
       <div className="film_cover">
         <img
-          src={`https://image.tmdb.org/t/p/w500/${img}`}
+          src={img}
           className="film_cover"
           alt={title}
           onClick={() => openFilm(id)}

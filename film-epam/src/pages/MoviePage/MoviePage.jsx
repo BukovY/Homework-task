@@ -13,7 +13,7 @@ const MoviePage = () => {
   const filmToRender = films.filter((el) => el.id === selectedFilmId)[0];
   const genres = filmToRender.genres.map((el) => el.name);
   const isAllCrewOpen = store.isAllCrewOpen;
-  const crewToRender = isAllCrewOpen ? store.crew : store.crew.slice(0, 6);
+  const crewToRender = isAllCrewOpen ? store.crews : store.crews.slice(0, 6);
   const film = store.filmData.slice(0, 6);
   const genresMap = store.genresMap;
 
