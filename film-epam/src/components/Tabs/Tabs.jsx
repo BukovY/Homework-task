@@ -3,21 +3,12 @@ import s from "./Tabs.module.sass";
 import { store } from "../../redux/store";
 import Tab from "./Tab/Tab";
 import { rerender } from "../../index";
+import { getTabs } from "../../utils/functrions";
 
 const Tabs = () => {
   const tabs = store.tabs;
   const changeTab = (label) => {
-    let tabs = [["Popular"], ["Top rated"], ["Upcoming"]];
-    if (label === "Popular") {
-      tabs[0].push("active");
-    }
-    if (label === "Top rated") {
-      tabs[1].push("active");
-    }
-    if (label === "Upcoming") {
-      tabs[2].push("active");
-    }
-    store.tabs = tabs;
+    store.tabs = getTabs(label);
     store.isTooltipLanguageOpen = false;
     rerender();
   };

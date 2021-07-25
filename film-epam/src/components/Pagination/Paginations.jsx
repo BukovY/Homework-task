@@ -1,18 +1,13 @@
 import React from "react";
 import { store } from "../../redux/store";
-import { MAX_PAGINATION_PAGES } from "../../redux/constants";
 import Pagination from "./Item/Pagination";
 import s from "./Paginations.module.sass";
 import { rerender } from "../../index";
+import { getPaginationRange } from "../../utils/functrions";
 
 const Paginations = () => {
-  const maxPage = MAX_PAGINATION_PAGES;
+  const maxPage = store.paginationMax;
   const selectPage = store.paginationPage;
-  const pagination = Array(maxPage)
-    .fill(1)
-    .reduce((prev, next, index) => {
-      return [...prev, index + 1];
-    }, []);
 
   const changePaginationPage = (el) => {
     store.paginationPage = el;
@@ -21,7 +16,7 @@ const Paginations = () => {
   };
   return (
     <div className={s.pagination_box}>
-      {pagination.map((el) => (
+      {getPaginationRange(maxPage).map((el) => (
         <Pagination
           key={el}
           num={el}

@@ -6,7 +6,7 @@ const MetaBlock = ({ title, meta, prefix }) => {
     <div>
       <p className={s.meta_title}>{title}:</p>
       <p>
-        {prefix ? prefix : ""}
+        {prefix && prefix}
         {meta}
       </p>
     </div>

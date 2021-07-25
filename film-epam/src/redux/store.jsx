@@ -1,5 +1,6 @@
 // mock
 export const store = {
+  paginationMax: 5,
   filmData: [
     {
       adult: false,

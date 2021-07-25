@@ -8,19 +8,17 @@ import { genresIndexToString, minToTime } from "../../utils/functrions";
 import { rerender } from "../../index";
 
 const MoviePage = () => {
-  const selectedFilmId = store.selectedFilm;
-  const films = store.movieBase;
-  const filmToRender = films.filter((el) => el.id === selectedFilmId)[0];
-  const genres = filmToRender.genres.map((el) => el.name);
+  const filmToRender = store.movieBase.filter(
+    (el) => el.id === store.selectedFilm
+  )[0];
   const isAllCrewOpen = store.isAllCrewOpen;
   const crewToRender = isAllCrewOpen ? store.crews : store.crews.slice(0, 6);
   const film = store.filmData.slice(0, 6);
-  const genresMap = store.genresMap;
-
   const changeOpenCrew = () => {
     store.isAllCrewOpen = !store.isAllCrewOpen;
     rerender();
   };
+
   return (
     <div>
       <div className={s.film_info}>
@@ -35,11 +33,13 @@ const MoviePage = () => {
           <MetaBlock title="Release date" meta={filmToRender.release_date} />
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
           <MetaBlock title="Duration" meta={minToTime(filmToRender.runtime)} />
-          {genres.map((el) => (
-            <div key={el} className={s.genre}>
-              {el}
-            </div>
-          ))}
+          {filmToRender.genres
+            .map((el) => el.name)
+            .map((el) => (
+              <div key={el} className={s.genre}>
+                {el}
+              </div>
+            ))}
           <div>
             <div className={s.crew_box_head}>
               <h2>Top Billied Cast</h2>
@@ -73,7 +73,7 @@ const MoviePage = () => {
             img={el.poster_path}
             rating={el.vote_average}
             title={el.original_title}
-            genres={genresIndexToString(el.genre_ids, genresMap)}
+            genres={genresIndexToString(el.genre_ids, store.genresMap)}
           />
         ))}
       </div>

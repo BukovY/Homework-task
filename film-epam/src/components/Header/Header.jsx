@@ -16,13 +16,7 @@ const Header = () => {
   };
   return (
     <header className={s}>
-      <img
-        src={logo}
-        alt="logoservice"
-        height="40px"
-        width="auto"
-        onClick={() => goHomepage()}
-      />
+      <img src={logo} alt="logo" onClick={() => goHomepage()} />
       <Search />
       <Language />
     </header>

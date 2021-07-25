@@ -9,7 +9,6 @@ const ActorPage = () => {
   const person = store.peopleDetails;
   const photo = store.peopleImages;
   const knownBy = store.knownBy;
-  console.log(knownBy);
   return (
     <div className={s.actor_page}>
       <div className={s.actor_info}>
