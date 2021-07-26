@@ -7,19 +7,19 @@ import Search from "../Search/Search";
 import s from "./Header.module.css.sass";
 import { useDispatch} from "react-redux";
 import {
-    filterChange,
-    paginationChange, searchChange,
-    tooltipOpenChange,
+    setFilter,
+    setPaginationPage, setSearchValue,
+    setTooltipOpenStatus,
 } from "../../redux/actions/appAction";
 
 
 const Header = () => {
   const dispatch = useDispatch();
   const goHomepage = () => {
-    dispatch(paginationChange(1));
-    dispatch(tooltipOpenChange(false));
-    dispatch(filterChange("Popular"));
-    dispatch(searchChange(''))
+    dispatch(setPaginationPage(1));
+    dispatch(setTooltipOpenStatus(false));
+    dispatch(setFilter("Popular"));
+    dispatch(setSearchValue(''))
   };
   return (
     <header className={s}>

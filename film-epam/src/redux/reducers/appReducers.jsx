@@ -4,8 +4,9 @@ import {
   FILTER_CHANGE,
   PAGINATION_CHANGE,
   TOOLTIP_OPEN_CHANGE,
+  SET_GENRES_MAP,
+  SET_FILMS,
 } from "../constants";
-
 
 const initialState = {
   paginationPage: 1,
@@ -14,8 +15,11 @@ const initialState = {
   languageSelected: "EN",
   languages: ["EN", "RU", "FR"],
   filter: ["Popular", "Top rated", "Upcoming"],
-  activeFilter: 'Popular',
+  activeFilter: "Popular",
   isTooltipLanguageOpen: false,
+  isFetching: true,
+  filmData: [],
+  genresMap: [],
 };
 
 const appReducer = (state = initialState, action) => {
@@ -44,6 +48,16 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         isTooltipLanguageOpen: action.payload,
+      };
+    case SET_GENRES_MAP:
+      return {
+        ...state,
+        genresMap: action.payload,
+      };
+    case SET_FILMS:
+      return {
+        ...state,
+        filmData: action.payload,
       };
     default:
       return state;

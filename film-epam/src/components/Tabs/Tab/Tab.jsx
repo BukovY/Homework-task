@@ -2,16 +2,16 @@ import React from "react";
 import s from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  filterChange,
-  tooltipOpenChange,
+  setFilter,
+  setTooltipOpenStatus,
 } from "../../../redux/actions/appAction";
 
 const Tab = ({ label }) => {
   const { activeFilter } = useSelector((state) => state.appReducer);
   const dispatch = useDispatch();
   const changeTab = (label) => {
-    dispatch(filterChange(label));
-    dispatch(tooltipOpenChange(false));
+    dispatch(setFilter(label));
+    dispatch(setTooltipOpenStatus(false));
   };
   return (
     <div

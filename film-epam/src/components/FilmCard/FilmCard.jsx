@@ -1,17 +1,10 @@
 import React from "react";
 import play from "../../static/img/play.svg";
-import { store } from "../../redux/store";
-import { rerender } from "../../index";
 import s from "./FilmCard.module.sass";
 import { getFilmCover } from "../../utils/functrions";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
-  const openFilm = (id) => {
-    store.selectedFilm = id;
-    store.isTooltipLanguageOpen = false;
-    store.selectPage = "movie";
-    rerender();
-  };
+  const openFilm = (id) => {};
 
   return (
     <div className={s.card}>

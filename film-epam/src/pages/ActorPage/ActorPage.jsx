@@ -36,7 +36,7 @@ const ActorPage = () => {
             id={el.id}
             img={el.poster_path}
             rating={el.vote_average}
-            title={el.original_title}
+            title={el.title}
           />
         ))}
       </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  languageChange,
-  tooltipOpenChange,
+  setLanguage,
+  setTooltipOpenStatus,
 } from "../../../../redux/actions/appAction";
 import s from "./LanguageSelect.module.sass";
 
@@ -10,8 +10,8 @@ const LanguageSelect = ({ language }) => {
   const { languageSelected } = useSelector((state) => state.appReducer);
   const dispatch = useDispatch();
   const selectLanguage = (language) => {
-    dispatch(languageChange(language));
-    dispatch(tooltipOpenChange(false));
+    dispatch(setLanguage(language));
+    dispatch(setTooltipOpenStatus(false));
   };
   return (
     <div
