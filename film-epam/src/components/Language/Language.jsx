@@ -1,29 +1,29 @@
 import React from "react";
-import { store } from "../../redux/store";
-import { rerender } from "../../index";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import s from "./Language.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { tooltipOpenChange } from "../../redux/actions/appAction";
 
 const Language = () => {
-  const isOpen = store.isTooltipLanguageOpen;
-  const languageSelected = store.languageSelected;
-  const openLanguageSelect = () => {
-    store.isTooltipLanguageOpen = !isOpen;
-    rerender();
-  };
+  const { isTooltipLanguageOpen, languageSelected } = useSelector(
+    (state) => state.appReducer
+  );
+  const dispatch = useDispatch();
   return (
     <div>
       <div
         onClick={() => {
-          openLanguageSelect();
+          dispatch(tooltipOpenChange(!isTooltipLanguageOpen));
         }}
         className={
-          isOpen ? `${s.language_select} ${s.open}` : `${s.language_select}`
+          isTooltipLanguageOpen
+            ? `${s.language_select} ${s.open}`
+            : `${s.language_select}`
         }
       >
         {languageSelected}
       </div>
-      {isOpen ? <LanguageTooltip /> : ""}
+      {isTooltipLanguageOpen ? <LanguageTooltip /> : ""}
     </div>
   );
 };

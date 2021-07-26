@@ -1,20 +1,16 @@
 import React from "react";
-import { store } from "../../../redux/store";
-import LanguageSelect from "./LanguageSelect/LanguageSelect";
 import s from "./LanguageTooltip.module.sass";
+import LanguageSelect from "./LanguageSelect/LanguageSelect";
+import { useSelector } from "react-redux";
 
 const LanguageTooltip = () => {
-  const languages = store.languages;
-  const selectLanguage = store.languageSelected;
+  const { languages } = useSelector((state) => state.appReducer);
+
   return (
     <div className={s.tooltip}>
       <div className={s.tooltip_box}>
         {languages.map((el) => (
-          <LanguageSelect
-            key={el}
-            language={el}
-            isSelect={el === selectLanguage}
-          />
+          <LanguageSelect key={el} language={el} />
         ))}
       </div>
     </div>

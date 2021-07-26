@@ -1,18 +1,25 @@
 import React from "react";
 import logo from "../../static/img/logo.png";
+
+
 import Language from "../Language/Language";
 import Search from "../Search/Search";
-import { store } from "../../redux/store";
-import { rerender } from "../../index";
 import s from "./Header.module.css.sass";
+import { useDispatch} from "react-redux";
+import {
+    filterChange,
+    paginationChange, searchChange,
+    tooltipOpenChange,
+} from "../../redux/actions/appAction";
+
 
 const Header = () => {
+  const dispatch = useDispatch();
   const goHomepage = () => {
-    store.paginationPage = 1;
-    store.selectPage = "main";
-    store.tabs = [["Popular", "active"], ["Top rated"], ["Upcoming"]];
-    store.isTooltipLanguageOpen = false;
-    rerender();
+    dispatch(paginationChange(1));
+    dispatch(tooltipOpenChange(false));
+    dispatch(filterChange("Popular"));
+    dispatch(searchChange(''))
   };
   return (
     <header className={s}>

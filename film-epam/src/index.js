@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 export const rerender = () => {
   ReactDOM.render(
@@ -14,7 +16,9 @@ export const rerender = () => {
 
 ReactDOM.render(
   <React.StrictMode>
+      <Provider store={store}>
     <App rerender={rerender} />
+      </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

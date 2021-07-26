@@ -1,16 +1,22 @@
 import React from "react";
-import search from "../../static/img/search.png";
+import searchIcon from "../../static/img/search.png";
 import s from "./Search.module.sass";
+import {useSelector, useDispatch} from "react-redux";
+import {searchChange} from "../../redux/actions/appAction";
 
 const Search = () => {
+    const {search} = useSelector((state) => state.appReducer)
+    const dispatch = useDispatch()
   return (
     <form>
       <input
         type="text"
         placeholder="Movies, person, movie, theaters"
         className={s.search}
+        value={search}
+        onChange={(el) => dispatch(searchChange(el.target.value))}
       />
-      <img src={search} alt="search" className={s.search_icon} />
+      <img src={searchIcon} alt="search" className={s.search_icon} />
     </form>
   );
 };

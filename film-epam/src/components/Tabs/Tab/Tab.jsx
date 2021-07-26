@@ -1,9 +1,21 @@
 import React from "react";
 import s from "./Tab.module.sass";
-const Tab = ({ label, status, changeTab }) => {
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filterChange,
+  tooltipOpenChange,
+} from "../../../redux/actions/appAction";
+
+const Tab = ({ label }) => {
+  const { activeFilter } = useSelector((state) => state.appReducer);
+  const dispatch = useDispatch();
+  const changeTab = (label) => {
+    dispatch(filterChange(label));
+    dispatch(tooltipOpenChange(false));
+  };
   return (
     <div
-      className={status === "active" ? `${s.tab} ${s.active}` : `${s.tab}`}
+      className={label === activeFilter ? `${s.tab} ${s.active}` : `${s.tab}`}
       onClick={() => changeTab(label)}
     >
       {label}

@@ -1,18 +1,24 @@
 import React from "react";
-import { store } from "../../redux/store";
 import Tabs from "../../components/Tabs/Tabs";
-import FilmCard from "../../components/FilmCard/FilmCard";
 import Paginations from "../../components/Pagination/Paginations";
+
 import { genresIndexToString } from "../../utils/functrions";
 import s from "./HomePage.module.sass";
 
 const HomePage = () => {
-  const film = store.filmData;
-  const genresMap = store.genresMap;
   return (
     <div>
       <Tabs />
-      <div className={s.film_card_grid}>
+
+      <Paginations />
+    </div>
+  );
+};
+
+/*
+import FilmCard from "../../components/FilmCard/FilmCard";
+
+<div className={s.film_card_grid}>
         {film.map((el) => (
           <FilmCard
             key={el.id}
@@ -24,9 +30,7 @@ const HomePage = () => {
           />
         ))}
       </div>
-      <Paginations />
-    </div>
-  );
-};
 
+      
+ */
 export default HomePage;

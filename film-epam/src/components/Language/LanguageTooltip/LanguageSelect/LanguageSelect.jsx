@@ -1,22 +1,26 @@
 import React from "react";
-import { store } from "../../../../redux/store";
-import { rerender } from "../../../../index";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  languageChange,
+  tooltipOpenChange,
+} from "../../../../redux/actions/appAction";
 import s from "./LanguageSelect.module.sass";
 
-const LanguageSelect = ({ language, isSelect }) => {
-  const languageSelect = (el) => {
-    store.languageSelected = el;
-    store.isTooltipLanguageOpen = false;
-    rerender();
+const LanguageSelect = ({ language }) => {
+  const { languageSelected } = useSelector((state) => state.appReducer);
+  const dispatch = useDispatch();
+  const selectLanguage = (language) => {
+    dispatch(languageChange(language));
+    dispatch(tooltipOpenChange(false));
   };
   return (
     <div
-      onClick={() => languageSelect(language)}
       className={
-        isSelect
+        language === languageSelected
           ? `${s.tooltip_language} ${s.tooltip_select}`
           : `${s.tooltip_language}`
       }
+      onClick={() => selectLanguage(language)}
     >
       {language}
     </div>
