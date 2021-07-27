@@ -13,6 +13,7 @@ export const minToTime = (num) => {
   let hour = (num - min) / 60;
   return String(hour) + ":" + String(min);
 };
+
 export const getPhotoCard = (path) => {
   const imgPath =
     path === null
@@ -47,16 +48,3 @@ export const getPaginationRange = (maxPage) => {
     }, []);
 };
 
-export const getTabs = (label) => {
-  let tabs = [["Popular"], ["Top rated"], ["Upcoming"]];
-  if (label === "Popular") {
-    tabs[0].push("active");
-  }
-  if (label === "Top rated") {
-    tabs[1].push("active");
-  }
-  if (label === "Upcoming") {
-    tabs[2].push("active");
-  }
-  return tabs;
-};

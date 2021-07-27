@@ -1,9 +1,14 @@
-.tab
+@mixin tab
   padding-bottom: 4px
   padding-top: 3px
   width: 100px
   text-align: center
   cursor: pointer
-  &.active
-    color: black
-    background-color: white
+
+.tab
+  @include tab
+
+.tab_active
+  @include tab
+  color: black
+  background-color: white

@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Pagination.module.sass";
+import styles from "./Pagination.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setPaginationPage,
@@ -17,8 +17,8 @@ const Pagination = ({ num }) => {
     <div
       className={
         num === paginationPage
-          ? `${s.pagination} ${s.pagination_active}`
-          : `${s.pagination}`
+          ? `${styles.pagination_active}`
+          : `${styles.pagination}`
       }
       onClick={() => selectPaginationPage()}
     >

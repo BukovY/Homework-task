@@ -3,7 +3,7 @@ import Tabs from "../../components/Tabs/Tabs";
 import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { genresIndexToString } from "../../utils/functrions";
-import s from "./HomePage.module.sass";
+import styles from "./HomePage.module.sass";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div>
       <Tabs />
-      <div className={s.film_card_grid}>
+      <div className={styles.film_card_grid}>
         {filmData.map((el) => (
           <FilmCard
             key={el.id}

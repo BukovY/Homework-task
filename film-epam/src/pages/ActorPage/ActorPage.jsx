@@ -1,7 +1,7 @@
 import React from "react";
 import { store } from "../../redux/store";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
-import s from "./ActorPage.module.sass";
+import styles from "./ActorPage.module.sass";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
 
@@ -10,8 +10,8 @@ const ActorPage = () => {
   const photo = store.peopleImages;
   const knownBy = store.knownBy;
   return (
-    <div className={s.actor_page}>
-      <div className={s.actor_info}>
+    <div className={styles.actor_page}>
+      <div className={styles.actor_info}>
         <div>
           <PhotoCard path={person.profile_path} />
         </div>
@@ -21,7 +21,7 @@ const ActorPage = () => {
           <MetaBlock title="Place of birth" meta={person.place_of_birth} />
           <MetaBlock title="Biography" meta={person.biography} />
           <h2>Photos</h2>
-          <div className={s.actor_grid}>
+          <div className={styles.actor_grid}>
             {photo.map((el) => (
               <PhotoCard key={el.file_path} path={el.file_path} />
             ))}
@@ -29,7 +29,7 @@ const ActorPage = () => {
         </div>
       </div>
       <h2>Knowh by</h2>
-      <div className={s.actor_grid}>
+      <div className={styles.actor_grid}>
         {knownBy.map((el) => (
           <FilmCard
             key={el.id}

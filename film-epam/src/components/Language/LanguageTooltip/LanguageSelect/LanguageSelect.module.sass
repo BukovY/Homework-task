@@ -1,8 +1,14 @@
-.tooltip_select
-  font-weight: 700
-
-.tooltip_language
+@mixin tooltip
   text-align: center
   &:hover
     color: white
     background-color: #282c34
+
+.tooltip_select
+  @include tooltip
+  font-weight: 700
+  text-decoration: underline
+
+.tooltip_language
+  @include tooltip
+

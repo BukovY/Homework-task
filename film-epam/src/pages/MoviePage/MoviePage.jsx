@@ -1,7 +1,7 @@
 import React from "react";
 import { store } from "../../redux/store";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import s from "./MoviePage.module.sass";
+import styles from "./MoviePage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
@@ -21,7 +21,7 @@ const MoviePage = () => {
 
   return (
     <div>
-      <div className={s.film_info}>
+      <div className={styles.film_info}>
         <FilmCard
           img={filmToRender.poster_path}
           rating={filmToRender.vote_average}
@@ -36,15 +36,15 @@ const MoviePage = () => {
           {filmToRender.genres
             .map((el) => el.name)
             .map((el) => (
-              <div key={el} className={s.genre}>
+              <div key={el} className={styles.genre}>
                 {el}
               </div>
             ))}
           <div>
-            <div className={s.crew_box_head}>
+            <div className={styles.crew_box_head}>
               <h2>Top Billied Cast</h2>
               <button
-                className={isAllCrewOpen ? `${s.active}` : ""}
+                className={isAllCrewOpen ? `${styles.active}` : ""}
                 onClick={() => {
                   changeOpenCrew();
                 }}
@@ -52,7 +52,7 @@ const MoviePage = () => {
                 Show All
               </button>
             </div>
-            <div className={s.card_grid}>
+            <div className={styles.card_grid}>
               {crewToRender.map((el) => (
                 <People
                   img={el.profile_path}
@@ -65,7 +65,7 @@ const MoviePage = () => {
         </div>
       </div>
       <h2>Recomendations</h2>
-      <div className={s.card_grid}>
+      <div className={styles.card_grid}>
         {film.map((el) => (
           <FilmCard
             key={el.id}

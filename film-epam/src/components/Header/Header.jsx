@@ -4,7 +4,7 @@ import logo from "../../static/img/logo.png";
 
 import Language from "../Language/Language";
 import Search from "../Search/Search";
-import s from "./Header.module.css.sass";
+import styles from "./Header.module.css.sass";
 import { useDispatch} from "react-redux";
 import {
     setFilter,
@@ -22,7 +22,7 @@ const Header = () => {
     dispatch(setSearchValue(''))
   };
   return (
-    <header className={s}>
+    <header className={styles}>
       <img src={logo} alt="logo" onClick={() => goHomepage()} />
       <Search />
       <Language />

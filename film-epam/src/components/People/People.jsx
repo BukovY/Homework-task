@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./People.module.sass";
+import styles from "./People.module.sass";
 import { store } from "../../redux/store";
 import { rerender } from "../../index";
 import { getPeopleCard } from "../../utils/functrions";
@@ -11,15 +11,15 @@ const People = ({ img, title, department }) => {
   };
   return (
     <div>
-      <div className={s.people_img}>
+      <div className={styles.people_img}>
         <img
           src={getPeopleCard(img)}
-          className={s.people_cover}
+          className={styles.people_cover}
           alt={title}
           onClick={() => goToActorPage()}
         />
       </div>
-      <p className={s.people_title}>{title}</p>
+      <p className={styles.people_title}>{title}</p>
       <p>{department}</p>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Tab.module.sass";
+import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setFilter,
@@ -15,7 +15,7 @@ const Tab = ({ label }) => {
   };
   return (
     <div
-      className={label === activeFilter ? `${s.tab} ${s.active}` : `${s.tab}`}
+      className={label === activeFilter ? `${styles.tab_active}` : `${styles.tab}`}
       onClick={() => changeTab(label)}
     >
       {label}

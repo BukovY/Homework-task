@@ -19,6 +19,7 @@ const App = () => {
   const { activeFilter, languageSelected, paginationPage } = useSelector(
     (state) => state.appReducer
   );
+
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/genre/movie/list?language=${languageSelected}&api_key=${API_KEY}`;
     fetch(url)
@@ -26,7 +27,8 @@ const App = () => {
         return response.json();
       })
       .then((response) => dispatch(setGenresMap(response.genres)));
-  }, [activeFilter, languageSelected, paginationPage]);
+  }, [languageSelected]);
+
   useEffect(() => {
     dispatch(getFilmsData(activeFilter, languageSelected, paginationPage));
   }, [activeFilter, languageSelected, paginationPage]);

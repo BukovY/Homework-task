@@ -1,6 +1,6 @@
 import React from "react";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
-import s from "./Language.module.sass";
+import styles from "./Language.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import { setTooltipOpenStatus } from "../../redux/actions/appAction";
 
@@ -17,8 +17,8 @@ const Language = () => {
         }}
         className={
           isTooltipLanguageOpen
-            ? `${s.language_select} ${s.open}`
-            : `${s.language_select}`
+            ? `${styles.language_select_open}`
+            : `${styles.language_select}`
         }
       >
         {languageSelected}

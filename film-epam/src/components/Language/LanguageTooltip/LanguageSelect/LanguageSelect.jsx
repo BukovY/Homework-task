@@ -4,7 +4,7 @@ import {
   setLanguage,
   setTooltipOpenStatus,
 } from "../../../../redux/actions/appAction";
-import s from "./LanguageSelect.module.sass";
+import styles from "./LanguageSelect.module.sass";
 
 const LanguageSelect = ({ language }) => {
   const { languageSelected } = useSelector((state) => state.appReducer);
@@ -17,8 +17,8 @@ const LanguageSelect = ({ language }) => {
     <div
       className={
         language === languageSelected
-          ? `${s.tooltip_language} ${s.tooltip_select}`
-          : `${s.tooltip_language}`
+          ? `${styles.tooltip_select}`
+          : `${styles.tooltip_language}`
       }
       onClick={() => selectLanguage(language)}
     >
