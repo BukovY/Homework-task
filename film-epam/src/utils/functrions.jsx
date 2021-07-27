@@ -32,10 +32,9 @@ export const getFilmCover = (img) => {
     : `https://image.tmdb.org/t/p/w500/${img}`;
 };
 
-export const getPaginationRange = (maxPage) => {
+export const getPaginationRange = (maxPage) =>
   Array(maxPage)
     .fill(1)
     .reduce((prev, next, index) => {
       return [...prev, index + 1];
     }, []);
-};

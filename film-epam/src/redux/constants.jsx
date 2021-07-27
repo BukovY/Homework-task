@@ -1,7 +1,8 @@
 export const API_KEY = "687697daf00f72e0a7e20cf9f55a44ec";
 export const LANGUAGE_TOOLTIP_CHANGE = "LANGUAGE_TOOLTIP_CHANGE";
 export const FILTER_CHANGE = "FILTER_CHANGE";
-export const SELECT_FILM = "SELECT_FILM";
+export const SET_FILM = "SET_FILM";
+export const GET_FILM = 'GET_FILM'
 export const SELECT_ACTOR = "SELECT_ACTOR";
 export const PAGINATION_CHANGE = "PAGINATION_CHANGE";
 export const SEARCH_CHANGE = "SEARCH_CHANGE";
