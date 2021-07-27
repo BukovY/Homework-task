@@ -9,3 +9,4 @@ export const TOOLTIP_OPEN_CHANGE = "TOOLTIP_OPEN_CHANGE";
 export const SET_FILMS = "SET_FILMS";
 export const SET_GENRES_MAP = "SET_GENRES_MAP";
 export const SET_FETCHING = "SET_FETCHING";
+export const RESET_FILTERS = 'RESET_FILTERS'

@@ -2,23 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import store from "./redux/store";
-
-export const rerender = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
-};
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={store}>
-    <App rerender={rerender} />
-      </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

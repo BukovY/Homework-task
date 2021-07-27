@@ -9,12 +9,13 @@ const Language = () => {
     (state) => state.appReducer
   );
   const dispatch = useDispatch();
+  const toggleTooltip = () => {
+    dispatch(setTooltipOpenStatus(!isTooltipLanguageOpen));
+  };
   return (
     <div>
       <div
-        onClick={() => {
-          dispatch(setTooltipOpenStatus(!isTooltipLanguageOpen));
-        }}
+        onClick={toggleTooltip}
         className={
           isTooltipLanguageOpen
             ? `${styles.language_select_open}`

@@ -15,36 +15,27 @@ export const minToTime = (num) => {
 };
 
 export const getPhotoCard = (path) => {
-  const imgPath =
-    path === null
-      ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
-      : `https://image.tmdb.org/t/p/w1280/${path}`;
-  return imgPath;
+  return path === null
+    ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
+    : `https://image.tmdb.org/t/p/w1280/${path}`;
 };
 
 export const getPeopleCard = (img) => {
-  const imgPath =
-    img === null
-      ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
-      : `https://image.tmdb.org/t/p/w500/${img}`;
-  return imgPath;
+  return img === null
+    ? "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
+    : `https://image.tmdb.org/t/p/w500/${img}`;
 };
 
 export const getFilmCover = (img) => {
-  if (img == null) {
-    img =
-      "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
-  } else {
-    img = `https://image.tmdb.org/t/p/w500/${img}`;
-  }
-  return img;
+  return img === null
+    ? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+    : `https://image.tmdb.org/t/p/w500/${img}`;
 };
 
 export const getPaginationRange = (maxPage) => {
-  return Array(maxPage)
+  Array(maxPage)
     .fill(1)
     .reduce((prev, next, index) => {
       return [...prev, index + 1];
     }, []);
 };
-

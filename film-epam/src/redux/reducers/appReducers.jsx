@@ -6,6 +6,7 @@ import {
   TOOLTIP_OPEN_CHANGE,
   SET_GENRES_MAP,
   SET_FILMS,
+  RESET_FILTERS,
 } from "../constants";
 
 const initialState = {
@@ -59,6 +60,14 @@ const appReducer = (state = initialState, action) => {
         ...state,
         filmData: action.payload,
       };
+    case RESET_FILTERS:
+      return {
+        ...state,
+        paginationPage: 1,
+        isTooltipLanguageOpen: false,
+        activeFilter: 'Popular',
+        search: ''
+      }
     default:
       return state;
   }

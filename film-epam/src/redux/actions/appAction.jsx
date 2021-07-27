@@ -8,6 +8,7 @@ import {
   SET_GENRES_MAP,
   API_KEY,
   SET_FETCHING,
+  RESET_FILTERS,
 } from "../constants";
 
 export const setLanguage = (language) => ({
@@ -49,18 +50,34 @@ export const setIsFetching = (status) => ({
   payload: status,
 });
 
+export const resetFilters = () => ({
+  type: RESET_FILTERS
+});
+
 export const getFilmsData = (category, language, page) => {
-  language = language.toLowerCase();
-  category = category
+  let languageIn = language
+  languageIn = languageIn.toLowerCase();
+  let categoryIn = category
+  categoryIn = categoryIn
     .split(" ")
     .map((el) => el.toLowerCase())
     .join("_");
-  const url = `https://api.themoviedb.org/3/movie/${category}?api_key=${API_KEY}&language=${language}&page=${page}`;
+  const url = `https://api.themoviedb.org/3/movie/${categoryIn}?api_key=${API_KEY}&language=${languageIn}&page=${page}`;
   return async (dispatch) => {
     const response = await fetch(url);
     const filmData = await response.json();
-    console.log(filmData.results);
     dispatch(setFilmData(filmData.results));
     dispatch(setIsFetching(false));
+  };
+};
+
+export const getGenresMap = (languageSelected) => {
+  return async (dispatch) => {
+    const url = `https://api.themoviedb.org/3/genre/movie/list?language=${languageSelected}&api_key=${API_KEY}`;
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => dispatch(setGenresMap(response.genres)));
   };
 };

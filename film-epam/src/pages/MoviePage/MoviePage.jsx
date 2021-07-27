@@ -33,21 +33,17 @@ const MoviePage = () => {
           <MetaBlock title="Release date" meta={filmToRender.release_date} />
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
           <MetaBlock title="Duration" meta={minToTime(filmToRender.runtime)} />
-          {filmToRender.genres
-            .map((el) => el.name)
-            .map((el) => (
-              <div key={el} className={styles.genre}>
-                {el}
-              </div>
-            ))}
+          {filmToRender.genres.map((el) => (
+            <div key={el.name} className={styles.genre}>
+              {el.name}
+            </div>
+          ))}
           <div>
             <div className={styles.crew_box_head}>
               <h2>Top Billied Cast</h2>
               <button
                 className={isAllCrewOpen ? `${styles.active}` : ""}
-                onClick={() => {
-                  changeOpenCrew();
-                }}
+                onClick={changeOpenCrew}
               >
                 Show All
               </button>

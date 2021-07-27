@@ -1,12 +1,12 @@
 import React from "react";
 import searchIcon from "../../static/img/search.png";
 import styles from "./Search.module.sass";
-import {useSelector, useDispatch} from "react-redux";
-import {setSearchValue} from "../../redux/actions/appAction";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchValue } from "../../redux/actions/appAction";
 
 const Search = () => {
-    const {search} = useSelector((state) => state.appReducer)
-    const dispatch = useDispatch()
+  const { search } = useSelector((state) => state.appReducer);
+  const dispatch = useDispatch();
   return (
     <form>
       <input
@@ -16,7 +16,9 @@ const Search = () => {
         value={search}
         onChange={(el) => dispatch(setSearchValue(el.target.value))}
       />
-      <button><img src={searchIcon} alt="search" className={styles.search_icon}/></button>
+      <button>
+        <img src={searchIcon} alt="search" className={styles.search_icon} />
+      </button>
     </form>
   );
 };

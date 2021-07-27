@@ -16,7 +16,7 @@ const People = ({ img, title, department }) => {
           src={getPeopleCard(img)}
           className={styles.people_cover}
           alt={title}
-          onClick={() => goToActorPage()}
+          onClick={goToActorPage}
         />
       </div>
       <p className={styles.people_title}>{title}</p>

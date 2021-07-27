@@ -20,7 +20,7 @@ const Pagination = ({ num }) => {
           ? `${styles.pagination_active}`
           : `${styles.pagination}`
       }
-      onClick={() => selectPaginationPage()}
+      onClick={selectPaginationPage}
     >
       {num}
     </div>
