@@ -26,7 +26,7 @@ const MoviePage = () => {
         />
         <div>
           <p>Title</p>
-          <h1>{filmToRender.original_title}</h1>
+          <h1>{filmToRender.title}</h1>
           <MetaBlock title="Overview" meta={filmToRender.overview} />
           <MetaBlock title="Release date" meta={filmToRender.release_date} />
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
