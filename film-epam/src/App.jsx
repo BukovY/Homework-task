@@ -10,6 +10,7 @@ import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 import {getActorInfo} from "./redux/actions/actorAction";
 import ActorPage from "./pages/ActorPage/ActorPage";
 import {getSearchData} from "./redux/actions/searchAction";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 
 const App = () => {
@@ -47,14 +48,16 @@ const App = () => {
 
   useEffect(() => {
     if(isSearchRender){
-      dispatch(getSearchData(search, searchPage));
+      dispatch(getSearchData(search, searchPage, languageSelected));
     }
-  }, [isSearchRender, searchPage, search]);
+  }, [isSearchRender, searchPage, languageSelected]);
 
   return (
     <div>
       <Header />
 
+
+      {isSearchRender? <SearchPage/> : ''}
 
       {page === "main" && !isSearchRender ? (
           <ErrorBoundary>

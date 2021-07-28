@@ -1,8 +1,9 @@
-import {SEARCH_CHANGE, SET_SEARCH_RESULT, SET_SEARCH_PAGE, SET_SEARCH_RENDER} from "../constants";
+import {SEARCH_CHANGE, SET_SEARCH_RESULT, SET_SEARCH_PAGE, SET_SEARCH_RENDER, SET_SEARCH_MAX_PAGE} from "../constants";
 
 const initialState = {
     searchResults: [],
     searchPage: 1,
+    searchMaxPage: 1,
     isSearchRender: false
 }
 
@@ -22,6 +23,11 @@ const searchReducers = (state = initialState, action) => {
             return{
                 ...state,
                 isSearchRender: action.payload
+            }
+        case SET_SEARCH_MAX_PAGE:
+            return{
+                ...state,
+                searchMaxPage: action.payload
             }
         default:
             return state;
