@@ -46,13 +46,14 @@ const MoviePage = () => {
                 className={isCrewOpen ? `${styles.active}` : ""}
                 onClick={() => changeOpenCrew(isCrewOpen)}
               >
-                Show All
+                {isCrewOpen ? "Close" : "Show all"}
               </button>
             </div>
             <div className={styles.card_grid}>
               {crewToRender &&
                 crewToRender.map((el) => (
                   <People
+                    key={el.id}
                     img={el.profile_path}
                     title={el.original_name}
                     department={el.known_for_department}
@@ -61,9 +62,12 @@ const MoviePage = () => {
                 ))}
             </div>
           </div>
-          <div className={styles.card_grid}>
+          <h2>Images</h2>
+          <div className={styles.images_grid}>
             {data.images &&
-              data.images.map((el) => <PhotoCard path={el.file_path} />)}
+              data.images.map((el) => (
+                <PhotoCard key={el.file_path} path={el.file_path} />
+              ))}
           </div>
         </div>
       </div>

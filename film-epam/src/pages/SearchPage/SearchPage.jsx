@@ -20,22 +20,26 @@ const SearchPage = () => {
   };
   return (
     <div>
+      {searchResults.length > 0 ? (
+        ""
+      ) : (
+        <h1>No results, pleace change your search question</h1>
+      )}
       <div className={styles.card_grid}>
-        {searchResults.length > 0 ? (
-          searchResults.map((el) => (
-            <FilmCard
-              key={el.id}
-              id={el.id}
-              img={el.poster_path}
-              rating={el.vote_average}
-              title={el.title}
-              genres={genresIndexToString(el.genre_ids, genresMap)}
-            />
-          ))
-        ) : (
-          <h1>No results, pleace change your search question</h1>
-        )}
+        {searchResults.length > 0
+          ? searchResults.map((el) => (
+              <FilmCard
+                key={el.id}
+                id={el.id}
+                img={el.poster_path}
+                rating={el.vote_average}
+                title={el.title}
+                genres={genresIndexToString(el.genre_ids, genresMap)}
+              />
+            ))
+          : ""}
       </div>
+
       <Paginations
         selected={searchPage}
         max={searchMaxPage}

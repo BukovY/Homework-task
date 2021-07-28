@@ -19,13 +19,19 @@ const App = () => {
     useSelector((state) => state.appReducer);
 
   const { selectedMovie } = useSelector((state) => state.movieReducers);
+
+  const { actorId } = useSelector((state) => state.actorReducers);
+
+  const { searchPage, isSearchRender, needUpdate } = useSelector(
+    (state) => state.searchReducers
+  );
+
   useEffect(() => {
     if (selectedMovie !== "") {
       dispatch(getFilm(selectedMovie, languageSelected));
     }
   }, [selectedMovie, languageSelected]);
 
-  const { actorId } = useSelector((state) => state.actorReducers);
   useEffect(() => {
     if (actorId !== "") {
       dispatch(getActorInfo(actorId, languageSelected));
@@ -39,10 +45,6 @@ const App = () => {
   useEffect(() => {
     dispatch(getFilmsData(activeFilter, languageSelected, paginationPage));
   }, [activeFilter, languageSelected, paginationPage]);
-
-  const { searchPage, isSearchRender, needUpdate } = useSelector(
-    (state) => state.searchReducers
-  );
 
   useEffect(() => {
     if (isSearchRender && needUpdate) {
