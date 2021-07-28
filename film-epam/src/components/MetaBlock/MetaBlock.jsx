@@ -2,12 +2,14 @@ import React from "react";
 import styles from "./MetaBlock.module.sass";
 
 const MetaBlock = ({ title, meta, prefix }) => {
-  return (<div>
+  return (
+    <div>
       <p className={styles.meta_title}>{title}:</p>
       <p>
         {prefix && prefix}
         {meta}
       </p>
-    </div>);
+    </div>
+  );
 };
 export default MetaBlock;

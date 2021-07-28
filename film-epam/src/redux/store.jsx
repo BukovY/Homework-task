@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   appReducer,
   movieReducers,
   actorReducers,
-  searchReducers
+  searchReducers,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

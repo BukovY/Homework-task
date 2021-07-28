@@ -5,12 +5,12 @@ import Search from "../Search/Search";
 import styles from "./Header.module.css.sass";
 import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/actions/appAction";
-import {setSearchRender} from "../../redux/actions/searchAction";
+import { setSearchRender } from "../../redux/actions/searchAction";
 
 const Header = () => {
   const dispatch = useDispatch();
   const goHomepage = () => {
-      dispatch(setSearchRender(false))
+    dispatch(setSearchRender(false));
     dispatch(resetFilters());
   };
   return (

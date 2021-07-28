@@ -1,24 +1,28 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { getFilmCover } from "../../utils/functrions";
-import {getFilm} from "../../redux/actions/movieAction";
-import {setPage} from "../../redux/actions/appAction";
+import { getFilm } from "../../redux/actions/movieAction";
+import { setPage } from "../../redux/actions/appAction";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
-  const dispatch = useDispatch()
-  const {languageSelected} = useSelector((state) => state.appReducer);
+  const dispatch = useDispatch();
+  const { languageSelected } = useSelector((state) => state.appReducer);
   const openFilm = (id) => {
-      dispatch(getFilm(id,languageSelected))
-      dispatch(setPage('movie'))
+    dispatch(getFilm(id, languageSelected));
+    dispatch(setPage("movie"));
   };
-  const ratingToRender = rating
+  const ratingToRender = rating;
   return (
     <div className={styles.card} onClick={() => openFilm(id)}>
       <div
         className={
-          rating >= 7 ? styles.rating_up : rating > 1 ? styles.rating_down : styles.rating_hide
+          rating >= 7
+            ? styles.rating_up
+            : rating > 1
+            ? styles.rating_down
+            : styles.rating_hide
         }
       >
         {ratingToRender && ratingToRender.toFixed(1)}

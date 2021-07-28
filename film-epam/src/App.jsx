@@ -5,31 +5,29 @@ import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilmsData, getGenresMap } from "./redux/actions/appAction";
-import {getFilm} from "./redux/actions/movieAction";
+import { getFilm } from "./redux/actions/movieAction";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
-import {getActorInfo} from "./redux/actions/actorAction";
+import { getActorInfo } from "./redux/actions/actorAction";
 import ActorPage from "./pages/ActorPage/ActorPage";
-import {getSearchData} from "./redux/actions/searchAction";
+import { getSearchData } from "./redux/actions/searchAction";
 import SearchPage from "./pages/SearchPage/SearchPage";
-
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { activeFilter, languageSelected, paginationPage, page, search } = useSelector(
-      (state) => state.appReducer
-  );
+  const { activeFilter, languageSelected, paginationPage, page, search } =
+    useSelector((state) => state.appReducer);
 
-  const {selectedMovie} = useSelector((state)=> state.movieReducers)
+  const { selectedMovie } = useSelector((state) => state.movieReducers);
   useEffect(() => {
-    if(selectedMovie !== ''){
+    if (selectedMovie !== "") {
       dispatch(getFilm(selectedMovie, languageSelected));
     }
   }, [selectedMovie, languageSelected]);
 
-  const {actorId} = useSelector((state)=> state.actorReducers)
+  const { actorId } = useSelector((state) => state.actorReducers);
   useEffect(() => {
-    if(actorId !== ''){
+    if (actorId !== "") {
       dispatch(getActorInfo(actorId, languageSelected));
     }
   }, [languageSelected, actorId]);
@@ -43,11 +41,11 @@ const App = () => {
   }, [activeFilter, languageSelected, paginationPage]);
 
   const { searchPage, isSearchRender } = useSelector(
-      (state) => state.searchReducers
+    (state) => state.searchReducers
   );
 
   useEffect(() => {
-    if(isSearchRender){
+    if (isSearchRender) {
       dispatch(getSearchData(search, searchPage, languageSelected));
     }
   }, [isSearchRender, searchPage, languageSelected]);
@@ -56,49 +54,33 @@ const App = () => {
     <div>
       <Header />
 
-
-      {isSearchRender? <SearchPage/> : ''}
+      {isSearchRender ? <SearchPage /> : ""}
 
       {page === "main" && !isSearchRender ? (
-          <ErrorBoundary>
-            <HomePage />
-          </ErrorBoundary>
+        <ErrorBoundary>
+          <HomePage />
+        </ErrorBoundary>
       ) : (
-          ""
+        ""
       )}
-
 
       {page === "movie" && !isSearchRender ? (
-          <ErrorBoundary>
-            <MoviePage />
-          </ErrorBoundary>
-      ) : (
-          ""
-      )}
-
-      {page === "actor" && !isSearchRender ? (
-          <ErrorBoundary>
-            <ActorPage />
-          </ErrorBoundary>
-      ) : (
-          ""
-      )}
-
-
-
-    </div>
-  );
-};
-
-export default App;
-/*
-
-
-      {page === "movie" ? (
         <ErrorBoundary>
           <MoviePage />
         </ErrorBoundary>
       ) : (
         ""
       )}
- */
+
+      {page === "actor" && !isSearchRender ? (
+        <ErrorBoundary>
+          <ActorPage />
+        </ErrorBoundary>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
+
+export default App;

@@ -9,7 +9,7 @@ import {
   API_KEY,
   SET_FETCHING,
   RESET_FILTERS,
-    SET_PAGE
+  SET_PAGE,
 } from "../constants";
 
 export const setLanguage = (language) => ({
@@ -42,7 +42,7 @@ export const setGenresMap = (map) => ({
   payload: map,
 });
 
-export const setFilmsData  = (data) => ({
+export const setFilmsData = (data) => ({
   type: SET_FILMS,
   payload: data,
 });
@@ -52,18 +52,18 @@ export const setIsFetching = (status) => ({
 });
 
 export const resetFilters = () => ({
-  type: RESET_FILTERS
+  type: RESET_FILTERS,
 });
 
 export const setPage = (page) => ({
   type: SET_PAGE,
-  payload: page
-})
+  payload: page,
+});
 
 export const getFilmsData = (category, language, page) => {
-  let languageIn = language
+  let languageIn = language;
   languageIn = languageIn.toLowerCase();
-  let categoryIn = category
+  let categoryIn = category;
   categoryIn = categoryIn
     .split(" ")
     .map((el) => el.toLowerCase())
@@ -74,7 +74,6 @@ export const getFilmsData = (category, language, page) => {
     const filmData = await response.json();
     dispatch(setFilmsData(filmData.results));
   };
-
 };
 
 export const getGenresMap = (languageSelected) => {

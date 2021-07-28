@@ -15,7 +15,9 @@ const Tab = ({ label }) => {
   };
   return (
     <div
-      className={label === activeFilter ? `${styles.tab_active}` : `${styles.tab}`}
+      className={
+        label === activeFilter ? `${styles.tab_active}` : `${styles.tab}`
+      }
       onClick={() => changeTab(label)}
     >
       {label}

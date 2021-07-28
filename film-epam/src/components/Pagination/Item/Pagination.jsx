@@ -1,16 +1,14 @@
 import React from "react";
 import styles from "./Pagination.module.sass";
 
-const Pagination = ({ num, isSelect,  handler}) => {
+const Pagination = ({ num, isSelect, handler }) => {
   const selectPaginationPage = () => {
-    handler(num)
+    handler(num);
   };
   return (
     <div
       className={
-        isSelect
-          ? `${styles.pagination_active}`
-          : `${styles.pagination}`
+        isSelect ? `${styles.pagination_active}` : `${styles.pagination}`
       }
       onClick={selectPaginationPage}
     >

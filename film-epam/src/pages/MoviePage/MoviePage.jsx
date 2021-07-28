@@ -4,21 +4,21 @@ import styles from "./MoviePage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
-import {useSelector, useDispatch} from "react-redux";
-import {crewOpenChange} from "../../redux/actions/movieAction";
+import { useSelector, useDispatch } from "react-redux";
+import { crewOpenChange } from "../../redux/actions/movieAction";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 
 const MoviePage = () => {
-  const {data, isCrewOpen} = useSelector((state) => state.movieReducers);
-  const {genresMap} = useSelector((state) => state.appReducer);
-  const filmToRender = data.info
+  const { data, isCrewOpen } = useSelector((state) => state.movieReducers);
+  const { genresMap } = useSelector((state) => state.appReducer);
+  const filmToRender = data.info;
   const crewToRender = isCrewOpen ? data.people : data.people.slice(0, 6);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const changeOpenCrew = (status) => {
-    let toDispatch = status
-    dispatch(crewOpenChange(!toDispatch))
+    let toDispatch = status;
+    dispatch(crewOpenChange(!toDispatch));
   };
-  console.log(filmToRender.images)
+  console.log(filmToRender.images);
   return (
     <div>
       <div className={styles.film_info}>
@@ -33,11 +33,12 @@ const MoviePage = () => {
           <MetaBlock title="Release date" meta={filmToRender.release_date} />
           <MetaBlock title="Revenue" meta={filmToRender.revenue} prefix="$" />
           <MetaBlock title="Duration" meta={minToTime(filmToRender.runtime)} />
-          {filmToRender.genres && filmToRender.genres.map((el) => (
-            <div key={el.name} className={styles.genre}>
-              {el.name}
-            </div>
-          ))}
+          {filmToRender.genres &&
+            filmToRender.genres.map((el) => (
+              <div key={el.name} className={styles.genre}>
+                {el.name}
+              </div>
+            ))}
           <div>
             <div className={styles.crew_box_head}>
               <h2>Top Billied Cast</h2>
@@ -49,33 +50,36 @@ const MoviePage = () => {
               </button>
             </div>
             <div className={styles.card_grid}>
-              {crewToRender && crewToRender.map((el) => (
-                <People
-                  img={el.profile_path}
-                  title={el.original_name}
-                  department={el.known_for_department}
-                  id={el.id}
-                />
-              ))}
+              {crewToRender &&
+                crewToRender.map((el) => (
+                  <People
+                    img={el.profile_path}
+                    title={el.original_name}
+                    department={el.known_for_department}
+                    id={el.id}
+                  />
+                ))}
             </div>
           </div>
           <div className={styles.card_grid}>
-            {data.images && data.images.map(el => <PhotoCard path={el.file_path}/>)}
+            {data.images &&
+              data.images.map((el) => <PhotoCard path={el.file_path} />)}
           </div>
         </div>
       </div>
       <h2>Recomendations</h2>
       <div className={styles.card_grid}>
-        {data.known && data.known.map((el) => (
-          <FilmCard
-            key={el.id}
-            id={el.id}
-            img={el.poster_path}
-            rating={el.vote_average}
-            title={el.original_title}
-            genres={genresIndexToString(el.genre_ids, genresMap)}
-          />
-        ))}
+        {data.known &&
+          data.known.map((el) => (
+            <FilmCard
+              key={el.id}
+              id={el.id}
+              img={el.poster_path}
+              rating={el.vote_average}
+              title={el.original_title}
+              genres={genresIndexToString(el.genre_ids, genresMap)}
+            />
+          ))}
       </div>
     </div>
   );

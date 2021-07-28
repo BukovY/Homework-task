@@ -7,11 +7,11 @@ import {
   SET_GENRES_MAP,
   SET_FILMS,
   RESET_FILTERS,
-    SET_PAGE
+  SET_PAGE,
 } from "../constants";
 
 const initialState = {
-  page: 'main',
+  page: "main",
   paginationPage: 1,
   paginationMax: 5,
   search: "",
@@ -63,19 +63,19 @@ const appReducer = (state = initialState, action) => {
         filmData: action.payload,
       };
     case SET_PAGE:
-      return{
+      return {
         ...state,
-        page: action.payload
-      }
+        page: action.payload,
+      };
     case RESET_FILTERS:
       return {
         ...state,
         paginationPage: 1,
         isTooltipLanguageOpen: false,
-        activeFilter: 'Popular',
-        search: '',
-        page: 'main'
-      }
+        activeFilter: "Popular",
+        search: "",
+        page: "main",
+      };
     default:
       return state;
   }
