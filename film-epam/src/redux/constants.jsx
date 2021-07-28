@@ -11,3 +11,5 @@ export const SET_FILMS = "SET_FILMS";
 export const SET_GENRES_MAP = "SET_GENRES_MAP";
 export const SET_FETCHING = "SET_FETCHING";
 export const RESET_FILTERS = 'RESET_FILTERS'
+export const SET_PAGE = 'SET_PAGE'
+export const CREW_OPEN_CHANGE = 'CREW_OPEN_CHANGE'

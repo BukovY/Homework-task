@@ -9,6 +9,7 @@ import {
   API_KEY,
   SET_FETCHING,
   RESET_FILTERS,
+    SET_PAGE
 } from "../constants";
 
 export const setLanguage = (language) => ({
@@ -54,6 +55,11 @@ export const resetFilters = () => ({
   type: RESET_FILTERS
 });
 
+export const setPage = (page) => ({
+  type: SET_PAGE,
+  payload: page
+})
+
 export const getFilmsData = (category, language, page) => {
   let languageIn = language
   languageIn = languageIn.toLowerCase();
@@ -67,8 +73,8 @@ export const getFilmsData = (category, language, page) => {
     const response = await fetch(url);
     const filmData = await response.json();
     dispatch(setFilmsData(filmData.results));
-    dispatch(setIsFetching(false));
   };
+
 };
 
 export const getGenresMap = (languageSelected) => {

@@ -1,8 +1,9 @@
-import {SET_FILM, SET_FILM_DATA} from "../constants";
+import {SET_FILM, SET_FILM_DATA, CREW_OPEN_CHANGE} from "../constants";
 import appReducer from "./appReducers";
 
 const initialState = {
     selectedMovie: '',
+    isCrewOpen: false,
     data: {
         info: {},
         people: [],
@@ -21,6 +22,11 @@ const movieReducers = (state = initialState, action) => {
             return{
                 ...state,
                 data: action.payload
+            }
+        case CREW_OPEN_CHANGE:
+            return{
+                ...state,
+                isCrewOpen: action.payload
             }
         default:
             return state;
