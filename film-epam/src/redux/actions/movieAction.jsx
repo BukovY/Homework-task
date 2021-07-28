@@ -22,7 +22,8 @@ export const getFilm = (index, language) => {
         const obj = {
             info: {},
             people: [],
-            known: []
+            known: [],
+            images: []
         }
         const urlGetFilmInfo = `https://api.themoviedb.org/3/movie/${index}?api_key=${API_KEY}&language=${languageIn}`
         const info = await fetch(urlGetFilmInfo)
@@ -34,9 +35,13 @@ https://api.themoviedb.org/3/movie/${index}/credits?api_key=${API_KEY}&language=
         const urlGetRecomendations = `https://api.themoviedb.org/3/movie/${index}/recommendations?api_key=${API_KEY}&language=${languageIn}&page=1`
         const recomendations = await fetch(urlGetRecomendations)
         const recomendationsData = await recomendations.json()
+        const urlImages = `https://api.themoviedb.org/3/movie/${index}/images?api_key=${API_KEY}&language=${languageIn}`
+        const getImages = await fetch(urlImages)
+        const images = await getImages.json()
         obj.info = filmInfo
         obj.people = peopleInfo.cast
         obj.known = recomendationsData.results
+        obj.images = images.backdrops
         dispatch(setFilmData(obj))
         dispatch(setSelectedMovie(index))
     }

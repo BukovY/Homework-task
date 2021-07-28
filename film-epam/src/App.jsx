@@ -9,12 +9,13 @@ import {getFilm} from "./redux/actions/movieAction";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 import {getActorInfo} from "./redux/actions/actorAction";
 import ActorPage from "./pages/ActorPage/ActorPage";
+import {getSearchData} from "./redux/actions/searchAction";
 
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { activeFilter, languageSelected, paginationPage, page } = useSelector(
+  const { activeFilter, languageSelected, paginationPage, page, search } = useSelector(
       (state) => state.appReducer
   );
 
@@ -39,12 +40,23 @@ const App = () => {
   useEffect(() => {
     dispatch(getFilmsData(activeFilter, languageSelected, paginationPage));
   }, [activeFilter, languageSelected, paginationPage]);
+
+  const { searchPage, isSearchRender } = useSelector(
+      (state) => state.searchReducers
+  );
+
+  useEffect(() => {
+    if(isSearchRender){
+      dispatch(getSearchData(search, searchPage));
+    }
+  }, [isSearchRender, searchPage, search]);
+
   return (
     <div>
       <Header />
 
 
-      {page === "main" ? (
+      {page === "main" && !isSearchRender ? (
           <ErrorBoundary>
             <HomePage />
           </ErrorBoundary>
@@ -53,7 +65,7 @@ const App = () => {
       )}
 
 
-      {page === "movie" ? (
+      {page === "movie" && !isSearchRender ? (
           <ErrorBoundary>
             <MoviePage />
           </ErrorBoundary>
@@ -61,7 +73,7 @@ const App = () => {
           ""
       )}
 
-      {page === "actor" ? (
+      {page === "actor" && !isSearchRender ? (
           <ErrorBoundary>
             <ActorPage />
           </ErrorBoundary>

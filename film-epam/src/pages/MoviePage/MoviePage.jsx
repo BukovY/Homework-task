@@ -6,6 +6,7 @@ import People from "../../components/People/People";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
 import {useSelector, useDispatch} from "react-redux";
 import {crewOpenChange} from "../../redux/actions/movieAction";
+import PhotoCard from "../../components/PhotoCard/PhotoCard";
 
 const MoviePage = () => {
   const {data, isCrewOpen} = useSelector((state) => state.movieReducers);
@@ -17,6 +18,7 @@ const MoviePage = () => {
     let toDispatch = status
     dispatch(crewOpenChange(!toDispatch))
   };
+  console.log(filmToRender.images)
   return (
     <div>
       <div className={styles.film_info}>
@@ -56,6 +58,9 @@ const MoviePage = () => {
                 />
               ))}
             </div>
+          </div>
+          <div className={styles.card_grid}>
+            {data.images && data.images.map(el => <PhotoCard path={el.file_path}/>)}
           </div>
         </div>
       </div>

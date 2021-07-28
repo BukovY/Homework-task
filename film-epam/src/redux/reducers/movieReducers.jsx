@@ -6,7 +6,8 @@ const initialState = {
     data: {
         info: {},
         people: [],
-        known: []
+        known: [],
+        images: []
     }
 }
 
