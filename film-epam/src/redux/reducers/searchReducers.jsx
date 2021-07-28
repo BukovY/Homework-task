@@ -3,6 +3,7 @@ import {
   SET_SEARCH_PAGE,
   SET_SEARCH_RENDER,
   SET_SEARCH_MAX_PAGE,
+  SEARCH_NEED_UPDATE,
 } from "../constants";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   searchPage: 1,
   searchMaxPage: 1,
   isSearchRender: false,
+  needUpdate: false,
 };
 
 const searchReducers = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const searchReducers = (state = initialState, action) => {
       return {
         ...state,
         searchMaxPage: action.payload,
+      };
+    case SEARCH_NEED_UPDATE:
+      return {
+        ...state,
+        needUpdate: action.payload,
       };
     default:
       return state;

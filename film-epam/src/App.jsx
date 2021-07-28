@@ -40,15 +40,15 @@ const App = () => {
     dispatch(getFilmsData(activeFilter, languageSelected, paginationPage));
   }, [activeFilter, languageSelected, paginationPage]);
 
-  const { searchPage, isSearchRender } = useSelector(
+  const { searchPage, isSearchRender, needUpdate } = useSelector(
     (state) => state.searchReducers
   );
 
   useEffect(() => {
-    if (isSearchRender) {
+    if (isSearchRender && needUpdate) {
       dispatch(getSearchData(search, searchPage, languageSelected));
     }
-  }, [isSearchRender, searchPage, languageSelected]);
+  }, [isSearchRender, searchPage, needUpdate, languageSelected]);
 
   return (
     <div>

@@ -21,7 +21,7 @@ const SearchPage = () => {
   return (
     <div>
       <div className={styles.card_grid}>
-        {searchResults &&
+        {searchResults.length > 0 ? (
           searchResults.map((el) => (
             <FilmCard
               key={el.id}
@@ -31,7 +31,10 @@ const SearchPage = () => {
               title={el.title}
               genres={genresIndexToString(el.genre_ids, genresMap)}
             />
-          ))}
+          ))
+        ) : (
+          <h1>No results, pleace change your search question</h1>
+        )}
       </div>
       <Paginations
         selected={searchPage}

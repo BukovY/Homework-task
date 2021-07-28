@@ -18,7 +18,6 @@ const MoviePage = () => {
     let toDispatch = status;
     dispatch(crewOpenChange(!toDispatch));
   };
-  console.log(filmToRender.images);
   return (
     <div>
       <div className={styles.film_info}>
