@@ -37,7 +37,6 @@ https://api.themoviedb.org/3/movie/${index}/credits?api_key=${API_KEY}&language=
         obj.info = filmInfo
         obj.people = peopleInfo.cast
         obj.known = recomendationsData.results
-        console.log(obj)
         dispatch(setFilmData(obj))
         dispatch(setSelectedMovie(index))
     }

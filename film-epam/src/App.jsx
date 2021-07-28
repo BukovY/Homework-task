@@ -7,12 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFilmsData, getGenresMap } from "./redux/actions/appAction";
 import {getFilm} from "./redux/actions/movieAction";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
-/*
-
-
+import {getActorInfo} from "./redux/actions/actorAction";
 import ActorPage from "./pages/ActorPage/ActorPage";
 
- */
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +25,12 @@ const App = () => {
     }
   }, [selectedMovie, languageSelected]);
 
-
+  const {actorId} = useSelector((state)=> state.actorReducers)
+  useEffect(() => {
+    if(actorId !== ''){
+      dispatch(getActorInfo(actorId, languageSelected));
+    }
+  }, [languageSelected, actorId]);
 
   useEffect(() => {
     dispatch(getGenresMap(languageSelected));
@@ -59,6 +61,14 @@ const App = () => {
           ""
       )}
 
+      {page === "actor" ? (
+          <ErrorBoundary>
+            <ActorPage />
+          </ErrorBoundary>
+      ) : (
+          ""
+      )}
+
 
 
     </div>
@@ -68,13 +78,7 @@ const App = () => {
 export default App;
 /*
 
-       {page === "actor" ? (
-          <ErrorBoundary>
-            <ActorPage />
-          </ErrorBoundary>
-      ) : (
-          ""
-      )}
+
       {page === "movie" ? (
         <ErrorBoundary>
           <MoviePage />

@@ -1,5 +1,4 @@
 import {API_KEY, SET_ACTOR, SET_ACTOR_DATA} from "../constants";
-import {setFilmData, setSelectedMovie} from "./movieAction";
 
 export const setActor = (actorId) => ({
     type: SET_ACTOR,
@@ -11,11 +10,6 @@ export const setActorData = (data) => ({
     payload: data
 })
 
-/*
-data: {
-
-    }
- */
 export const getActorInfo = (index, language) => {
     let languageIn = language
     languageIn = languageIn.toLowerCase();
@@ -25,29 +19,19 @@ export const getActorInfo = (index, language) => {
             photo: [],
             knownBy: []
         }
+        const urlActorInfo = `https://api.themoviedb.org/3/person/${index}?api_key=${API_KEY}&language=${languageIn}`
+        const info = await fetch(urlActorInfo)
+        const actorInfo = await info.json()
+        const urlGetPhotoActor = `https://api.themoviedb.org/3/person/${index}/images?api_key=${API_KEY}`
+        const photo = await fetch(urlGetPhotoActor)
+        const actorPhoto = await photo.json()
+        const getKnownBy = `
+https://api.themoviedb.org/3/person/${index}/movie_credits?api_key=${API_KEY}&language=${languageIn}`
+        const knownBy = await fetch(getKnownBy)
+        const actorKnown = await knownBy.json()
+        obj.info = actorInfo
+        obj.photo = actorPhoto.profiles
+        obj.knownBy = actorKnown.cast
+        dispatch(setActorData(obj))
     }
 }
-
-/*
-   const obj = {
-            info: {},
-            people: [],
-            known: []
-        }
-        const urlGetFilmInfo = `https://api.themoviedb.org/3/movie/${index}?api_key=${API_KEY}&language=${languageIn}`
-        const info = await fetch(urlGetFilmInfo)
-        const filmInfo = await info.json()
-        const urlGetPeople = `
-https://api.themoviedb.org/3/movie/${index}/credits?api_key=${API_KEY}&language=${languageIn}`
-        const people = await fetch(urlGetPeople)
-        const peopleInfo = await people.json()
-        const urlGetRecomendations = `https://api.themoviedb.org/3/movie/${index}/recommendations?api_key=${API_KEY}&language=${languageIn}&page=1`
-        const recomendations = await fetch(urlGetRecomendations)
-        const recomendationsData = await recomendations.json()
-        obj.info = filmInfo
-        obj.people = peopleInfo.cast
-        obj.known = recomendationsData.results
-        console.log(obj)
-        dispatch(setFilmData(obj))
-        dispatch(setSelectedMovie(index))
- */
