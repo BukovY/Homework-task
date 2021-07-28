@@ -1,4 +1,5 @@
 import React from "react";
+import FilmCover from "../../components/FilmCover/FilmCover";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import styles from "./MoviePage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
@@ -21,7 +22,7 @@ const MoviePage = () => {
   return (
     <div>
       <div className={styles.film_info}>
-        <FilmCard
+        <FilmCover
           img={filmToRender.poster_path}
           rating={filmToRender.vote_average}
         />
