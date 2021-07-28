@@ -1,22 +1,14 @@
 import React from "react";
 import styles from "./Pagination.module.sass";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setPaginationPage,
-  setTooltipOpenStatus,
-} from "../../../redux/actions/appAction";
 
-const Pagination = ({ num }) => {
-  const { paginationPage } = useSelector((state) => state.appReducer);
-  const dispatch = useDispatch();
+const Pagination = ({ num, isSelect,  handler}) => {
   const selectPaginationPage = () => {
-    dispatch(setPaginationPage(num));
-    dispatch(setTooltipOpenStatus(false));
+    handler(num)
   };
   return (
     <div
       className={
-        num === paginationPage
+        isSelect
           ? `${styles.pagination_active}`
           : `${styles.pagination}`
       }

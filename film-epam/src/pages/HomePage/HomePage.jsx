@@ -4,10 +4,16 @@ import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { genresIndexToString } from "../../utils/functrions";
 import styles from "./HomePage.module.sass";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {setPaginationPage, setTooltipOpenStatus} from "../../redux/actions/appAction";
 
 const HomePage = () => {
-  const { filmData, genresMap } = useSelector((state) => state.appReducer);
+  const { filmData, genresMap, paginationPage, paginationMax } = useSelector((state) => state.appReducer);
+  const dispatch = useDispatch()
+    const selectPaginationPage = (num) => {
+        dispatch(setPaginationPage(num));
+        dispatch(setTooltipOpenStatus(false));
+    };
   return (
     <div>
       <Tabs />
@@ -23,7 +29,7 @@ const HomePage = () => {
           />
         ))}
       </div>
-      <Paginations />
+      <Paginations selected={paginationPage} max={paginationMax} handler={selectPaginationPage}/>
     </div>
   );
 };

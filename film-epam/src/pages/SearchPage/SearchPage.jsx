@@ -3,10 +3,20 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import { useSelector } from "react-redux";
 import {genresIndexToString} from "../../utils/functrions";
 import styles from './SearchPage.module.sass'
+import Paginations from "../../components/Pagination/Paginations";
+import {useDispatch} from "react-redux";
+import {setSearchPage} from '../../redux/actions/searchAction'
+import {setTooltipOpenStatus} from "../../redux/actions/appAction";
+
 
 const SearchPage = () => {
     const { genresMap } = useSelector((state) => state.appReducer);
-    const { searchResults } = useSelector((state) => state.searchReducers);
+    const { searchResults, searchPage, searchMaxPage } = useSelector((state) => state.searchReducers);
+    const dispatch = useDispatch()
+    const changeSearchPaginationPage = (num) =>{
+        dispatch(setSearchPage(num))
+        dispatch(setTooltipOpenStatus(false))
+    }
     return (
         <div>
             <div className={styles.card_grid}>
@@ -20,8 +30,8 @@ const SearchPage = () => {
                         genres={genresIndexToString(el.genre_ids, genresMap)}
                     />
                 ))}
-
             </div>
+            <Paginations selected={searchPage} max={searchMaxPage} handler={changeSearchPaginationPage}/>
         </div>
     );
 };
