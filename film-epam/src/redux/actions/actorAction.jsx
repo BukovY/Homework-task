@@ -1,25 +1,35 @@
-import {SET_FILM, API_KEY, SET_FILM_DATA, CREW_OPEN_CHANGE} from "../constants";
+import {API_KEY, SET_ACTOR, SET_ACTOR_DATA} from "../constants";
+import {setFilmData, setSelectedMovie} from "./movieAction";
 
-export const setSelectedMovie = (selectedMovie) => ({
-    type: SET_FILM,
-    payload: selectedMovie
+export const setActor = (actorId) => ({
+    type: SET_ACTOR,
+    payload: actorId
 })
 
-export const setFilmData = (obj) => ({
-    type: SET_FILM_DATA,
-    payload: obj
+export const setActorData = (data) => ({
+    type: SET_ACTOR_DATA,
+    payload: data
 })
 
-export const crewOpenChange = (arg) => ({
-    type: CREW_OPEN_CHANGE,
-    payload: arg
-})
+/*
+data: {
 
-export const getFilm = (index, language) => {
+    }
+ */
+export const getActorInfo = (index, language) => {
     let languageIn = language
     languageIn = languageIn.toLowerCase();
     return async (dispatch) => {
         const obj = {
+            info: {},
+            photo: [],
+            knownBy: []
+        }
+    }
+}
+
+/*
+   const obj = {
             info: {},
             people: [],
             known: []
@@ -40,5 +50,4 @@ https://api.themoviedb.org/3/movie/${index}/credits?api_key=${API_KEY}&language=
         console.log(obj)
         dispatch(setFilmData(obj))
         dispatch(setSelectedMovie(index))
-    }
-}
+ */

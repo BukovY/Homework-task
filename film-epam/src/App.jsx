@@ -59,6 +59,8 @@ const App = () => {
           ""
       )}
 
+
+
     </div>
   );
 };
@@ -66,12 +68,12 @@ const App = () => {
 export default App;
 /*
 
-      {page === "actor" ? (
-        <ErrorBoundary>
-          <ActorPage />
-        </ErrorBoundary>
+       {page === "actor" ? (
+          <ErrorBoundary>
+            <ActorPage />
+          </ErrorBoundary>
       ) : (
-        ""
+          ""
       )}
       {page === "movie" ? (
         <ErrorBoundary>

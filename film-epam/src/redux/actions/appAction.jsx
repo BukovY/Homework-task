@@ -74,7 +74,6 @@ export const getFilmsData = (category, language, page) => {
     const filmData = await response.json();
     dispatch(setFilmsData(filmData.results));
   };
-
 };
 
 export const getGenresMap = (languageSelected) => {

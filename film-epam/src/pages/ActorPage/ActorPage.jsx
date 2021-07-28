@@ -1,5 +1,4 @@
 import React from "react";
-import { store } from "../../redux/store";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import styles from "./ActorPage.module.sass";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";

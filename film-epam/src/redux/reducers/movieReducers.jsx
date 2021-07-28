@@ -1,5 +1,4 @@
 import {SET_FILM, SET_FILM_DATA, CREW_OPEN_CHANGE} from "../constants";
-import appReducer from "./appReducers";
 
 const initialState = {
     selectedMovie: '',

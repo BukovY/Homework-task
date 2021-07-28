@@ -52,6 +52,7 @@ const MoviePage = () => {
                   img={el.profile_path}
                   title={el.original_name}
                   department={el.known_for_department}
+                  id={el.id}
                 />
               ))}
             </div>

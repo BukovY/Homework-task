@@ -1,10 +1,18 @@
 import React from "react";
 import styles from "./People.module.sass";
 import { getPeopleCard } from "../../utils/functrions";
+import {setActor} from "../../redux/actions/actorAction";
+import {useSelector, useDispatch} from "react-redux";
+import {setPage} from "../../redux/actions/appAction";
 
-const People = ({ img, title, department }) => {
+const People = ({ img, title, department, id }) => {
+    const dispatch = useDispatch()
+    const selectActor = (id) => {
+        dispatch(setPage('actor'))
+        dispatch(setActor(id))
+    }
   return (
-    <div>
+    <div onClick={()=>selectActor(id)}>
       <div className={styles.people_img}>
         <img
           src={getPeopleCard(img)}
