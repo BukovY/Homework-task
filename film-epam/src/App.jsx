@@ -5,6 +5,7 @@ import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilmsData, getGenresMap } from "./redux/actions/appAction";
+import {getFilm} from "./redux/actions/movieAction";
 /*
 
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
@@ -15,10 +16,19 @@ import ActorPage from "./pages/ActorPage/ActorPage";
 const App = () => {
   const dispatch = useDispatch();
 
-  const { activeFilter, languageSelected, paginationPage } = useSelector(
-    (state) => state.appReducer
-  );
 
+
+  const {selectedMovie} = useSelector((state)=> state.movieReducers)
+  useEffect(() => {
+    if(selectedMovie !== ''){
+      dispatch(getFilm(selectedMovie, languageSelected));
+    }
+  }, [selectedMovie]);
+
+
+  const { activeFilter, languageSelected, paginationPage } = useSelector(
+      (state) => state.appReducer
+  );
   useEffect(() => {
     dispatch(getGenresMap(languageSelected));
   }, [languageSelected]);

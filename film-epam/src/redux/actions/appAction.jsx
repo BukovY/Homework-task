@@ -41,7 +41,7 @@ export const setGenresMap = (map) => ({
   payload: map,
 });
 
-export const setFilmData = (data) => ({
+export const setFilmsData  = (data) => ({
   type: SET_FILMS,
   payload: data,
 });
@@ -66,7 +66,7 @@ export const getFilmsData = (category, language, page) => {
   return async (dispatch) => {
     const response = await fetch(url);
     const filmData = await response.json();
-    dispatch(setFilmData(filmData.results));
+    dispatch(setFilmsData(filmData.results));
     dispatch(setIsFetching(false));
   };
 };
