@@ -5,7 +5,10 @@ import { genresIndexToString } from "../../utils/functrions";
 import styles from "./SearchPage.module.sass";
 import Paginations from "../../components/Pagination/Paginations";
 import { useDispatch } from "react-redux";
-import { setSearchPage } from "../../redux/actions/searchAction";
+import {
+  isNeedUpdateSearch,
+  setSearchPage,
+} from "../../redux/actions/searchAction";
 import { setTooltipOpenStatus } from "../../redux/actions/appAction";
 
 const SearchPage = () => {
@@ -17,6 +20,7 @@ const SearchPage = () => {
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
     dispatch(setTooltipOpenStatus(false));
+    dispatch(isNeedUpdateSearch(true));
   };
   return (
     <div>

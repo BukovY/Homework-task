@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/actions/appAction";
 import {
   isNeedUpdateSearch,
+  setSearchPage,
   setSearchRender,
 } from "../../redux/actions/searchAction";
 
@@ -14,6 +15,7 @@ const Search = () => {
 
   const goToSearch = (e) => {
     e.preventDefault();
+    dispatch(setSearchPage(1));
     dispatch(setSearchRender(true));
     dispatch(isNeedUpdateSearch(true));
   };
