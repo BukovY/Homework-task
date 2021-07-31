@@ -20,9 +20,9 @@ const App = () => {
 
   const { selectedMovie } = useSelector((state) => state.movieReducers);
 
-  const { actorId } = useSelector((state) => state.actorReducers);
+  const { actorId } = useSelector((state) => state.actorReducers)
 
-  const { searchPage, isSearchRender, needUpdate } = useSelector(
+  const { searchPage,  needUpdate } = useSelector(
     (state) => state.searchReducers
   );
 
@@ -47,18 +47,23 @@ const App = () => {
   }, [activeFilter, languageSelected, paginationPage]);
 
   useEffect(() => {
-    if (isSearchRender && needUpdate) {
+    if (needUpdate) {
       dispatch(getSearchData(search, searchPage, languageSelected));
     }
-  }, [isSearchRender, searchPage, needUpdate, languageSelected]);
+  }, [ searchPage, needUpdate, languageSelected]);
 
   return (
     <div>
       <Header />
 
-      {isSearchRender ? <SearchPage /> : ""}
-
-      {page === "main" && !isSearchRender ? (
+      {page === "search" ? (
+        <ErrorBoundary>
+          <SearchPage />
+        </ErrorBoundary>
+      ) : (
+        ""
+      )}
+      {page === "main" ? (
         <ErrorBoundary>
           <HomePage />
         </ErrorBoundary>
@@ -66,7 +71,7 @@ const App = () => {
         ""
       )}
 
-      {page === "movie" && !isSearchRender ? (
+      {page === "movie" ? (
         <ErrorBoundary>
           <MoviePage />
         </ErrorBoundary>
@@ -74,7 +79,7 @@ const App = () => {
         ""
       )}
 
-      {page === "actor" && !isSearchRender ? (
+      {page === "actor" ? (
         <ErrorBoundary>
           <ActorPage />
         </ErrorBoundary>

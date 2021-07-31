@@ -4,21 +4,11 @@ import {
   SET_FILM_DATA,
   CREW_OPEN_CHANGE,
 } from "../constants";
+import { createAction } from "@reduxjs/toolkit";
 
-export const setSelectedMovie = (selectedMovie) => ({
-  type: SET_FILM,
-  payload: selectedMovie,
-});
-
-export const setFilmData = (obj) => ({
-  type: SET_FILM_DATA,
-  payload: obj,
-});
-
-export const crewOpenChange = (arg) => ({
-  type: CREW_OPEN_CHANGE,
-  payload: arg,
-});
+export const setSelectedMovie = createAction(SET_FILM);
+export const setFilmData = createAction(SET_FILM_DATA);
+export const crewOpenChange = createAction(CREW_OPEN_CHANGE);
 
 export const getFilm = (index, language) => {
   let languageIn = language;

@@ -1,4 +1,5 @@
 import { SET_ACTOR, SET_ACTOR_DATA } from "../constants";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   actorId: "",
@@ -9,20 +10,17 @@ const initialState = {
   },
 };
 
-const actorReducers = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_ACTOR:
-      return {
-        ...state,
-        actorId: action.payload,
-      };
-    case SET_ACTOR_DATA:
-      return {
-        ...state,
-        data: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-export default actorReducers;
+const actorReducers = createSlice({
+  name: "actorReducers",
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(SET_ACTOR, (state, action) => {
+        state.actorId = action.payload;
+      })
+      .addCase(SET_ACTOR_DATA, (state, action) => {
+        state.data = action.payload;
+      });
+  },
+});
+export default actorReducers.reducer;

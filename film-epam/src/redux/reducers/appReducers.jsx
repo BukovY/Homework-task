@@ -9,6 +9,7 @@ import {
   RESET_FILTERS,
   SET_PAGE,
 } from "../constants";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   page: "main",
@@ -25,60 +26,43 @@ const initialState = {
   genresMap: [],
 };
 
-const appReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SEARCH_CHANGE:
-      return {
-        ...state,
-        search: action.payload,
-      };
-    case LANGUAGE_TOOLTIP_CHANGE:
-      return {
-        ...state,
-        languageSelected: action.payload,
-      };
-    case FILTER_CHANGE:
-      return {
-        ...state,
-        activeFilter: action.payload,
-      };
-    case PAGINATION_CHANGE:
-      return {
-        ...state,
-        paginationPage: action.payload,
-      };
-    case TOOLTIP_OPEN_CHANGE:
-      return {
-        ...state,
-        isTooltipLanguageOpen: action.payload,
-      };
-    case SET_GENRES_MAP:
-      return {
-        ...state,
-        genresMap: action.payload,
-      };
-    case SET_FILMS:
-      return {
-        ...state,
-        filmData: action.payload,
-      };
-    case SET_PAGE:
-      return {
-        ...state,
-        page: action.payload,
-      };
-    case RESET_FILTERS:
-      return {
-        ...state,
-        paginationPage: 1,
-        isTooltipLanguageOpen: false,
-        activeFilter: "Popular",
-        search: "",
-        page: "main",
-      };
-    default:
-      return state;
-  }
-};
+const appReducer = createSlice({
+  name: "appReducer",
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(SEARCH_CHANGE, (state, action) => {
+        state.search = action.payload;
+      })
+      .addCase(LANGUAGE_TOOLTIP_CHANGE, (state, action) => {
+        state.languageSelected = action.payload;
+      })
+      .addCase(FILTER_CHANGE, (state, action) => {
+        state.activeFilter = action.payload;
+      })
+      .addCase(PAGINATION_CHANGE, (state, action) => {
+        state.paginationPage = action.payload;
+      })
+      .addCase(TOOLTIP_OPEN_CHANGE, (state, action) => {
+        state.isTooltipLanguageOpen = action.payload;
+      })
+      .addCase(SET_GENRES_MAP, (state, action) => {
+        state.genresMap = action.payload;
+      })
+      .addCase(SET_FILMS, (state, action) => {
+        state.filmData = action.payload;
+      })
+      .addCase(SET_PAGE, (state, action) => {
+        state.page = action.payload;
+      })
+      .addCase(RESET_FILTERS, (state, action) => {
+        state.paginationPage = 1;
+        state.isTooltipLanguageOpen = false;
+        state.activeFilter = "Popular";
+        state.search = "";
+        state.page = "main";
+      });
+  },
+});
 
-export default appReducer;
+export default appReducer.reducer;

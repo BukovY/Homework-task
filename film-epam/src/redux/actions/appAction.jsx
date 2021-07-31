@@ -11,54 +11,18 @@ import {
   RESET_FILTERS,
   SET_PAGE,
 } from "../constants";
+import { createAction } from "@reduxjs/toolkit";
 
-export const setLanguage = (language) => ({
-  type: LANGUAGE_TOOLTIP_CHANGE,
-  payload: language,
-});
-
-export const setFilter = (filter) => ({
-  type: FILTER_CHANGE,
-  payload: filter,
-});
-
-export const setPaginationPage = (num) => ({
-  type: PAGINATION_CHANGE,
-  payload: num,
-});
-
-export const setSearchValue = (searchString) => ({
-  type: SEARCH_CHANGE,
-  payload: searchString,
-});
-
-export const setTooltipOpenStatus = (isOpen) => ({
-  type: TOOLTIP_OPEN_CHANGE,
-  payload: isOpen,
-});
-
-export const setGenresMap = (map) => ({
-  type: SET_GENRES_MAP,
-  payload: map,
-});
-
-export const setFilmsData = (data) => ({
-  type: SET_FILMS,
-  payload: data,
-});
-export const setIsFetching = (status) => ({
-  type: SET_FETCHING,
-  payload: status,
-});
-
-export const resetFilters = () => ({
-  type: RESET_FILTERS,
-});
-
-export const setPage = (page) => ({
-  type: SET_PAGE,
-  payload: page,
-});
+export const setLanguage = createAction(LANGUAGE_TOOLTIP_CHANGE);
+export const setFilter = createAction(FILTER_CHANGE);
+export const setPaginationPage = createAction(PAGINATION_CHANGE);
+export const setSearchValue = createAction(SEARCH_CHANGE);
+export const setTooltipOpenStatus = createAction(TOOLTIP_OPEN_CHANGE);
+export const setGenresMap = createAction(SET_GENRES_MAP);
+export const setFilmsData = createAction(SET_FILMS);
+export const setIsFetching = createAction(SET_FETCHING);
+export const resetFilters = createAction(RESET_FILTERS);
+export const setPage = createAction(SET_PAGE);
 
 export const getFilmsData = (category, language, page) => {
   let languageIn = language;

@@ -2,11 +2,10 @@ import React from "react";
 import searchIcon from "../../static/img/search.png";
 import styles from "./Search.module.sass";
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchValue } from "../../redux/actions/appAction";
+import {setPage, setSearchValue} from "../../redux/actions/appAction";
 import {
   isNeedUpdateSearch,
   setSearchPage,
-  setSearchRender,
 } from "../../redux/actions/searchAction";
 
 const Search = () => {
@@ -16,8 +15,8 @@ const Search = () => {
   const goToSearch = (e) => {
     e.preventDefault();
     dispatch(setSearchPage(1));
-    dispatch(setSearchRender(true));
     dispatch(isNeedUpdateSearch(true));
+    dispatch(setPage('search'))
   };
   return (
     <form>

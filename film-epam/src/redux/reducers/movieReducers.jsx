@@ -1,4 +1,5 @@
 import { SET_FILM, SET_FILM_DATA, CREW_OPEN_CHANGE } from "../constants";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedMovie: "",
@@ -11,25 +12,21 @@ const initialState = {
   },
 };
 
-const movieReducers = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_FILM:
-      return {
-        ...state,
-        selectedMovie: action.payload,
-      };
-    case SET_FILM_DATA:
-      return {
-        ...state,
-        data: action.payload,
-      };
-    case CREW_OPEN_CHANGE:
-      return {
-        ...state,
-        isCrewOpen: action.payload,
-      };
-    default:
-      return state;
-  }
-};
-export default movieReducers;
+const movieReducers = createSlice({
+  name: "movieReducers",
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(SET_FILM, (state, action) => {
+        state.selectedMovie = action.payload;
+      })
+      .addCase(SET_FILM_DATA, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(CREW_OPEN_CHANGE, (state, action) => {
+        state.isCrewOpen = action.payload;
+      });
+  },
+});
+
+export default movieReducers.reducer;

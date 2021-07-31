@@ -1,14 +1,9 @@
 import { API_KEY, SET_ACTOR, SET_ACTOR_DATA } from "../constants";
+import { createAction } from "@reduxjs/toolkit";
 
-export const setActor = (actorId) => ({
-  type: SET_ACTOR,
-  payload: actorId,
-});
+export const setActor = createAction(SET_ACTOR);
 
-export const setActorData = (data) => ({
-  type: SET_ACTOR_DATA,
-  payload: data,
-});
+export const setActorData = createAction(SET_ACTOR_DATA);
 
 export const getActorInfo = (index, language) => {
   let languageIn = language;

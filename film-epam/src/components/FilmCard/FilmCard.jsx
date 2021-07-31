@@ -5,7 +5,6 @@ import styles from "./FilmCard.module.sass";
 import { getFilmCover } from "../../utils/functrions";
 import { getFilm } from "../../redux/actions/movieAction";
 import { setPage } from "../../redux/actions/appAction";
-import { setSearchRender } from "../../redux/actions/searchAction";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
   const dispatch = useDispatch();
@@ -13,7 +12,6 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
   const openFilm = (id) => {
     dispatch(getFilm(id, languageSelected));
     dispatch(setPage("movie"));
-    dispatch(setSearchRender(false));
   };
   const ratingToRender = rating;
   return (

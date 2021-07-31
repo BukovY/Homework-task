@@ -2,32 +2,16 @@ import {
   API_KEY,
   SET_SEARCH_RESULT,
   SET_SEARCH_PAGE,
-  SET_SEARCH_RENDER,
   SET_SEARCH_MAX_PAGE,
   SEARCH_NEED_UPDATE,
 } from "../constants";
+import { createAction } from "@reduxjs/toolkit";
 
-export const setSearchRezult = (data) => ({
-  type: SET_SEARCH_RESULT,
-  payload: data,
-});
-export const setSearchMaxPage = (num) => ({
-  type: SET_SEARCH_MAX_PAGE,
-  payload: num,
-});
+export const setSearchRezult = createAction(SET_SEARCH_RESULT);
+export const setSearchMaxPage = createAction(SET_SEARCH_MAX_PAGE);
+export const setSearchPage = createAction(SET_SEARCH_PAGE);
+export const isNeedUpdateSearch = createAction(SEARCH_NEED_UPDATE);
 
-export const setSearchPage = (num) => ({
-  type: SET_SEARCH_PAGE,
-  payload: num,
-});
-export const setSearchRender = (act) => ({
-  type: SET_SEARCH_RENDER,
-  payload: act,
-});
-export const isNeedUpdateSearch = (act) => ({
-  type: SEARCH_NEED_UPDATE,
-  payload: act,
-});
 export const getSearchData = (searchString, page, language, needUpdate) => {
   let search = searchString;
   search = search.split(" ").join("%20");
