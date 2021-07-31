@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { getFilmCover } from "../../utils/functrions";
-import { getFilm } from "../../redux/actions/movieAction";
+import { getFilm } from "../../redux/reducers/movieReducers";
 import { setPage } from "../../redux/actions/appAction";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
   const dispatch = useDispatch();
   const { languageSelected } = useSelector((state) => state.appReducer);
   const openFilm = (id) => {
-    dispatch(getFilm(id, languageSelected));
+      const input = {
+          selectedMovie: id,
+          languageSelected: languageSelected,
+      }
+    dispatch(getFilm(input));
     dispatch(setPage("movie"));
   };
   const ratingToRender = rating;
