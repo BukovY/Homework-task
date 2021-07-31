@@ -1,8 +1,9 @@
-import { SET_ACTOR, SET_ACTOR_DATA } from "../constants";
-import { createSlice } from "@reduxjs/toolkit";
+import { API_KEY, SET_ACTOR} from "../constants";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   actorId: "",
+  fetchingActor: false,
   data: {
     info: {},
     photo: [],
@@ -10,17 +11,49 @@ const initialState = {
   },
 };
 
+export const getActorInfo = createAsyncThunk(
+    "actorReducers/getActorInfo",
+    async (inputs) => {
+      let languageIn = inputs.languageSelected;
+      const index = inputs.actorId;
+      const obj = {
+        data: {},
+      };
+      await fetch(
+          `https://api.themoviedb.org/3/person/${index}?api_key=${API_KEY}&language=${languageIn.toLowerCase()}`
+      )
+          .then((data) => data.json())
+          .then((info) => (obj.data.info = info));
+      await fetch(
+          `https://api.themoviedb.org/3/person/${index}/images?api_key=${API_KEY}`
+      )
+          .then((data) => data.json())
+          .then((info) => (obj.data.photo = info.profiles));
+      await fetch(`
+https://api.themoviedb.org/3/person/${index}/movie_credits?api_key=${API_KEY}&language=${languageIn.toLowerCase()}`)
+          .then((data) => data.json())
+          .then((info) => (obj.data.knownBy = info.cast));
+      obj.actorId = index;
+      return obj;
+    }
+);
+
 const actorReducers = createSlice({
   name: "actorReducers",
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(SET_ACTOR, (state, action) => {
-        state.actorId = action.payload;
-      })
-      .addCase(SET_ACTOR_DATA, (state, action) => {
-        state.data = action.payload;
-      });
+        .addCase(getActorInfo.pending, (state) => {
+          state.fetchingActor = true;
+        })
+        .addCase(getActorInfo.fulfilled, (state, action) => {
+          state.fetchingActor = false;
+          state.data = action.payload.data;
+          state.actorId = action.payload.actorId;
+        })
+        .addCase(SET_ACTOR, (state, action) => {
+          state.actorId = action.payload;
+        })
   },
 });
 export default actorReducers.reducer;

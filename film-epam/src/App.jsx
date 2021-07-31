@@ -5,12 +5,12 @@ import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
-import { getActorInfo } from "./redux/actions/actorAction";
 import ActorPage from "./pages/ActorPage/ActorPage";
 import { getSearchData } from "./redux/actions/searchAction";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import { getGenresMap, getFilmsData } from "./redux/reducers/appReducers";
 import {getFilm} from "./redux/reducers/movieReducers";
+import {getActorInfo} from "./redux/reducers/actorReducers";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const App = () => {
 
   const { selectedMovie, fetchingFilm } = useSelector((state) => state.movieReducers);
 
-  const { actorId } = useSelector((state) => state.actorReducers);
+  const { actorId, fetchingActor } = useSelector((state) => state.actorReducers);
 
   const { searchPage, needUpdate } = useSelector(
     (state) => state.searchReducers
@@ -44,7 +44,11 @@ const App = () => {
 
   useEffect(() => {
     if (actorId !== "") {
-      dispatch(getActorInfo(actorId, languageSelected));
+      const inputs = {
+        actorId:actorId,
+        languageSelected:languageSelected
+      }
+      dispatch(getActorInfo(inputs));
     }
   }, [languageSelected, actorId]);
 
@@ -71,7 +75,7 @@ const App = () => {
     <div>
       <Header />
 
-      {isFetching || fetchingFilm ? <p>Get data</p> : ""}
+      {isFetching || fetchingFilm || fetchingActor ? <p>Get data</p> : ""}
       {page === "search" && !isFetching ? (
         <ErrorBoundary>
           <SearchPage />
@@ -95,7 +99,7 @@ const App = () => {
         ""
       )}
 
-      {page === "actor" ? (
+      {page === "actor" && !fetchingActor ? (
         <ErrorBoundary>
           <ActorPage />
         </ErrorBoundary>
