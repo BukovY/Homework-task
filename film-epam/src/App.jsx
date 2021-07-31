@@ -11,6 +11,7 @@ import { getGenresMap, getFilmsData } from "./redux/reducers/appReducers";
 import { getFilm } from "./redux/reducers/movieReducers";
 import { getActorInfo } from "./redux/reducers/actorReducers";
 import { getSearchData } from "./redux/reducers/searchReducers";
+import LoaderPlaceholder from "./components/LoarerPlaceholder/LoaderPlaceholder";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const App = () => {
       <Header />
 
       {isFetching || fetchingFilm || fetchingActor || fetchingSearch ? (
-        <p>Get data</p>
+        <LoaderPlaceholder/>
       ) : (
         ""
       )}
