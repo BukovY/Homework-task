@@ -1,5 +1,5 @@
-import { API_KEY, SET_ACTOR } from "../constants";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_KEY, SET_ACTOR } from "../constants";
 
 const initialState = {
   actorId: "",

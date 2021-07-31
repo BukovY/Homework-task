@@ -1,13 +1,13 @@
 import React from "react";
+import styles from "./HomePage.module.sass";
 import Tabs from "../../components/Tabs/Tabs";
 import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { genresIndexToString } from "../../utils/functrions";
-import styles from "./HomePage.module.sass";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setPaginationPage,
-  setTooltipOpenStatus,
+  isTooltipOpen,
 } from "../../redux/actions/appAction";
 
 const HomePage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const selectPaginationPage = (num) => {
     dispatch(setPaginationPage(num));
-    dispatch(setTooltipOpenStatus(false));
+    dispatch(isTooltipOpen(false));
   };
   return (
     <div>

@@ -1,5 +1,5 @@
 export const genresIndexToString = (arr, map) => {
-  let genresToRender = [];
+  const genresToRender = [];
   for (let i of map) {
     if (arr.indexOf(i.id) !== -1) {
       genresToRender.push(i.name);

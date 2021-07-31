@@ -1,8 +1,8 @@
 import React from "react";
-import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import styles from "./Language.module.sass";
+import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
-import { setTooltipOpenStatus } from "../../redux/actions/appAction";
+import { isTooltipOpen } from "../../redux/actions/appAction";
 
 const Language = () => {
   const { isTooltipLanguageOpen, languageSelected } = useSelector(
@@ -10,7 +10,7 @@ const Language = () => {
   );
   const dispatch = useDispatch();
   const toggleTooltip = () => {
-    dispatch(setTooltipOpenStatus(!isTooltipLanguageOpen));
+    dispatch(isTooltipOpen(!isTooltipLanguageOpen));
   };
   return (
     <div>

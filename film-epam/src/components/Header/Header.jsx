@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../static/img/logo.png";
+import styles from "./Header.module.css.sass";
 import Language from "../Language/Language";
 import Search from "../Search/Search";
-import styles from "./Header.module.css.sass";
 import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/actions/appAction";
 

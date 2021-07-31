@@ -1,12 +1,12 @@
 import React from "react";
+import styles from "./SearchPage.module.sass";
 import FilmCard from "../../components/FilmCard/FilmCard";
+import Paginations from "../../components/Pagination/Paginations";
 import { useSelector } from "react-redux";
 import { genresIndexToString } from "../../utils/functrions";
-import styles from "./SearchPage.module.sass";
-import Paginations from "../../components/Pagination/Paginations";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
-import { setTooltipOpenStatus } from "../../redux/actions/appAction";
+import { isTooltipOpen } from "../../redux/actions/appAction";
 
 const SearchPage = () => {
   const { genresMap } = useSelector((state) => state.appReducer);
@@ -16,7 +16,7 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
-    dispatch(setTooltipOpenStatus(false));
+    dispatch(isTooltipOpen(false));
   };
   return (
     <div>
@@ -48,8 +48,5 @@ const SearchPage = () => {
     </div>
   );
 };
-/*
-
- */
 
 export default SearchPage;

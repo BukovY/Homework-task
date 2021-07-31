@@ -86,7 +86,7 @@ const App = () => {
       <Header />
 
       {isFetching || fetchingFilm || fetchingActor || fetchingSearch ? (
-        <LoaderPlaceholder/>
+        <LoaderPlaceholder />
       ) : (
         ""
       )}

@@ -1,8 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { getFilmCover } from "../../utils/functrions";
+import { useDispatch, useSelector } from "react-redux";
 import { getFilm } from "../../redux/reducers/movieReducers";
 import { setPage } from "../../redux/actions/appAction";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./People.module.sass";
+import { useDispatch } from "react-redux";
 import { getPeopleCard } from "../../utils/functrions";
 import { setActor } from "../../redux/actions/actorAction";
-import { useDispatch } from "react-redux";
 import { setPage } from "../../redux/actions/appAction";
 
 const People = ({ img, title, department, id }) => {

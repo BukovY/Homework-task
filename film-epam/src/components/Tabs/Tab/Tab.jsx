@@ -3,7 +3,7 @@ import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setFilter,
-  setTooltipOpenStatus,
+  isTooltipOpen,
 } from "../../../redux/actions/appAction";
 
 const Tab = ({ label }) => {
@@ -11,7 +11,7 @@ const Tab = ({ label }) => {
   const dispatch = useDispatch();
   const changeTab = (label) => {
     dispatch(setFilter(label));
-    dispatch(setTooltipOpenStatus(false));
+    dispatch(isTooltipOpen(false));
   };
   return (
     <div

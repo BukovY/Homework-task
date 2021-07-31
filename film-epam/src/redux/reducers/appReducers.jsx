@@ -1,15 +1,14 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   SEARCH_CHANGE,
   LANGUAGE_TOOLTIP_CHANGE,
   FILTER_CHANGE,
   PAGINATION_CHANGE,
   TOOLTIP_OPEN_CHANGE,
-  SET_FILMS,
   RESET_FILTERS,
   SET_PAGE,
   API_KEY,
 } from "../constants";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   page: "main",
@@ -92,9 +91,6 @@ const appReducer = createSlice({
       })
       .addCase(TOOLTIP_OPEN_CHANGE, (state, action) => {
         state.isTooltipLanguageOpen = action.payload;
-      })
-      .addCase(SET_FILMS, (state, action) => {
-        state.filmData = action.payload;
       })
       .addCase(SET_PAGE, (state, action) => {
         state.page = action.payload;

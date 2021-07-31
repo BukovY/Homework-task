@@ -1,10 +1,4 @@
-import {
-  SET_SEARCH_RESULT,
-  SET_SEARCH_PAGE,
-  SET_SEARCH_MAX_PAGE,
-  SEARCH_NEED_UPDATE,
-  API_KEY,
-} from "../constants";
+import { SET_SEARCH_PAGE, SEARCH_NEED_UPDATE, API_KEY } from "../constants";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -47,14 +41,8 @@ const searchReducers = createSlice({
         state.searchResults = action.payload.data;
         state.searchMaxPage = action.payload.searchMaxPage;
       })
-      .addCase(SET_SEARCH_RESULT, (state, action) => {
-        state.searchResults = action.payload;
-      })
       .addCase(SET_SEARCH_PAGE, (state, action) => {
         state.searchPage = action.payload;
-      })
-      .addCase(SET_SEARCH_MAX_PAGE, (state, action) => {
-        state.searchMaxPage = action.payload;
       })
       .addCase(SEARCH_NEED_UPDATE, (state, action) => {
         state.needUpdate = action.payload;

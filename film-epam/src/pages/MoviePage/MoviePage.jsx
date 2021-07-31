@@ -1,13 +1,13 @@
 import React from "react";
+import styles from "./MoviePage.module.sass";
 import FilmCover from "../../components/FilmCover/FilmCover";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import styles from "./MoviePage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
+import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
-import PhotoCard from "../../components/PhotoCard/PhotoCard";
 
 const MoviePage = () => {
   const { data, isCrewOpen } = useSelector((state) => state.movieReducers);
@@ -62,7 +62,9 @@ const MoviePage = () => {
                 ))}
             </div>
           </div>
-          <h2>Images</h2>
+          <h2 className={data.images.length !== 0 ? "" : styles.hide}>
+            Images
+          </h2>
           <div className={styles.images_grid}>
             {data.images &&
               data.images.map((el) => (
@@ -71,7 +73,9 @@ const MoviePage = () => {
           </div>
         </div>
       </div>
-      <h2>Recomendations</h2>
+      <h2 className={data.known.length !== 0 ? "" : styles.hide}>
+        Recomendations
+      </h2>
       <div className={styles.card_grid}>
         {data.known &&
           data.known.map((el) => (

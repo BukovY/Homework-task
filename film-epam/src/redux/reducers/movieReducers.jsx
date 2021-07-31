@@ -1,5 +1,5 @@
-import { CREW_OPEN_CHANGE, API_KEY } from "../constants";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { CREW_OPEN_CHANGE, API_KEY } from "../constants";
 
 const initialState = {
   selectedMovie: "",

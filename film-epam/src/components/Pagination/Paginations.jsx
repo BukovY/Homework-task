@@ -1,6 +1,6 @@
 import React from "react";
-import Pagination from "./Item/Pagination";
 import styles from "./Paginations.module.sass";
+import Pagination from "./Item/Pagination";
 import { getPaginationRange } from "../../utils/functrions";
 
 const Paginations = ({ selected, max, handler }) => {
