@@ -4,7 +4,6 @@ import movieReducers from "./reducers/movieReducers";
 import actorReducers from "./reducers/actorReducers";
 import searchReducers from "./reducers/searchReducers";
 import thunk from "redux-thunk";
-import {configureStore} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
   actorReducers,

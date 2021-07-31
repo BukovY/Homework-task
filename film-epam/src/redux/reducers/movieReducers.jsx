@@ -1,9 +1,4 @@
-import {
-  SET_FILM,
-  SET_FILM_DATA,
-  CREW_OPEN_CHANGE,
-  API_KEY,
-} from "../constants";
+import { CREW_OPEN_CHANGE, API_KEY } from "../constants";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

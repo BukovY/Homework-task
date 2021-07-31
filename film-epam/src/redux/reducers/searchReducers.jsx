@@ -3,7 +3,7 @@ import {
   SET_SEARCH_PAGE,
   SET_SEARCH_MAX_PAGE,
   SEARCH_NEED_UPDATE,
-    API_KEY,
+  API_KEY,
 } from "../constants";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
@@ -45,7 +45,7 @@ const searchReducers = createSlice({
       .addCase(getSearchData.fulfilled, (state, action) => {
         state.fetchingSearch = false;
         state.searchResults = action.payload.data;
-        state.searchMaxPage =  action.payload.searchMaxPage
+        state.searchMaxPage = action.payload.searchMaxPage;
       })
       .addCase(SET_SEARCH_RESULT, (state, action) => {
         state.searchResults = action.payload;

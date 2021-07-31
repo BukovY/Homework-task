@@ -50,7 +50,9 @@ export const getFilmsData = createAsyncThunk(
         .map((el) => el.toLowerCase())
         .join(
           "_"
-        )}?api_key=${API_KEY}&language=${languageIn.toLowerCase()}&page=${inputs.paginationPage}`
+        )}?api_key=${API_KEY}&language=${languageIn.toLowerCase()}&page=${
+        inputs.paginationPage
+      }`
     )
       .then((response) => response.json())
       .then((response) => response.results);

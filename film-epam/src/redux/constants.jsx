@@ -4,7 +4,6 @@ export const FILTER_CHANGE = "FILTER_CHANGE";
 export const SET_FILM = "SET_FILM";
 export const SET_FILM_DATA = "SET_FILM_DATA";
 export const SET_ACTOR = "SET_ACTOR";
-export const SET_ACTOR_DATA = "SET_ACTOR_DATA";
 export const PAGINATION_CHANGE = "PAGINATION_CHANGE";
 export const SEARCH_CHANGE = "SEARCH_CHANGE";
 export const TOOLTIP_OPEN_CHANGE = "TOOLTIP_OPEN_CHANGE";
