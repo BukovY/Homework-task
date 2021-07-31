@@ -39,7 +39,7 @@ const App = () => {
   }, [languageSelected, actorId]);
 
   useEffect(() => {
-    dispatch(getGenresMap(languageSelected));
+    dispatch(getGenresMap());
   }, [languageSelected]);
 
   useEffect(() => {

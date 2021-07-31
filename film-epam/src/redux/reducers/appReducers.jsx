@@ -8,8 +8,11 @@ import {
   SET_FILMS,
   RESET_FILTERS,
   SET_PAGE,
+  API_KEY,
 } from "../constants";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { setGenresMap } from "../actions/appAction";
+import {useSelector} from "react-redux";
 
 const initialState = {
   page: "main",
@@ -26,11 +29,32 @@ const initialState = {
   genresMap: [],
 };
 
+const getGenresMap = createAsyncThunk(
+    'appReducer/getGenresMap',
+    async () => {
+      const {languageSelected} = useSelector(state => state.appReducer);
+      return fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?language=${languageSelected}&api_key=${API_KEY}`
+      )
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => response.genres);
+    }
+)
+
 const appReducer = createSlice({
   name: "appReducer",
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getGenresMap.pending, (state) => {
+        state.isFetching = true;
+      })
+      .addCase(getGenresMap.fulfilled,((state, action) => {
+        state.isFetching = false;
+        state.genresMap = action.payload
+      }))
       .addCase(SEARCH_CHANGE, (state, action) => {
         state.search = action.payload;
       })
