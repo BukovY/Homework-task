@@ -10,17 +10,21 @@ import {
   setSearchPage,
 } from "../../redux/actions/searchAction";
 import { setTooltipOpenStatus } from "../../redux/actions/appAction";
+import {getSearchData} from "../../redux/reducers/searchReducers";
 
 const SearchPage = () => {
   const { genresMap } = useSelector((state) => state.appReducer);
   const { searchResults, searchPage, searchMaxPage } = useSelector(
     (state) => state.searchReducers
   );
+    const {
+        languageSelected,
+        search,
+    } = useSelector((state) => state.appReducer);
   const dispatch = useDispatch();
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
     dispatch(setTooltipOpenStatus(false));
-    dispatch(isNeedUpdateSearch(true));
   };
   return (
     <div>

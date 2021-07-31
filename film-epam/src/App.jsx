@@ -6,11 +6,11 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 import ActorPage from "./pages/ActorPage/ActorPage";
-import { getSearchData } from "./redux/actions/searchAction";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import { getGenresMap, getFilmsData } from "./redux/reducers/appReducers";
 import {getFilm} from "./redux/reducers/movieReducers";
 import {getActorInfo} from "./redux/reducers/actorReducers";
+import {getSearchData} from "./redux/reducers/searchReducers";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const App = () => {
 
   const { actorId, fetchingActor } = useSelector((state) => state.actorReducers);
 
-  const { searchPage, needUpdate } = useSelector(
+  const { searchPage, needUpdate, fetchingSearch } = useSelector(
     (state) => state.searchReducers
   );
 
@@ -67,7 +67,12 @@ const App = () => {
 
   useEffect(() => {
     if (needUpdate) {
-      dispatch(getSearchData(search, searchPage, languageSelected));
+      const input = {
+        search,
+        searchPage,
+        languageSelected
+      }
+      dispatch(getSearchData(input));
     }
   }, [searchPage, needUpdate, languageSelected]);
 
@@ -75,8 +80,8 @@ const App = () => {
     <div>
       <Header />
 
-      {isFetching || fetchingFilm || fetchingActor ? <p>Get data</p> : ""}
-      {page === "search" && !isFetching ? (
+      {isFetching || fetchingFilm || fetchingActor || fetchingSearch ? <p>Get data</p> : ""}
+      {page === "search" && !fetchingSearch ? (
         <ErrorBoundary>
           <SearchPage />
         </ErrorBoundary>
