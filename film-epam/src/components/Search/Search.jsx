@@ -9,7 +9,7 @@ import {
 } from "../../redux/actions/searchAction";
 
 const Search = () => {
-  const { search } = useSelector((state) => state.appReducer);
+  const { search } = useSelector((state) => state.app);
   const dispatch = useDispatch();
 
   const goToSearch = (e) => {

@@ -12,7 +12,7 @@ const initialState = {
 };
 
 export const getActorInfo = createAsyncThunk(
-  "actorReducers/getActorInfo",
+  "actor/getActorInfo",
   async (inputs) => {
     let languageIn = inputs.languageSelected;
     const index = inputs.actorId;
@@ -38,8 +38,8 @@ https://api.themoviedb.org/3/person/${index}/movie_credits?api_key=${API_KEY}&la
   }
 );
 
-const actorReducers = createSlice({
-  name: "actorReducers",
+const actor = createSlice({
+  name: "actor",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -56,4 +56,4 @@ const actorReducers = createSlice({
       });
   },
 });
-export default actorReducers.reducer;
+export default actor.reducer;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilter, isTooltipOpen } from "../../../redux/actions/appAction";
 
 const Tab = ({ label }) => {
-  const { activeFilter } = useSelector((state) => state.appReducer);
+  const { activeFilter } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const changeTab = (label) => {
     dispatch(setFilter(label));

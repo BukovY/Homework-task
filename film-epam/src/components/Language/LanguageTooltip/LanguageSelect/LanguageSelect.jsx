@@ -7,7 +7,7 @@ import {
 } from "../../../../redux/actions/appAction";
 
 const LanguageSelect = ({ language }) => {
-  const { languageSelected } = useSelector((state) => state.appReducer);
+  const { languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));

@@ -4,7 +4,7 @@ import Tab from "./Tab/Tab";
 import { useSelector } from "react-redux";
 
 const Tabs = () => {
-  const { filter } = useSelector((state) => state.appReducer);
+  const { filter } = useSelector((state) => state.app);
 
   return (
     <div>

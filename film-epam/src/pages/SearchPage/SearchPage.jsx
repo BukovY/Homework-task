@@ -9,9 +9,9 @@ import { setSearchPage } from "../../redux/actions/searchAction";
 import { isTooltipOpen } from "../../redux/actions/appAction";
 
 const SearchPage = () => {
-  const { genresMap } = useSelector((state) => state.appReducer);
+  const { genresMap } = useSelector((state) => state.app);
   const { searchResults, searchPage, searchMaxPage } = useSelector(
-    (state) => state.searchReducers
+    (state) => state.search
   );
   const dispatch = useDispatch();
   const changeSearchPaginationPage = (num) => {

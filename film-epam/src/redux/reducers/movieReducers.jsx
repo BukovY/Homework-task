@@ -13,7 +13,7 @@ const initialState = {
   },
 };
 export const getFilm = createAsyncThunk(
-  "movieReducers/getFilm",
+  "movie/getFilm",
   async (input) => {
     const index = input.selectedMovie;
     const languageIn = input.languageSelected;
@@ -44,8 +44,8 @@ https://api.themoviedb.org/3/movie/${index}/credits?api_key=${API_KEY}&language=
   }
 );
 
-const movieReducers = createSlice({
-  name: "movieReducers",
+const movie = createSlice({
+  name: "movie",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -63,4 +63,4 @@ const movieReducers = createSlice({
   },
 });
 
-export default movieReducers.reducer;
+export default movie.reducer;

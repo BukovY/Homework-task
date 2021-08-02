@@ -26,7 +26,7 @@ const initialState = {
 };
 
 export const getGenresMap = createAsyncThunk(
-  "appReducer/getGenresMap",
+  "app/getGenresMap",
   async (languageSelected) => {
     return fetch(
       `https://api.themoviedb.org/3/genre/movie/list?language=${languageSelected}&api_key=${API_KEY}`
@@ -39,7 +39,7 @@ export const getGenresMap = createAsyncThunk(
 );
 
 export const getFilmsData = createAsyncThunk(
-  "appReducer/getFilmsData",
+  "app/getFilmsData",
   async (inputs) => {
     let languageIn = inputs.languageSelected;
     let categoryIn = inputs.activeFilter;
@@ -58,8 +58,8 @@ export const getFilmsData = createAsyncThunk(
   }
 );
 
-const appReducer = createSlice({
-  name: "appReducer",
+const app = createSlice({
+  name: "app",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -105,4 +105,4 @@ const appReducer = createSlice({
   },
 });
 
-export default appReducer.reducer;
+export default app.reducer;

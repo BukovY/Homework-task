@@ -6,7 +6,7 @@ import { isTooltipOpen } from "../../redux/actions/appAction";
 
 const Language = () => {
   const { isTooltipLanguageOpen, languageSelected } = useSelector(
-    (state) => state.appReducer
+    (state) => state.app
   );
   const dispatch = useDispatch();
   const toggleTooltip = () => {

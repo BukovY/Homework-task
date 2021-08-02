@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 import { genresIndexToString } from "../../utils/functrions";
 
 const ActorPage = () => {
-  const { data } = useSelector((state) => state.actorReducers);
-  const { genresMap } = useSelector((state) => state.appReducer);
+  const { data } = useSelector((state) => state.actor);
+  const { genresMap } = useSelector((state) => state.app);
   const person = data.info;
   return (
     <div className={styles.actor_page}>

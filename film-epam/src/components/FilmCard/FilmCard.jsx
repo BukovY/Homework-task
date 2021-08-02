@@ -8,7 +8,7 @@ import { setPage } from "../../redux/actions/appAction";
 
 const FilmCard = ({ img, rating, title, genres, id }) => {
   const dispatch = useDispatch();
-  const { languageSelected } = useSelector((state) => state.appReducer);
+  const { languageSelected } = useSelector((state) => state.app);
   const openFilm = (id) => {
     const input = {
       selectedMovie: id,

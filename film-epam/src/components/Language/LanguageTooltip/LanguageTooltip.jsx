@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { isTooltipOpen } from "../../../redux/actions/appAction";
 
 const LanguageTooltip = () => {
-  const { languages } = useSelector((state) => state.appReducer);
+  const { languages } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const rootEl = useRef();
   useEffect(() => {

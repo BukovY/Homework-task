@@ -13,7 +13,7 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 
 const HomePage = () => {
   const { filmData, genresMap, paginationPage, paginationMax, isFetching } =
-    useSelector((state) => state.appReducer);
+    useSelector((state) => state.app);
   const dispatch = useDispatch();
   const selectPaginationPage = (num) => {
     dispatch(setPaginationPage(num));

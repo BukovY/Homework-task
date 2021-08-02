@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const getSearchData = createAsyncThunk(
-  "searchReducers/getSearchData",
+  "search/getSearchData",
   async (input) => {
     const obj = {};
     await fetch(
@@ -28,8 +28,8 @@ export const getSearchData = createAsyncThunk(
   }
 );
 
-const searchReducers = createSlice({
-  name: "searchReducers",
+const search = createSlice({
+  name: "search",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -50,4 +50,4 @@ const searchReducers = createSlice({
   },
 });
 
-export default searchReducers.reducer;
+export default search.reducer;

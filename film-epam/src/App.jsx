@@ -17,18 +17,18 @@ const App = () => {
   const dispatch = useDispatch();
 
   const { activeFilter, languageSelected, paginationPage, page, search } =
-    useSelector((state) => state.appReducer);
+    useSelector((state) => state.app);
 
   const { selectedMovie, fetchingFilm } = useSelector(
-    (state) => state.movieReducers
+    (state) => state.movie
   );
 
   const { actorId, fetchingActor } = useSelector(
-    (state) => state.actorReducers
+    (state) => state.actor
   );
 
   const { searchPage, needUpdate, fetchingSearch } = useSelector(
-    (state) => state.searchReducers
+    (state) => state.search
   );
 
   useEffect(() => {
