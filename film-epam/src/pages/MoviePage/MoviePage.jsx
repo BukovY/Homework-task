@@ -84,7 +84,7 @@ const MoviePage = () => {
               id={el.id}
               img={el.poster_path}
               rating={el.vote_average}
-              title={el.original_title}
+              title={el.title}
               genres={genresIndexToString(el.genre_ids, genresMap)}
             />
           ))}

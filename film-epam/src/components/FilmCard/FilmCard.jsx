@@ -10,10 +10,10 @@ const FilmCard = ({ img, rating, title, genres, id }) => {
   const dispatch = useDispatch();
   const { languageSelected } = useSelector((state) => state.appReducer);
   const openFilm = (id) => {
-      const input = {
-          selectedMovie: id,
-          languageSelected: languageSelected,
-      }
+    const input = {
+      selectedMovie: id,
+      languageSelected: languageSelected,
+    };
     dispatch(getFilm(input));
     dispatch(setPage("movie"));
   };

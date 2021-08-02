@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
+import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
 import "./App.css";
 import Header from "./components/Header/Header";
-import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
 import HomePage from "./pages/HomePage/HomePage.jsx";
-import { useDispatch, useSelector } from "react-redux";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 import ActorPage from "./pages/ActorPage/ActorPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import LoaderPlaceholder from "./components/LoarerPlaceholder/LoaderPlaceholder";
+import { useDispatch, useSelector } from "react-redux";
 import { getGenresMap, getFilmsData } from "./redux/reducers/appReducers";
 import { getFilm } from "./redux/reducers/movieReducers";
 import { getActorInfo } from "./redux/reducers/actorReducers";
 import { getSearchData } from "./redux/reducers/searchReducers";
-import LoaderPlaceholder from "./components/LoarerPlaceholder/LoaderPlaceholder";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -90,6 +90,7 @@ const App = () => {
       ) : (
         ""
       )}
+
       {page === "search" && !fetchingSearch ? (
         <ErrorBoundary>
           <SearchPage />
@@ -97,6 +98,7 @@ const App = () => {
       ) : (
         ""
       )}
+
       {page === "main" && !isFetching ? (
         <ErrorBoundary>
           <HomePage />

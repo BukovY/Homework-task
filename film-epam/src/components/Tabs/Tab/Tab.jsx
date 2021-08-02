@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setFilter,
-  isTooltipOpen,
-} from "../../../redux/actions/appAction";
+import { setFilter, isTooltipOpen } from "../../../redux/actions/appAction";
 
 const Tab = ({ label }) => {
   const { activeFilter } = useSelector((state) => state.appReducer);

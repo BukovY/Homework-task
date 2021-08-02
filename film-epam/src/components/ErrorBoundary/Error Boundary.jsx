@@ -1,4 +1,4 @@
-import React, {PureComponent}from "react";
+import React, { PureComponent } from "react";
 export class ErrorBoundary extends PureComponent {
   constructor(props) {
     super(props);

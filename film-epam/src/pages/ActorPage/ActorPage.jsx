@@ -4,9 +4,11 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { useSelector } from "react-redux";
+import { genresIndexToString } from "../../utils/functrions";
 
 const ActorPage = () => {
   const { data } = useSelector((state) => state.actorReducers);
+  const { genresMap } = useSelector((state) => state.appReducer);
   const person = data.info;
   return (
     <div className={styles.actor_page}>
@@ -38,6 +40,7 @@ const ActorPage = () => {
               img={el.poster_path}
               rating={el.vote_average}
               title={el.title}
+              genres={genresIndexToString(el.genre_ids, genresMap)}
             />
           ))}
       </div>
