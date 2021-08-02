@@ -11,7 +11,7 @@ const MetaBlock = ({ title, meta, prefix }) => {
     <div className={metaBlockClass}>
       <p className={styles.meta_title}>{title}:</p>
       <p>
-        {prefix && prefix}
+        {prefix}
         {meta}
       </p>
     </div>

@@ -10,9 +10,7 @@ import { getSearchData } from "../../redux/reducers/searchReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 
 const SearchPage = () => {
-  const { genresMap, search, languageSelected } = useSelector(
-    (state) => state.app
-  );
+  const { search, languageSelected } = useSelector((state) => state.app);
   const { searchResults, searchPage, searchMaxPage, searchNeedUpdate } =
     useSelector((state) => state.search);
   const dispatch = useDispatch();
@@ -34,10 +32,8 @@ const SearchPage = () => {
     <div>
       {!searchNeedUpdate ? (
         <div>
-          {searchResults.length > 0 ? (
-            ""
-          ) : (
-            <h1>No results, pleace change your search question</h1>
+          {!searchResults.length && (
+            <h1>No results, change your search question</h1>
           )}
           <div className={styles.card_grid}>
             {searchResults &&

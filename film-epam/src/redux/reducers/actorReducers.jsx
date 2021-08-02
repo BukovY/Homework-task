@@ -55,6 +55,7 @@ const actor = createSlice({
       })
       .addCase(SET_ACTOR, (state, action) => {
         state.actorId = action.payload;
+        state.actorNeedUpdate = true;
       })
       .addCase(ACTOR_NEED_UPDATE, (state, action) => {
         state.actorNeedUpdate = action.payload;

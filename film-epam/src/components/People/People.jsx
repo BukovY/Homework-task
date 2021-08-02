@@ -2,27 +2,26 @@ import React from "react";
 import styles from "./People.module.sass";
 import { useDispatch } from "react-redux";
 import { getPeopleCard } from "../../utils/functrions";
-import { isActorNeedUpdate, setActor } from "../../redux/actions/actorAction";
+import { setActor } from "../../redux/actions/actorAction";
 import { setPage } from "../../redux/actions/appAction";
 
-const People = ({ img, title, department, id }) => {
+const People = ({ el }) => {
   const dispatch = useDispatch();
   const selectActor = (id) => {
     dispatch(setPage("actor"));
     dispatch(setActor(id));
-    dispatch(isActorNeedUpdate(true));
   };
   return (
-    <div onClick={() => selectActor(id)}>
+    <div onClick={() => selectActor(el.id)}>
       <div className={styles.people_img}>
         <img
-          src={getPeopleCard(img)}
+          src={getPeopleCard(el.profile_path)}
           className={styles.people_cover}
-          alt={title}
+          alt={el.original_name}
         />
       </div>
-      <p className={styles.people_title}>{title}</p>
-      <p>{department}</p>
+      <p className={styles.people_title}>{el.original_name}</p>
+      <p>{el.known_for_department}</p>
     </div>
   );
 };

@@ -16,36 +16,28 @@ const App = () => {
     <div>
       <Header />
 
-      {page === "search" ? (
+      {page === "search" && (
         <ErrorBoundary>
           <SearchPage />
         </ErrorBoundary>
-      ) : (
-        ""
       )}
 
-      {page === "main" ? (
+      {page === "main" && (
         <ErrorBoundary>
           <HomePage />
         </ErrorBoundary>
-      ) : (
-        ""
       )}
 
-      {page === "movie" ? (
+      {page === "movie" && (
         <ErrorBoundary>
           <MoviePage />
         </ErrorBoundary>
-      ) : (
-        ""
       )}
 
-      {page === "actor" ? (
+      {page === "actor" && (
         <ErrorBoundary>
           <ActorPage />
         </ErrorBoundary>
-      ) : (
-        ""
       )}
     </div>
   );

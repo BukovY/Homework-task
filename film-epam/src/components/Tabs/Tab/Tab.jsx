@@ -6,6 +6,7 @@ import {
   isTooltipOpen,
   isHomepageNeedUpdate,
 } from "../../../redux/actions/appAction";
+import classNames from "classnames/bind";
 
 const Tab = ({ label }) => {
   const { activeFilter } = useSelector((state) => state.app);
@@ -15,13 +16,10 @@ const Tab = ({ label }) => {
     dispatch(isTooltipOpen(false));
     dispatch(isHomepageNeedUpdate(true));
   };
+  const cx = classNames.bind(styles);
+  const tabClass = cx("tab", { active: label === activeFilter });
   return (
-    <div
-      className={
-        label === activeFilter ? `${styles.tab_active}` : `${styles.tab}`
-      }
-      onClick={() => changeTab(label)}
-    >
+    <div className={tabClass} onClick={() => changeTab(label)}>
       {label}
     </div>
   );

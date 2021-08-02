@@ -4,7 +4,6 @@ import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
-import { genresIndexToString } from "../../utils/functrions";
 import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 
@@ -12,15 +11,15 @@ const ActorPage = () => {
   const { data, actorId, actorNeedUpdate, fetchingActor } = useSelector(
     (state) => state.actor
   );
-  const { genresMap, languageSelected } = useSelector((state) => state.app);
+  const { languageSelected } = useSelector((state) => state.app);
   const person = data.info;
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (actorNeedUpdate) {
       const inputs = {
-        actorId: actorId,
-        languageSelected: languageSelected,
+        actorId,
+        languageSelected,
       };
       dispatch(getActorInfo(inputs));
     }
@@ -39,9 +38,7 @@ const ActorPage = () => {
               <MetaBlock title="Birthbay" meta={person.birthday} />
               <MetaBlock title="Place of birth" meta={person.place_of_birth} />
               <MetaBlock title="Biography" meta={person.biography} />
-              <h2 className={data.photo.length !== 0 ? "" : styles.hide}>
-                Photos
-              </h2>
+              <h2 className={!data.photo.length && styles.hide}>Photos</h2>
               <div className={styles.actor_grid}>
                 {data.photo &&
                   data.photo.map((el) => (

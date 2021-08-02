@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styles from "./HomePage.module.sass";
 import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import { genresIndexToString } from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setPaginationPage,
@@ -15,7 +14,6 @@ import { getFilmsData } from "../../redux/reducers/appReducers";
 const HomePage = () => {
   const {
     filmData,
-    genresMap,
     paginationPage,
     paginationMax,
     homepageNeedUpdate,
@@ -31,9 +29,9 @@ const HomePage = () => {
   useEffect(() => {
     if (homepageNeedUpdate) {
       const inputs = {
-        activeFilter: activeFilter,
-        languageSelected: languageSelected,
-        paginationPage: paginationPage,
+        activeFilter,
+        languageSelected,
+        paginationPage,
       };
       dispatch(getFilmsData(inputs));
     }
