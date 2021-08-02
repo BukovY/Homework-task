@@ -14,6 +14,7 @@ const LanguageTooltip = () => {
         dispatch(isTooltipOpen(false));
       }
     };
+
     document.addEventListener("mousedown", handeler);
     return () => {
       document.removeEventListener("mousedown", handeler);

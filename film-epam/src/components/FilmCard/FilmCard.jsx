@@ -40,7 +40,7 @@ const FilmCard = ({ el }) => {
         <img src={play} className={styles.block} alt="play" />
       </div>
       {el.title && <div className={styles.title}>{el.title}</div>}
-      {el.genres && (
+      {el.genre_ids && (
         <div className={styles.genres}>
           {genresIndexToString(el.genre_ids, genresMap).join(" ")}
         </div>

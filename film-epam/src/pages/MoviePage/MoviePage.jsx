@@ -16,7 +16,7 @@ const MoviePage = () => {
     useSelector((state) => state.movie);
   const { languageSelected } = useSelector((state) => state.app);
   const film = data.info;
-  const crew = isCrewOpen ? data.people : data.people.slice(0, 6);
+  const crew = data.people ? isCrewOpen ? data.people : data.people.slice(0, 6) : false;
   const dispatch = useDispatch();
   const changeOpenCrew = (status) => {
     let toDispatch = status;
