@@ -3,6 +3,7 @@ import styles from "./Language.module.sass";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
 import { isTooltipOpen } from "../../redux/actions/appAction";
+import classNames from "classnames";
 
 const Language = () => {
   const { isTooltipLanguageOpen, languageSelected } = useSelector(
@@ -12,19 +13,17 @@ const Language = () => {
   const toggleTooltip = () => {
     dispatch(isTooltipOpen(!isTooltipLanguageOpen));
   };
+  const languageClass = classNames(
+    { isTooltipLanguageOpen: styles.language_select_open },
+    styles.language_select
+  );
+
   return (
     <div>
-      <div
-        onClick={toggleTooltip}
-        className={
-          isTooltipLanguageOpen
-            ? `${styles.language_select_open}`
-            : `${styles.language_select}`
-        }
-      >
+      <div onClick={toggleTooltip} className={languageClass}>
         {languageSelected}
       </div>
-      {isTooltipLanguageOpen ? <LanguageTooltip /> : ""}
+      {isTooltipLanguageOpen && <LanguageTooltip />}
     </div>
   );
 };

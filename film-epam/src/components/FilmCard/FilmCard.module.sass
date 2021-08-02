@@ -5,11 +5,11 @@
   width: 30px
   text-align: center
   border-radius: 5px
+  z-index: 1
 
 .card
   .title
     font-size: 18px
-    margin-top: -90px
   .genres
     font-size: 14px
 
@@ -17,42 +17,31 @@
   width: 100%
   height: auto
   cursor: pointer
-  img
-    width: 100%
+  position: relative
+  img + img
+    width: 50%
     border-radius: 5px
-  &:hover .play_film
+  &:hover .block
     visibility: visible
-    width: 50%
-    left: calc(25%)
-    cursor: pointer
-  .play_film
-    visibility: hidden
-    width: 50%
-    left: calc(25%)
-    position: relative
-    bottom: 270px
+
+.block
+  position: absolute
+  left: 25%
+  top: 30%
+  padding: 5px
+  display: block
+  visibility: hidden
+
+.rating
+  @include rating
 
 .rating_up
-  @include rating
   background-color: green
 
 .rating_down
-  @include rating
   background-color: gray
 
 .rating_hide
-  @include rating
   color: #00ff0000
   background-color: #00ff0000
 
-@media screen and (max-width: 1300px)
-  .film_cover .play_film
-    bottom: 270px
-
-@media screen and (max-width: 850px)
-  .film_cover .play_film
-    bottom: 240px
-
-@media screen and (max-width: 670px)
-  .film_cover .play_film
-    bottom: 200px

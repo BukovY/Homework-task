@@ -5,6 +5,7 @@ import {
   setLanguage,
   isTooltipOpen,
 } from "../../../../redux/actions/appAction";
+import classNames from "classnames/bind";
 
 const LanguageSelect = ({ language }) => {
   const { languageSelected } = useSelector((state) => state.app);
@@ -13,15 +14,12 @@ const LanguageSelect = ({ language }) => {
     dispatch(setLanguage(language));
     dispatch(isTooltipOpen(false));
   };
+  const cx = classNames.bind(styles);
+  const languageClass = cx("tooltip", {
+    select: languageSelected === language,
+  });
   return (
-    <div
-      className={
-        language === languageSelected
-          ? `${styles.tooltip_select}`
-          : `${styles.tooltip_language}`
-      }
-      onClick={() => selectLanguage(language)}
-    >
+    <div className={languageClass} onClick={() => selectLanguage(language)}>
       {language}
     </div>
   );

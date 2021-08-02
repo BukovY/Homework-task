@@ -10,6 +10,7 @@ const ActorPage = () => {
   const { data } = useSelector((state) => state.actor);
   const { genresMap } = useSelector((state) => state.app);
   const person = data.info;
+
   return (
     <div className={styles.actor_page}>
       <div className={styles.actor_info}>

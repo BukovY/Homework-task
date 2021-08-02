@@ -10,7 +10,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
 
 const MoviePage = () => {
-  const { data, isCrewOpen } = useSelector((state) => state.movie);
+  const { data, isCrewOpen} = useSelector(
+    (state) => state.movie
+  );
   const { genresMap } = useSelector((state) => state.app);
   const filmToRender = data.info;
   const crewToRender = isCrewOpen ? data.people : data.people.slice(0, 6);
@@ -19,6 +21,7 @@ const MoviePage = () => {
     let toDispatch = status;
     dispatch(crewOpenChange(!toDispatch));
   };
+
   return (
     <div>
       <div className={styles.film_info}>

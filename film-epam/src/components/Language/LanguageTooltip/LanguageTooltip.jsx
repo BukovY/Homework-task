@@ -9,9 +9,15 @@ const LanguageTooltip = () => {
   const dispatch = useDispatch();
   const rootEl = useRef();
   useEffect(() => {
-    const onClick = (e) => null || dispatch(isTooltipOpen(false));
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    let handeler = (event) => {
+      if (!rootEl.current.contains(event.target)) {
+        dispatch(isTooltipOpen(false));
+      }
+    };
+    document.addEventListener("mousedown", handeler);
+    return () => {
+      document.removeEventListener("mousedown", handeler);
+    };
   }, []);
   return (
     <div className={styles.tooltip} ref={rootEl}>
