@@ -16,30 +16,17 @@ import { getSearchData } from "./redux/reducers/searchReducers";
 const App = () => {
   const dispatch = useDispatch();
 
-  const { activeFilter, languageSelected, paginationPage, page, search } =
+  const { activeFilter, languageSelected, paginationPage, page} =
     useSelector((state) => state.app);
-
   const { selectedMovie, fetchingFilm } = useSelector(
     (state) => state.movie
   );
-
   const { actorId, fetchingActor } = useSelector(
     (state) => state.actor
   );
-
-  const { searchPage, needUpdate, fetchingSearch } = useSelector(
+  const { fetchingSearch } = useSelector(
     (state) => state.search
   );
-
-  useEffect(() => {
-    if (selectedMovie !== "") {
-      const input = {
-        selectedMovie: selectedMovie,
-        languageSelected: languageSelected,
-      };
-      dispatch(getFilm(input));
-    }
-  }, [selectedMovie, languageSelected]);
 
   useEffect(() => {
     if (actorId !== "") {
@@ -64,16 +51,6 @@ const App = () => {
     dispatch(getFilmsData(inputs));
   }, [activeFilter, languageSelected, paginationPage]);
 
-  useEffect(() => {
-    if (needUpdate) {
-      const input = {
-        search,
-        searchPage,
-        languageSelected,
-      };
-      dispatch(getSearchData(input));
-    }
-  }, [searchPage, needUpdate, languageSelected]);
 
   return (
     <div>

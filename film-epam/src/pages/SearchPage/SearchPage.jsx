@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./SearchPage.module.sass";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import Paginations from "../../components/Pagination/Paginations";
@@ -7,10 +7,13 @@ import { genresIndexToString } from "../../utils/functrions";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
 import { isTooltipOpen } from "../../redux/actions/appAction";
+import { getSearchData } from "../../redux/reducers/searchReducers";
 
 const SearchPage = () => {
-  const { genresMap } = useSelector((state) => state.app);
-  const { searchResults, searchPage, searchMaxPage } = useSelector(
+  const { genresMap, search, languageSelected } = useSelector(
+    (state) => state.app
+  );
+  const { searchResults, searchPage, searchMaxPage, searchNeedUpdate } = useSelector(
     (state) => state.search
   );
   const dispatch = useDispatch();
@@ -18,6 +21,16 @@ const SearchPage = () => {
     dispatch(setSearchPage(num));
     dispatch(isTooltipOpen(false));
   };
+  useEffect(() => {
+    if (searchNeedUpdate) {
+      const input = {
+        search,
+        searchPage,
+        languageSelected,
+      };
+      dispatch(getSearchData(input));
+    }
+  }, [searchPage, searchNeedUpdate]);
   return (
     <div>
       {searchResults.length > 0 ? (

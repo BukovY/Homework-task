@@ -5,7 +5,7 @@ const initialState = {
   searchResults: [],
   searchPage: 1,
   searchMaxPage: 1,
-  needUpdate: false,
+  searchNeedUpdate: false,
 };
 
 export const getSearchData = createAsyncThunk(
@@ -40,12 +40,14 @@ const search = createSlice({
         state.fetchingSearch = false;
         state.searchResults = action.payload.data;
         state.searchMaxPage = action.payload.searchMaxPage;
+        state.searchNeedUpdate = false;
       })
       .addCase(SET_SEARCH_PAGE, (state, action) => {
         state.searchPage = action.payload;
+        state.searchNeedUpdate = true;
       })
       .addCase(SEARCH_NEED_UPDATE, (state, action) => {
-        state.needUpdate = action.payload;
+        state.searchNeedUpdate = action.payload;
       });
   },
 });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./MoviePage.module.sass";
 import FilmCover from "../../components/FilmCover/FilmCover";
 import FilmCard from "../../components/FilmCard/FilmCard";
@@ -8,12 +8,13 @@ import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import { genresIndexToString, minToTime } from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
+import {getFilm} from "../../redux/reducers/movieReducers";
 
 const MoviePage = () => {
-  const { data, isCrewOpen} = useSelector(
+  const { data, isCrewOpen, movieNeedUpdate, selectedMovie} = useSelector(
     (state) => state.movie
   );
-  const { genresMap } = useSelector((state) => state.app);
+  const { genresMap, languageSelected } = useSelector((state) => state.app);
   const filmToRender = data.info;
   const crewToRender = isCrewOpen ? data.people : data.people.slice(0, 6);
   const dispatch = useDispatch();
@@ -22,6 +23,15 @@ const MoviePage = () => {
     dispatch(crewOpenChange(!toDispatch));
   };
 
+  useEffect(() => {
+    if (movieNeedUpdate) {
+      const input = {
+        selectedMovie: selectedMovie,
+        languageSelected: languageSelected,
+      };
+      dispatch(getFilm(input));
+    }
+  }, [selectedMovie, languageSelected, movieNeedUpdate]);
   return (
     <div>
       <div className={styles.film_info}>

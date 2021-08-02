@@ -6,6 +6,8 @@ import {
   isTooltipOpen,
 } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
+import {isNeedUpdateSearch} from "../../../../redux/actions/searchAction";
+import {isMovieNeedUpdate} from "../../../../redux/actions/movieAction";
 
 const LanguageSelect = ({ language }) => {
   const { languageSelected } = useSelector((state) => state.app);
@@ -13,6 +15,8 @@ const LanguageSelect = ({ language }) => {
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     dispatch(isTooltipOpen(false));
+    dispatch(isNeedUpdateSearch(true))
+    dispatch(isMovieNeedUpdate(true))
   };
   const cx = classNames.bind(styles);
   const languageClass = cx("tooltip", {
