@@ -6,35 +6,31 @@
   text-align: center
   border-radius: 5px
 
-.card .title
-  font-size: 18px
-  margin-top: -90px
-
-.card .genres
-  font-size: 14px
+.card
+  .title
+    font-size: 18px
+    margin-top: -90px
+  .genres
+    font-size: 14px
 
 .film_cover
   width: 100%
   height: auto
   cursor: pointer
-
-.film_cover img
-  width: 100%
-  border-radius: 5px
-
-.film_cover .play_film
-  visibility: hidden
-  width: 90px
-  position: relative
-  bottom: 270px
-  left: calc(50% - 45px)
-
-.film_cover:hover .play_film
-  visibility: visible
-  width: 90px
-  bottom: 200px
-  left: calc(50% - 45px)
-  cursor: pointer
+  img
+    width: 100%
+    border-radius: 5px
+  &:hover .play_film
+    visibility: visible
+    width: 50%
+    left: calc(25%)
+    cursor: pointer
+  .play_film
+    visibility: hidden
+    width: 50%
+    left: calc(25%)
+    position: relative
+    bottom: 270px
 
 .rating_up
   @include rating
@@ -48,3 +44,15 @@
   @include rating
   color: #00ff0000
   background-color: #00ff0000
+
+@media screen and (max-width: 1300px)
+  .film_cover .play_film
+    bottom: 270px
+
+@media screen and (max-width: 850px)
+  .film_cover .play_film
+    bottom: 240px
+
+@media screen and (max-width: 670px)
+  .film_cover .play_film
+    bottom: 200px

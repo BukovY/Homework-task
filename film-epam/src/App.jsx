@@ -16,14 +16,8 @@ import { getSearchData } from "./redux/reducers/searchReducers";
 const App = () => {
   const dispatch = useDispatch();
 
-  const {
-    activeFilter,
-    languageSelected,
-    paginationPage,
-    page,
-    search,
-    isFetching,
-  } = useSelector((state) => state.appReducer);
+  const { activeFilter, languageSelected, paginationPage, page, search } =
+    useSelector((state) => state.appReducer);
 
   const { selectedMovie, fetchingFilm } = useSelector(
     (state) => state.movieReducers
@@ -85,7 +79,7 @@ const App = () => {
     <div>
       <Header />
 
-      {isFetching || fetchingFilm || fetchingActor || fetchingSearch ? (
+      {fetchingFilm || fetchingActor || fetchingSearch ? (
         <LoaderPlaceholder />
       ) : (
         ""
@@ -99,7 +93,7 @@ const App = () => {
         ""
       )}
 
-      {page === "main" && !isFetching ? (
+      {page === "main" ? (
         <ErrorBoundary>
           <HomePage />
         </ErrorBoundary>
