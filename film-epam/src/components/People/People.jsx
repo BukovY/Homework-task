@@ -7,12 +7,12 @@ import { setPage } from "../../redux/actions/appAction";
 
 const People = ({ el }) => {
   const dispatch = useDispatch();
-  const selectActor = (id) => {
+  const selectActor = () => {
     dispatch(setPage("actor"));
-    dispatch(setActor(id));
+    dispatch(setActor(el.id));
   };
   return (
-    <div onClick={() => selectActor(el.id)}>
+    <div onClick={selectActor}>
       <div className={styles.people_img}>
         <img
           src={getPeopleCard(el.profile_path)}

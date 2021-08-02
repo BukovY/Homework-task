@@ -13,7 +13,7 @@ const FilmCover = ({ el }) => {
     { rating_hide: el.vote_average <= 1 }
   );
   return (
-    <div className={styles.card}>
+    <div>
       <div className={filmCardClass}>
         {ratingToRender && ratingToRender.toFixed(1)}
       </div>
