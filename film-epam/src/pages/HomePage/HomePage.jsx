@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./HomePage.module.sass";
 import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
@@ -10,30 +10,42 @@ import {
 } from "../../redux/actions/appAction";
 import Tabs from "../../components/Tabs/Tabs";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { getFilmsData } from "../../redux/reducers/appReducers";
 
 const HomePage = () => {
-  const { filmData, genresMap, paginationPage, paginationMax, isFetching } =
-    useSelector((state) => state.app);
+  const {
+    filmData,
+    genresMap,
+    paginationPage,
+    paginationMax,
+    homepageNeedUpdate,
+    activeFilter,
+    languageSelected,
+  } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const selectPaginationPage = (num) => {
     dispatch(setPaginationPage(num));
     dispatch(isTooltipOpen(false));
   };
+
+  useEffect(() => {
+    if (homepageNeedUpdate) {
+      const inputs = {
+        activeFilter: activeFilter,
+        languageSelected: languageSelected,
+        paginationPage: paginationPage,
+      };
+      dispatch(getFilmsData(inputs));
+    }
+  }, [homepageNeedUpdate, paginationPage]);
   return (
     <div>
       <Tabs />
-      {!isFetching ? (
+      {!homepageNeedUpdate ? (
         <div>
           <div className={styles.film_card_grid}>
             {filmData.map((el) => (
-              <FilmCard
-                key={el.id}
-                id={el.id}
-                img={el.poster_path}
-                rating={el.vote_average}
-                title={el.title}
-                genres={genresIndexToString(el.genre_ids, genresMap)}
-              />
+              <FilmCard key={el.id} el={el} />
             ))}
           </div>
           <Paginations

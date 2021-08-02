@@ -33,11 +33,7 @@ const search = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getSearchData.pending, (state) => {
-        state.fetchingSearch = true;
-      })
       .addCase(getSearchData.fulfilled, (state, action) => {
-        state.fetchingSearch = false;
         state.searchResults = action.payload.data;
         state.searchMaxPage = action.payload.searchMaxPage;
         state.searchNeedUpdate = false;

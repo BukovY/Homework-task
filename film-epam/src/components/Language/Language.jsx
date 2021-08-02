@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Language.module.sass";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
 import { isTooltipOpen } from "../../redux/actions/appAction";
 import classNames from "classnames";
+import { getGenresMap } from "../../redux/reducers/appReducers";
 
 const Language = () => {
   const { isTooltipLanguageOpen, languageSelected } = useSelector(
@@ -17,6 +18,10 @@ const Language = () => {
     { isTooltipLanguageOpen: styles.language_select_open },
     styles.language_select
   );
+
+  useEffect(() => {
+    dispatch(getGenresMap(languageSelected));
+  }, [languageSelected]);
 
   return (
     <div>

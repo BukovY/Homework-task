@@ -60,7 +60,7 @@ const movie = createSlice({
         state.isCrewOpen = action.payload;
       })
       .addCase(MOVIE_NEED_UPDATE, (state, action) => {
-        state.movieNeedUpdate = true;
+        state.movieNeedUpdate = action.payload;
       });
   },
 });

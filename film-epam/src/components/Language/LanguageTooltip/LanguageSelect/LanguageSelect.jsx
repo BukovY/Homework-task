@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setLanguage,
   isTooltipOpen,
+  isHomepageNeedUpdate,
 } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
-import {isNeedUpdateSearch} from "../../../../redux/actions/searchAction";
-import {isMovieNeedUpdate} from "../../../../redux/actions/movieAction";
+import { isNeedUpdateSearch } from "../../../../redux/actions/searchAction";
+import { isMovieNeedUpdate } from "../../../../redux/actions/movieAction";
+import { isActorNeedUpdate } from "../../../../redux/actions/actorAction";
 
 const LanguageSelect = ({ language }) => {
   const { languageSelected } = useSelector((state) => state.app);
@@ -15,8 +17,10 @@ const LanguageSelect = ({ language }) => {
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     dispatch(isTooltipOpen(false));
-    dispatch(isNeedUpdateSearch(true))
-    dispatch(isMovieNeedUpdate(true))
+    dispatch(isNeedUpdateSearch(true));
+    dispatch(isMovieNeedUpdate(true));
+    dispatch(isActorNeedUpdate(true));
+    dispatch(isHomepageNeedUpdate(true));
   };
   const cx = classNames.bind(styles);
   const languageClass = cx("tooltip", {

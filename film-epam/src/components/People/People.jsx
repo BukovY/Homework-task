@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./People.module.sass";
 import { useDispatch } from "react-redux";
 import { getPeopleCard } from "../../utils/functrions";
-import { setActor } from "../../redux/actions/actorAction";
+import { isActorNeedUpdate, setActor } from "../../redux/actions/actorAction";
 import { setPage } from "../../redux/actions/appAction";
 
 const People = ({ img, title, department, id }) => {
@@ -10,6 +10,7 @@ const People = ({ img, title, department, id }) => {
   const selectActor = (id) => {
     dispatch(setPage("actor"));
     dispatch(setActor(id));
+    dispatch(isActorNeedUpdate(true));
   };
   return (
     <div onClick={() => selectActor(id)}>

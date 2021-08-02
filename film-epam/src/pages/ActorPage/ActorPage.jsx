@@ -1,50 +1,64 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ActorPage.module.sass";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import FilmCard from "../../components/FilmCard/FilmCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { genresIndexToString } from "../../utils/functrions";
+import { getActorInfo } from "../../redux/reducers/actorReducers";
+import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 
 const ActorPage = () => {
-  const { data } = useSelector((state) => state.actor);
-  const { genresMap } = useSelector((state) => state.app);
+  const { data, actorId, actorNeedUpdate, fetchingActor } = useSelector(
+    (state) => state.actor
+  );
+  const { genresMap, languageSelected } = useSelector((state) => state.app);
   const person = data.info;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (actorNeedUpdate) {
+      const inputs = {
+        actorId: actorId,
+        languageSelected: languageSelected,
+      };
+      dispatch(getActorInfo(inputs));
+    }
+  }, [actorNeedUpdate]);
 
   return (
-    <div className={styles.actor_page}>
-      <div className={styles.actor_info}>
-        <div>
-          <PhotoCard path={person.profile_path} />
-        </div>
-        <div>
-          <h1>{person.name}</h1>
-          <MetaBlock title="Birthbay" meta={person.birthday} />
-          <MetaBlock title="Place of birth" meta={person.place_of_birth} />
-          <MetaBlock title="Biography" meta={person.biography} />
-          <h2 className={data.photo.length !== 0 ? "" : styles.hide}>Photos</h2>
+    <div>
+      {!fetchingActor ? (
+        <div className={styles.actor_page}>
+          <div className={styles.actor_info}>
+            <div>
+              <PhotoCard path={person.profile_path} />
+            </div>
+            <div>
+              <h1>{person.name}</h1>
+              <MetaBlock title="Birthbay" meta={person.birthday} />
+              <MetaBlock title="Place of birth" meta={person.place_of_birth} />
+              <MetaBlock title="Biography" meta={person.biography} />
+              <h2 className={data.photo.length !== 0 ? "" : styles.hide}>
+                Photos
+              </h2>
+              <div className={styles.actor_grid}>
+                {data.photo &&
+                  data.photo.map((el) => (
+                    <PhotoCard key={el.file_path} path={el.file_path} />
+                  ))}
+              </div>
+            </div>
+          </div>
+          <h2>Knowh by</h2>
           <div className={styles.actor_grid}>
-            {data.photo &&
-              data.photo.map((el) => (
-                <PhotoCard key={el.file_path} path={el.file_path} />
-              ))}
+            {data.knownBy &&
+              data.knownBy.map((el) => <FilmCard key={el.id} el={el} />)}
           </div>
         </div>
-      </div>
-      <h2>Knowh by</h2>
-      <div className={styles.actor_grid}>
-        {data.knownBy &&
-          data.knownBy.map((el) => (
-            <FilmCard
-              key={el.id}
-              id={el.id}
-              img={el.poster_path}
-              rating={el.vote_average}
-              title={el.title}
-              genres={genresIndexToString(el.genre_ids, genresMap)}
-            />
-          ))}
-      </div>
+      ) : (
+        <LoaderPlaceholder />
+      )}
     </div>
   );
 };
