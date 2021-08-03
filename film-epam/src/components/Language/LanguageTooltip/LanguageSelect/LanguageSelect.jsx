@@ -10,7 +10,7 @@ import { isNeedUpdateSearch } from "../../../../redux/actions/searchAction";
 import { isMovieNeedUpdate } from "../../../../redux/actions/movieAction";
 import { isActorNeedUpdate } from "../../../../redux/actions/actorAction";
 
-const LanguageSelect = ({ language }) => {
+const LanguageSelect = ({ language, display }) => {
   const { languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const selectLanguage = (language) => {
@@ -26,7 +26,7 @@ const LanguageSelect = ({ language }) => {
   });
   return (
     <div className={languageClass} onClick={() => selectLanguage(language)}>
-      {language}
+      {display}
     </div>
   );
 };

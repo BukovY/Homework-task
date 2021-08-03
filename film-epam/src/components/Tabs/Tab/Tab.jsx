@@ -7,8 +7,8 @@ import {
 } from "../../../redux/actions/appAction";
 import classNames from "classnames/bind";
 
-const Tab = ({ label }) => {
-  const { activeFilter } = useSelector((state) => state.app);
+const Tab = ({ label, display }) => {
+  const { activeFilter, languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const changeTab = (label) => {
     dispatch(setFilter(label));
@@ -18,7 +18,11 @@ const Tab = ({ label }) => {
   const tabClass = cx("tab", { active: label === activeFilter });
   return (
     <div className={tabClass} onClick={() => changeTab(label)}>
-      {label}
+      {languageSelected === "EN"
+        ? display[0]
+        : languageSelected === "RU"
+        ? display[1]
+        : display[2]}
     </div>
   );
 };

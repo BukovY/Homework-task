@@ -38,3 +38,7 @@ export const getPaginationRange = (maxPage) =>
     .reduce((prev, next, index) => {
       return [...prev, index + 1];
     }, []);
+
+export const getIndexLanguage = (lang) => {
+  return lang === "EN" ? 0 : lang === "RU" ? 1 : 2;
+};

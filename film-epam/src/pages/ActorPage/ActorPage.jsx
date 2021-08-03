@@ -6,6 +6,8 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import {actorPageTranslation} from "../../static/Translation";
+import {getIndexLanguage} from "../../utils/functrions";
 
 const ActorPage = () => {
   const { data, actorId, actorNeedUpdate, fetchingActor } = useSelector(
@@ -14,6 +16,7 @@ const ActorPage = () => {
   const { languageSelected } = useSelector((state) => state.app);
   const person = data.info;
   const dispatch = useDispatch();
+  const indexLang = getIndexLanguage(languageSelected)
 
   useEffect(() => {
     if (actorNeedUpdate) {
@@ -35,10 +38,10 @@ const ActorPage = () => {
             </div>
             <div>
               <h1>{person.name}</h1>
-              <MetaBlock title="Birthbay" meta={person.birthday} />
-              <MetaBlock title="Place of birth" meta={person.place_of_birth} />
-              <MetaBlock title="Biography" meta={person.biography} />
-              <h2 className={!data.photo.length && styles.hide}>Photos</h2>
+              <MetaBlock title={actorPageTranslation.birthday[indexLang]} meta={person.birthday} />
+              <MetaBlock title={actorPageTranslation.placeOfBirth[indexLang]} meta={person.place_of_birth} />
+              <MetaBlock title={actorPageTranslation.biography[indexLang]} meta={person.biography} />
+              <h2 className={!data.photo.length && styles.hide}>{actorPageTranslation.photos[indexLang]}</h2>
               <div className={styles.actor_grid}>
                 {data.photo &&
                   data.photo.map((el) => (
@@ -47,7 +50,7 @@ const ActorPage = () => {
               </div>
             </div>
           </div>
-          <h2>Knowh by</h2>
+          <h2>{actorPageTranslation.knownBy[indexLang]}</h2>
           <div className={styles.actor_grid}>
             {data.knownBy &&
               data.knownBy.map((el) => <FilmCard key={el.id} el={el} />)}
