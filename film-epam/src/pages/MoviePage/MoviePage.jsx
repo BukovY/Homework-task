@@ -84,7 +84,7 @@ const MoviePage = () => {
                   {crew && crew.map((el) => <People key={el.id} el={el} />)}
                 </div>
               </div>
-              <h2 className={!data.images == [] && styles.hide}>
+              <h2 className={!data?.images?.length && styles.hide}>
                 {moviePageTranslation.images[indexLang]}
               </h2>
               <div className={styles.images_grid}>
@@ -95,7 +95,7 @@ const MoviePage = () => {
               </div>
             </div>
           </div>
-          <h2 className={!data.known && styles.hide}>
+          <h2 className={!data?.known?.length && styles.hide}>
             {moviePageTranslation.recomendations[indexLang]}
           </h2>
           <div className={styles.card_grid}>
