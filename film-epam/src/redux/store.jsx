@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import app from "./reducers/appReducers";
 import movie from "./reducers/movieReducers";
 import actor from "./reducers/actorReducers";
@@ -12,6 +12,13 @@ const rootReducer = combineReducers({
   search,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    : compose;
+
+const enhancer = composeEnhancers(applyMiddleware(thunk));
+
+const store = createStore(rootReducer, enhancer);
 
 export default store;
