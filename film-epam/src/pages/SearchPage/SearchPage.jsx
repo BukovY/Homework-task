@@ -5,7 +5,6 @@ import Paginations from "../../components/Pagination/Paginations";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
-import { isTooltipOpen } from "../../redux/actions/appAction";
 import { getSearchData } from "../../redux/reducers/searchReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 
@@ -16,7 +15,6 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
-    dispatch(isTooltipOpen(false));
   };
   useEffect(() => {
     if (searchNeedUpdate) {

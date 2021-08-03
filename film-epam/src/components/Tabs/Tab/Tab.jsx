@@ -3,7 +3,6 @@ import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setFilter,
-  isTooltipOpen,
   isHomepageNeedUpdate,
 } from "../../../redux/actions/appAction";
 import classNames from "classnames/bind";
@@ -13,7 +12,6 @@ const Tab = ({ label }) => {
   const dispatch = useDispatch();
   const changeTab = (label) => {
     dispatch(setFilter(label));
-    dispatch(isTooltipOpen(false));
     dispatch(isHomepageNeedUpdate(true));
   };
   const cx = classNames.bind(styles);

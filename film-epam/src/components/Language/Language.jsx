@@ -1,34 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Language.module.sass";
 import LanguageTooltip from "./LanguageTooltip/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
-import { isTooltipOpen } from "../../redux/actions/appAction";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 import { getGenresMap } from "../../redux/reducers/appReducers";
+import { useComponentVisible } from "../../utils/customHoocs";
 
 const Language = () => {
-  const { isTooltipLanguageOpen, languageSelected } = useSelector(
-    (state) => state.app
-  );
+  const { languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
-  const toggleTooltip = () => {
-    dispatch(isTooltipOpen(!isTooltipLanguageOpen));
-  };
-  const languageClass = classNames(
-    { isTooltipLanguageOpen: styles.language_select_open },
-    styles.language_select
-  );
 
   useEffect(() => {
     dispatch(getGenresMap(languageSelected));
   }, [languageSelected]);
 
+  const { ref, isComponentVisible, setIsComponentVisible } =
+    useComponentVisible(false);
+  const cx = classNames.bind(styles);
+  const langClass = cx("language_select", { open: isComponentVisible });
+
   return (
-    <div>
-      <div onClick={toggleTooltip} className={languageClass}>
+    <div ref={ref}>
+      <div className={langClass} onClick={() => setIsComponentVisible(true)}>
         {languageSelected}
       </div>
-      {isTooltipLanguageOpen && <LanguageTooltip />}
+      {isComponentVisible && <LanguageTooltip close={setIsComponentVisible} />}
     </div>
   );
 };

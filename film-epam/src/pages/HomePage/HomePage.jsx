@@ -5,7 +5,6 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setPaginationPage,
-  isTooltipOpen,
 } from "../../redux/actions/appAction";
 import Tabs from "../../components/Tabs/Tabs";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
@@ -23,7 +22,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const selectPaginationPage = (num) => {
     dispatch(setPaginationPage(num));
-    dispatch(isTooltipOpen(false));
   };
 
   useEffect(() => {

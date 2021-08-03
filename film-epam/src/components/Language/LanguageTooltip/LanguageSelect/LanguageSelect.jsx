@@ -3,7 +3,6 @@ import styles from "./LanguageSelect.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setLanguage,
-  isTooltipOpen,
   isHomepageNeedUpdate,
 } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
@@ -16,7 +15,6 @@ const LanguageSelect = ({ language }) => {
   const dispatch = useDispatch();
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
-    dispatch(isTooltipOpen(false));
     dispatch(isNeedUpdateSearch(true));
     dispatch(isMovieNeedUpdate(true));
     dispatch(isActorNeedUpdate(true));
