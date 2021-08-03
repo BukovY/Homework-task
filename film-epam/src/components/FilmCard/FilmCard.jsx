@@ -9,7 +9,7 @@ import { setMovie } from "../../redux/actions/movieAction";
 
 const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
-  const { languageSelected, genresMap } = useSelector((state) => state.app);
+  const { genresMap } = useSelector((state) => state.app);
   const openFilm = (id) => {
     dispatch(setMovie(id));
     dispatch(setPage("movie"));

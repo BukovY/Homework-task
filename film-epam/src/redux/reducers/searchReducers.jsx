@@ -1,11 +1,11 @@
-import { SET_SEARCH_PAGE, SEARCH_NEED_UPDATE, API_KEY } from "../constants";
+import { SET_SEARCH_PAGE, API_KEY } from "../constants";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   searchResults: [],
   searchPage: 1,
   searchMaxPage: 1,
-  searchNeedUpdate: false,
+  isFetchingSearch: false,
 };
 
 export const getSearchData = createAsyncThunk(
@@ -33,17 +33,16 @@ const search = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getSearchData.pending, (state, action) => {
+        state.isFetchingSearch = true;
+      })
       .addCase(getSearchData.fulfilled, (state, action) => {
         state.searchResults = action.payload.data;
         state.searchMaxPage = action.payload.searchMaxPage;
-        state.searchNeedUpdate = false;
+        state.isFetchingSearch = false;
       })
       .addCase(SET_SEARCH_PAGE, (state, action) => {
         state.searchPage = action.payload;
-        state.searchNeedUpdate = true;
-      })
-      .addCase(SEARCH_NEED_UPDATE, (state, action) => {
-        state.searchNeedUpdate = action.payload;
       });
   },
 });

@@ -6,27 +6,23 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
-import {actorPageTranslation} from "../../static/Translation";
-import {getIndexLanguage} from "../../utils/functrions";
+import { actorPageTranslation } from "../../static/Translation";
+import { getIndexLanguage } from "../../utils/functrions";
 
 const ActorPage = () => {
-  const { data, actorId, actorNeedUpdate, fetchingActor } = useSelector(
-    (state) => state.actor
-  );
+  const { data, actorId, fetchingActor } = useSelector((state) => state.actor);
   const { languageSelected } = useSelector((state) => state.app);
   const person = data.info;
   const dispatch = useDispatch();
-  const indexLang = getIndexLanguage(languageSelected)
+  const indexLang = getIndexLanguage(languageSelected);
 
   useEffect(() => {
-    if (actorNeedUpdate) {
-      const inputs = {
-        actorId,
-        languageSelected,
-      };
-      dispatch(getActorInfo(inputs));
-    }
-  }, [actorNeedUpdate]);
+    const inputs = {
+      actorId,
+      languageSelected,
+    };
+    dispatch(getActorInfo(inputs));
+  }, [actorId, languageSelected]);
 
   return (
     <div>
@@ -38,10 +34,21 @@ const ActorPage = () => {
             </div>
             <div>
               <h1>{person.name}</h1>
-              <MetaBlock title={actorPageTranslation.birthday[indexLang]} meta={person.birthday} />
-              <MetaBlock title={actorPageTranslation.placeOfBirth[indexLang]} meta={person.place_of_birth} />
-              <MetaBlock title={actorPageTranslation.biography[indexLang]} meta={person.biography} />
-              <h2 className={!data.photo.length && styles.hide}>{actorPageTranslation.photos[indexLang]}</h2>
+              <MetaBlock
+                title={actorPageTranslation.birthday[indexLang]}
+                meta={person.birthday}
+              />
+              <MetaBlock
+                title={actorPageTranslation.placeOfBirth[indexLang]}
+                meta={person.place_of_birth}
+              />
+              <MetaBlock
+                title={actorPageTranslation.biography[indexLang]}
+                meta={person.biography}
+              />
+              <h2 className={!data.photo.length && styles.hide}>
+                {actorPageTranslation.photos[indexLang]}
+              </h2>
               <div className={styles.actor_grid}>
                 {data.photo &&
                   data.photo.map((el) => (

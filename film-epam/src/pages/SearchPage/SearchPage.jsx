@@ -10,25 +10,23 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 
 const SearchPage = () => {
   const { search, languageSelected } = useSelector((state) => state.app);
-  const { searchResults, searchPage, searchMaxPage, searchNeedUpdate } =
+  const { searchResults, searchPage, searchMaxPage, isFetchingSearch } =
     useSelector((state) => state.search);
   const dispatch = useDispatch();
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
   };
   useEffect(() => {
-    if (searchNeedUpdate) {
-      const input = {
-        search,
-        searchPage,
-        languageSelected,
-      };
-      dispatch(getSearchData(input));
-    }
-  }, [searchNeedUpdate]);
+    const input = {
+      search,
+      searchPage,
+      languageSelected,
+    };
+    dispatch(getSearchData(input));
+  }, [searchPage, languageSelected]);
   return (
     <div>
-      {!searchNeedUpdate ? (
+      {!isFetchingSearch ? (
         <div>
           {!searchResults.length && (
             <h1>No results, change your search question</h1>

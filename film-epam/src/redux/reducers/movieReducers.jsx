@@ -58,6 +58,7 @@ const movie = createSlice({
       })
       .addCase(SET_MOVIE, (state, action) => {
         state.selectedMovie = action.payload;
+        state.fetchingFilm = true;
       });
   },
 });

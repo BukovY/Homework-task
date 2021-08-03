@@ -4,10 +4,10 @@ import styles from "./Search.module.sass";
 import { useSelector, useDispatch } from "react-redux";
 import { setPage, setSearchValue } from "../../redux/actions/appAction";
 import {
-  isNeedUpdateSearch,
   setSearchPage,
 } from "../../redux/actions/searchAction";
 import {headerTranslation} from "../../static/Translation";
+import {getSearchData} from "../../redux/reducers/searchReducers";
 
 const Search = () => {
   const { search, languageSelected } = useSelector((state) => state.app);
@@ -15,15 +15,22 @@ const Search = () => {
 
   const goToSearch = (e) => {
     e.preventDefault();
-    console.log(e);
     if (search.length !== 0) {
       dispatch(setSearchPage(1));
-      dispatch(isNeedUpdateSearch(true));
+      const input = {
+        search,
+        searchPage : 1,
+        languageSelected,
+      };
+      dispatch(getSearchData(input));
       dispatch(setPage("search"));
     } else {
       alert("Введите поисковой элемент");
     }
   };
+
+
+
   return (
     <form>
       <input

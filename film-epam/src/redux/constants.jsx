@@ -8,6 +8,4 @@ export const RESET_FILTERS = "RESET_FILTERS";
 export const SET_PAGE = "SET_PAGE";
 export const CREW_OPEN_CHANGE = "CREW_OPEN_CHANGE";
 export const SET_SEARCH_PAGE = "SET_SEARCH_PAGE";
-export const SEARCH_NEED_UPDATE = "SEARCH_NEED_UPDATE";
-export const ACTOR_NEED_UPDATE = "ACTOR_NEED_UPDATE";
-export const SET_MOVIE = 'SET_MOVIE'
+export const SET_MOVIE = "SET_MOVIE";
