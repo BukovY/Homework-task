@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLanguage } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
 import { isNeedUpdateSearch } from "../../../../redux/actions/searchAction";
-import { isMovieNeedUpdate } from "../../../../redux/actions/movieAction";
 import { isActorNeedUpdate } from "../../../../redux/actions/actorAction";
 
 const LanguageSelect = ({ language, display }) => {
@@ -13,7 +12,6 @@ const LanguageSelect = ({ language, display }) => {
   const selectLanguage = (language) => {
     dispatch(setLanguage(language));
     dispatch(isNeedUpdateSearch(true));
-    dispatch(isMovieNeedUpdate(true));
     dispatch(isActorNeedUpdate(true));
   };
   const cx = classNames.bind(styles);

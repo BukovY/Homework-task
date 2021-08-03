@@ -13,7 +13,7 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 import { moviePageTranslation } from "../../static/Translation";
 
 const MoviePage = () => {
-  const { data, isCrewOpen, movieNeedUpdate, selectedMovie, fetchingFilm } =
+  const { data, isCrewOpen,  selectedMovie, fetchingFilm } =
     useSelector((state) => state.movie);
   const { languageSelected } = useSelector((state) => state.app);
   const film = data.info;
@@ -30,14 +30,12 @@ const MoviePage = () => {
   const indexLang = getIndexLanguage(languageSelected);
 
   useEffect(() => {
-    if (movieNeedUpdate) {
       const input = {
         selectedMovie,
         languageSelected,
       };
       dispatch(getFilm(input));
-    }
-  }, [movieNeedUpdate]);
+  }, [selectedMovie, languageSelected]);
   return (
     <div>
       {!fetchingFilm ? (

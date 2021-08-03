@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CREW_OPEN_CHANGE, API_KEY, MOVIE_NEED_UPDATE } from "../constants";
+import { CREW_OPEN_CHANGE, API_KEY, SET_MOVIE } from "../constants";
 
 const initialState = {
   selectedMovie: "",
   isCrewOpen: false,
   fetchingFilm: false,
-  movieNeedUpdate: false,
   data: {
     info: {},
     people: [],
@@ -47,20 +46,18 @@ const movie = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getFilm.pending, (state) => {
+      .addCase(getFilm.pending, (state, action) => {
         state.fetchingFilm = true;
       })
       .addCase(getFilm.fulfilled, (state, action) => {
         state.fetchingFilm = false;
         state.data = action.payload.data;
-        state.selectedMovie = action.payload.index;
-        state.movieNeedUpdate = false;
       })
       .addCase(CREW_OPEN_CHANGE, (state, action) => {
         state.isCrewOpen = action.payload;
       })
-      .addCase(MOVIE_NEED_UPDATE, (state, action) => {
-        state.movieNeedUpdate = action.payload;
+      .addCase(SET_MOVIE, (state, action) => {
+        state.selectedMovie = action.payload;
       });
   },
 });

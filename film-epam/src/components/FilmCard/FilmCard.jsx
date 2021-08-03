@@ -3,19 +3,15 @@ import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { genresIndexToString, getFilmCover } from "../../utils/functrions";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilm } from "../../redux/reducers/movieReducers";
 import { setPage } from "../../redux/actions/appAction";
 import classNames from "classnames/bind";
+import { setMovie } from "../../redux/actions/movieAction";
 
 const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
   const { languageSelected, genresMap } = useSelector((state) => state.app);
   const openFilm = (id) => {
-    const input = {
-      selectedMovie: id,
-      languageSelected: languageSelected,
-    };
-    dispatch(getFilm(input));
+    dispatch(setMovie(id));
     dispatch(setPage("movie"));
   };
   const cx = classNames.bind(styles);
