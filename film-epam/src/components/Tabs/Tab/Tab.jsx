@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setFilter,
-  isHomepageNeedUpdate,
-} from "../../../redux/actions/appAction";
+import { setFilter } from "../../../redux/actions/appAction";
 import classNames from "classnames/bind";
 
 const Tab = ({ label, display }) => {
@@ -12,7 +9,6 @@ const Tab = ({ label, display }) => {
   const dispatch = useDispatch();
   const changeTab = (label) => {
     dispatch(setFilter(label));
-    dispatch(isHomepageNeedUpdate(true));
   };
   const cx = classNames.bind(styles);
   const tabClass = cx("tab", { active: label === activeFilter });

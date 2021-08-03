@@ -7,14 +7,12 @@ import {
   RESET_FILTERS,
   SET_PAGE,
   API_KEY,
-  HOMEPAGE_NEED_UPDATE,
 } from "../constants";
 
 const initialState = {
   page: "main",
   paginationPage: 1,
   paginationMax: 5,
-  homepageNeedUpdate: true,
   search: "",
   languageSelected: "EN",
   languages: ["EN", "RU", "FR"],
@@ -22,6 +20,7 @@ const initialState = {
   activeFilter: "Popular",
   filmData: [],
   genresMap: [],
+  isFetching: false,
 };
 
 export const getGenresMap = createAsyncThunk(
@@ -62,11 +61,18 @@ const app = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(getFilmsData.pending, (state, action) => {
+        state.isFetching = true;
+      })
       .addCase(getFilmsData.fulfilled, (state, action) => {
+        state.isFetching = false;
         state.filmData = action.payload;
-        state.homepageNeedUpdate = false;
+      })
+      .addCase(getGenresMap.pending, (state, action) => {
+        state.isFetching = true;
       })
       .addCase(getGenresMap.fulfilled, (state, action) => {
+        state.isFetching = false;
         state.genresMap = action.payload;
       })
       .addCase(SEARCH_CHANGE, (state, action) => {
@@ -80,20 +86,15 @@ const app = createSlice({
       })
       .addCase(PAGINATION_CHANGE, (state, action) => {
         state.paginationPage = action.payload;
-        state.homepageNeedUpdate = true;
       })
       .addCase(SET_PAGE, (state, action) => {
         state.page = action.payload;
-      })
-      .addCase(HOMEPAGE_NEED_UPDATE, (state, action) => {
-        state.homepageNeedUpdate = action.payload;
       })
       .addCase(RESET_FILTERS, (state, action) => {
         state.paginationPage = 1;
         state.activeFilter = "Popular";
         state.search = "";
         state.page = "main";
-        state.homepageNeedUpdate = true;
       });
   },
 });

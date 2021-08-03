@@ -3,9 +3,7 @@ import styles from "./HomePage.module.sass";
 import Paginations from "../../components/Pagination/Paginations";
 import FilmCard from "../../components/FilmCard/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setPaginationPage,
-} from "../../redux/actions/appAction";
+import { setPaginationPage } from "../../redux/actions/appAction";
 import Tabs from "../../components/Tabs/Tabs";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { getFilmsData } from "../../redux/reducers/appReducers";
@@ -15,9 +13,9 @@ const HomePage = () => {
     filmData,
     paginationPage,
     paginationMax,
-    homepageNeedUpdate,
     activeFilter,
     languageSelected,
+    isFetching,
   } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const selectPaginationPage = (num) => {
@@ -25,19 +23,17 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (homepageNeedUpdate) {
-      const inputs = {
-        activeFilter,
-        languageSelected,
-        paginationPage,
-      };
-      dispatch(getFilmsData(inputs));
-    }
-  }, [homepageNeedUpdate, paginationPage]);
+    const inputs = {
+      activeFilter,
+      languageSelected,
+      paginationPage,
+    };
+    dispatch(getFilmsData(inputs));
+  }, [paginationPage, languageSelected, activeFilter]);
   return (
     <div>
       <Tabs />
-      {!homepageNeedUpdate ? (
+      {!isFetching ? (
         <div>
           <div className={styles.film_card_grid}>
             {filmData.map((el) => (

@@ -1,10 +1,7 @@
 import React from "react";
 import styles from "./LanguageSelect.module.sass";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setLanguage,
-  isHomepageNeedUpdate,
-} from "../../../../redux/actions/appAction";
+import { setLanguage } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
 import { isNeedUpdateSearch } from "../../../../redux/actions/searchAction";
 import { isMovieNeedUpdate } from "../../../../redux/actions/movieAction";
@@ -18,7 +15,6 @@ const LanguageSelect = ({ language, display }) => {
     dispatch(isNeedUpdateSearch(true));
     dispatch(isMovieNeedUpdate(true));
     dispatch(isActorNeedUpdate(true));
-    dispatch(isHomepageNeedUpdate(true));
   };
   const cx = classNames.bind(styles);
   const languageClass = cx("tooltip", {
