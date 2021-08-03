@@ -5,7 +5,7 @@ export function useComponentVisible(initialIsVisible) {
     useState(initialIsVisible);
   const ref = useRef(null);
 
-  const handleHideDropdown = (event: KeyboardEvent) => {
+  const handleHideDropdown = (event) => {
     if (event.key === "Escape") {
       setIsComponentVisible(false);
     }
