@@ -7,7 +7,7 @@ const Tabs = () => {
   const { filter } = useSelector((state) => state.app);
 
   return (
-    <div>
+    <div className={styles.flexToCenter}>
       <div className={styles.tabs}>
         {filter.map((el) => (
           <Tab key={el} label={el} />

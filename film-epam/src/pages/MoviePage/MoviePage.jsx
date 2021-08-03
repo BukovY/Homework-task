@@ -65,7 +65,7 @@ const MoviePage = () => {
                   {crew && crew.map((el) => <People key={el.id} el={el} />)}
                 </div>
               </div>
-              <h2 className={!data.images.length && styles.hide}>Images</h2>
+              <h2 className={!data.images == [] && styles.hide}>Images</h2>
               <div className={styles.images_grid}>
                 {data.images &&
                   data.images.map((el) => (

@@ -14,9 +14,15 @@ const Search = () => {
 
   const goToSearch = (e) => {
     e.preventDefault();
-    dispatch(setSearchPage(1));
-    dispatch(isNeedUpdateSearch(true));
-    dispatch(setPage("search"));
+    console.log(e)
+    if(search.length !== 0){
+        dispatch(setSearchPage(1));
+        dispatch(isNeedUpdateSearch(true));
+        dispatch(setPage("search"));
+    } else{
+        alert('Введите поисковой элемент')
+    }
+
   };
   return (
     <form>
