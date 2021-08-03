@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
 import { getSearchData } from "../../redux/reducers/searchReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { searchTranslation } from "../../static/Translation";
+import { getIndexLanguage } from "../../utils/functrions";
 
 const SearchPage = () => {
   const { search, languageSelected } = useSelector((state) => state.app);
@@ -16,6 +18,7 @@ const SearchPage = () => {
   const changeSearchPaginationPage = (num) => {
     dispatch(setSearchPage(num));
   };
+  const indexLang = getIndexLanguage(languageSelected);
   useEffect(() => {
     const input = {
       search,
@@ -29,7 +32,7 @@ const SearchPage = () => {
       {!isFetchingSearch ? (
         <div>
           {!searchResults.length && (
-            <h1>No results, change your search question</h1>
+            <h1>{searchTranslation.searchWarning[indexLang]}</h1>
           )}
           <div className={styles.card_grid}>
             {searchResults &&

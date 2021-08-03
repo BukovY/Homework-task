@@ -44,4 +44,12 @@ export const langTranslation = [
   ["EN", "АНГЛ", "EN"],
   ["RU", "РУС", "RUS"],
   ["FR", "ФР", "FRA"],
-]
+];
+
+export const searchTranslation = {
+  searchWarning: [
+    "No results, change your search question",
+    "Нет результатов, измените свой поисковый вопрос",
+    "Aucun résultat, modifiez votre question de recherche",
+  ],
+};

@@ -3,11 +3,9 @@ import searchIcon from "../../static/img/search.png";
 import styles from "./Search.module.sass";
 import { useSelector, useDispatch } from "react-redux";
 import { setPage, setSearchValue } from "../../redux/actions/appAction";
-import {
-  setSearchPage,
-} from "../../redux/actions/searchAction";
-import {headerTranslation} from "../../static/Translation";
-import {getSearchData} from "../../redux/reducers/searchReducers";
+import { setSearchPage } from "../../redux/actions/searchAction";
+import { headerTranslation } from "../../static/Translation";
+import { getSearchData } from "../../redux/reducers/searchReducers";
 
 const Search = () => {
   const { search, languageSelected } = useSelector((state) => state.app);
@@ -19,7 +17,7 @@ const Search = () => {
       dispatch(setSearchPage(1));
       const input = {
         search,
-        searchPage : 1,
+        searchPage: 1,
         languageSelected,
       };
       dispatch(getSearchData(input));
@@ -28,8 +26,6 @@ const Search = () => {
       alert("Введите поисковой элемент");
     }
   };
-
-
 
   return (
     <form>
