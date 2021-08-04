@@ -7,15 +7,15 @@ import People from "../../components/People/People";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import { getIndexLanguage, minToTime } from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
-import { crewOpenChange, setMovie } from "../../redux/actions/movieAction";
+import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const MoviePage = () => {
-  const { data, isCrewOpen, selectedMovie, fetchingFilm } = useSelector(
+  const { data, isCrewOpen, fetchingFilm } = useSelector(
     (state) => state.movie
   );
   const { languageSelected } = useSelector((state) => state.app);

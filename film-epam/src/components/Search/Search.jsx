@@ -6,7 +6,7 @@ import { setSearchValue } from "../../redux/actions/appAction";
 import { setSearchPage } from "../../redux/actions/searchAction";
 import { headerTranslation } from "../../static/Translation";
 import { getSearchData } from "../../redux/reducers/searchReducers";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Search = () => {
   const { search, languageSelected } = useSelector((state) => state.app);

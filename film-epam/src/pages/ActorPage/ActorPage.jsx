@@ -8,7 +8,7 @@ import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const ActorPage = () => {

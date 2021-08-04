@@ -3,7 +3,7 @@ import styles from "./People.module.sass";
 import { useDispatch } from "react-redux";
 import { getPeopleCard } from "../../utils/functrions";
 import { setActor } from "../../redux/actions/actorAction";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const People = ({ el }) => {
   const dispatch = useDispatch();
