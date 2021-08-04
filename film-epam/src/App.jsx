@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage.jsx";
 import MoviePage from "./pages/MoviePage/MoviePage.jsx";
 import ActorPage from "./pages/ActorPage/ActorPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import { Route, Switch } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
@@ -16,29 +17,28 @@ const App = () => {
     <div>
       <Header />
 
-      {page === "search" && (
-        <ErrorBoundary>
-          <SearchPage />
-        </ErrorBoundary>
-      )}
-
-      {page === "main" && (
-        <ErrorBoundary>
-          <HomePage />
-        </ErrorBoundary>
-      )}
-
-      {page === "movie" && (
-        <ErrorBoundary>
-          <MoviePage />
-        </ErrorBoundary>
-      )}
-
-      {page === "actor" && (
-        <ErrorBoundary>
-          <ActorPage />
-        </ErrorBoundary>
-      )}
+      <Switch>
+        <Route path="/" exact>
+          <ErrorBoundary>
+            <HomePage />
+          </ErrorBoundary>
+        </Route>
+        <Route path="/movie/:id">
+          <ErrorBoundary>
+            <MoviePage />
+          </ErrorBoundary>
+        </Route>
+        <Route path="/actor/:id">
+          <ErrorBoundary>
+            <ActorPage />
+          </ErrorBoundary>
+        </Route>
+        <Route path="/search">
+          <ErrorBoundary>
+            <SearchPage />
+          </ErrorBoundary>
+        </Route>
+      </Switch>
     </div>
   );
 };

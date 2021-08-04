@@ -5,6 +5,7 @@ import Language from "../Language/Language";
 import Search from "../Search/Search";
 import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/actions/appAction";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const Header = () => {
   };
   return (
     <header className={styles}>
-      <img src={logo} alt="logo" onClick={goHomepage} />
+      <Link to="/">
+        <img src={logo} alt="logo" onClick={goHomepage} />
+      </Link>
       <Search />
       <Language />
     </header>

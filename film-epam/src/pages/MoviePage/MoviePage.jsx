@@ -11,6 +11,7 @@ import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
+import {useParams} from "react-router";
 
 const MoviePage = () => {
   const { data, isCrewOpen,  selectedMovie, fetchingFilm } =
@@ -29,13 +30,15 @@ const MoviePage = () => {
   };
   const indexLang = getIndexLanguage(languageSelected);
 
+  const {id} = useParams()
+
   useEffect(() => {
       const input = {
-        selectedMovie,
+        selectedMovie: id,
         languageSelected,
       };
       dispatch(getFilm(input));
-  }, [selectedMovie, languageSelected]);
+  }, [languageSelected, id]);
   return (
     <div>
       {!fetchingFilm ? (

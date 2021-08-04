@@ -31,7 +31,7 @@ const SearchPage = () => {
     <div>
       {!isFetchingSearch ? (
         <div>
-          {!searchResults.length && (
+          {!searchResults?.length && (
             <h1>{searchTranslation.searchWarning[indexLang]}</h1>
           )}
           <div className={styles.card_grid}>

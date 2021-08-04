@@ -5,12 +5,10 @@ import {
   FILTER_CHANGE,
   PAGINATION_CHANGE,
   RESET_FILTERS,
-  SET_PAGE,
   API_KEY,
 } from "../constants";
 
 const initialState = {
-  page: "main",
   paginationPage: 1,
   paginationMax: 5,
   search: "",
@@ -87,14 +85,10 @@ const app = createSlice({
       .addCase(PAGINATION_CHANGE, (state, action) => {
         state.paginationPage = action.payload;
       })
-      .addCase(SET_PAGE, (state, action) => {
-        state.page = action.payload;
-      })
       .addCase(RESET_FILTERS, (state, action) => {
         state.paginationPage = 1;
         state.activeFilter = "Popular";
         state.search = "";
-        state.page = "main";
       });
   },
 });

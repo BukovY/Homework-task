@@ -3,16 +3,15 @@ import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { genresIndexToString, getFilmCover } from "../../utils/functrions";
 import { useDispatch, useSelector } from "react-redux";
-import { setPage } from "../../redux/actions/appAction";
 import classNames from "classnames/bind";
 import { setMovie } from "../../redux/actions/movieAction";
+import {Link} from "react-router-dom";
 
 const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
   const { genresMap } = useSelector((state) => state.app);
   const openFilm = (id) => {
     dispatch(setMovie(id));
-    dispatch(setPage("movie"));
   };
   const cx = classNames.bind(styles);
   const filmCardClass = cx(
@@ -22,6 +21,7 @@ const FilmCard = ({ el }) => {
     { rating_hide: el.vote_average <= 1 }
   );
   return (
+      <Link to={`/movie/${el.id}`}>
     <div className={styles.card} onClick={() => openFilm(el.id)}>
       <div className={filmCardClass}>
         {el.vote_average && el.vote_average.toFixed(1)}
@@ -42,6 +42,7 @@ const FilmCard = ({ el }) => {
         </div>
       )}
     </div>
+      </Link>
   );
 };
 

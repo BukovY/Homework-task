@@ -8,21 +8,23 @@ import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
+import { useParams } from "react-router";
 
 const ActorPage = () => {
-  const { data, actorId, fetchingActor } = useSelector((state) => state.actor);
+  const { data, fetchingActor } = useSelector((state) => state.actor);
   const { languageSelected } = useSelector((state) => state.app);
   const person = data.info;
   const dispatch = useDispatch();
   const indexLang = getIndexLanguage(languageSelected);
+  const { id } = useParams();
 
   useEffect(() => {
     const inputs = {
-      actorId,
+      actorId: id,
       languageSelected,
     };
     dispatch(getActorInfo(inputs));
-  }, [actorId, languageSelected]);
+  }, [id, languageSelected]);
 
   return (
     <div>
