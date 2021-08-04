@@ -8,7 +8,7 @@ import { getActorInfo } from "../../redux/reducers/actorReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -25,6 +25,11 @@ const ActorPage = () => {
     };
     dispatch(getActorInfo(inputs));
   }, [id, languageSelected]);
+
+  const history = useHistory();
+  if (!person.name && !fetchingActor) {
+    history.push("/noFound");
+  }
 
   return (
     <div>

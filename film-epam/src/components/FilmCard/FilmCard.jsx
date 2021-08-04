@@ -5,13 +5,17 @@ import { genresIndexToString, getFilmCover } from "../../utils/functrions";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
 import { setMovie } from "../../redux/actions/movieAction";
-import {Link} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { setSearchValue } from "../../redux/actions/appAction";
 
 const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
   const { genresMap } = useSelector((state) => state.app);
+  const history = useHistory();
   const openFilm = (id) => {
     dispatch(setMovie(id));
+    dispatch(setSearchValue(""));
+    history.push(`/movie/${el.id}`);
   };
   const cx = classNames.bind(styles);
   const filmCardClass = cx(
@@ -21,7 +25,6 @@ const FilmCard = ({ el }) => {
     { rating_hide: el.vote_average <= 1 }
   );
   return (
-      <Link to={`/movie/${el.id}`}>
     <div className={styles.card} onClick={() => openFilm(el.id)}>
       <div className={filmCardClass}>
         {el.vote_average && el.vote_average.toFixed(1)}
@@ -42,7 +45,6 @@ const FilmCard = ({ el }) => {
         </div>
       )}
     </div>
-      </Link>
   );
 };
 

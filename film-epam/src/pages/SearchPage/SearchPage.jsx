@@ -9,9 +9,10 @@ import { getSearchData } from "../../redux/reducers/searchReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { searchTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
+import { useParams } from "react-router";
 
 const SearchPage = () => {
-  const { search, languageSelected } = useSelector((state) => state.app);
+  const { languageSelected } = useSelector((state) => state.app);
   const { searchResults, searchPage, searchMaxPage, isFetchingSearch } =
     useSelector((state) => state.search);
   const dispatch = useDispatch();
@@ -19,30 +20,37 @@ const SearchPage = () => {
     dispatch(setSearchPage(num));
   };
   const indexLang = getIndexLanguage(languageSelected);
+  const { id } = useParams();
   useEffect(() => {
     const input = {
-      search,
+      search: id,
       searchPage,
       languageSelected,
     };
     dispatch(getSearchData(input));
-  }, [searchPage, languageSelected]);
+  }, [id, searchPage, languageSelected]);
+
+  console.log(searchResults);
   return (
     <div>
       {!isFetchingSearch ? (
         <div>
           {!searchResults?.length && (
-            <h1>{searchTranslation.searchWarning[indexLang]}</h1>
+            <h1 className={styles.h1}>
+              {searchTranslation.searchWarning[indexLang]}
+            </h1>
           )}
           <div className={styles.card_grid}>
             {searchResults &&
               searchResults.map((el) => <FilmCard key={el.id} el={el} />)}
           </div>
-          <Paginations
-            selected={searchPage}
-            max={searchMaxPage}
-            handler={changeSearchPaginationPage}
-          />
+          {searchResults && (
+            <Paginations
+              selected={searchPage}
+              max={searchMaxPage}
+              handler={changeSearchPaginationPage}
+            />
+          )}
         </div>
       ) : (
         <LoaderPlaceholder />

@@ -53,3 +53,19 @@ export const searchTranslation = {
     "Aucun résultat, modifiez votre question de recherche",
   ],
 };
+
+export const notFoundPageTranslation = {
+  h1: [
+    "Unfortunately, there is no such page",
+    "К сожалению такой страницы не существует",
+    "Malheureusement, une telle page n'existe pas",
+  ],
+  headline: [
+    "But we have a lot of interesting things:",
+    "Но у нас есть много интересного:",
+    "Mais nous avons beaucoup de choses intéressantes :",
+  ],
+  popular: ["Popular films", "Популярные фильмы", "Films populaires"],
+  topRated: ["Best Movies", "Лучшие фильмы", "Meilleurs films"],
+  upcoming: ["Fresh films", "Свежие фильмы", "Films frais"],
+};

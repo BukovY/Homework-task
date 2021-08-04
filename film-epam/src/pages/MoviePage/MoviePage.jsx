@@ -11,11 +11,12 @@ import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
-import {useParams} from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const MoviePage = () => {
-  const { data, isCrewOpen,  selectedMovie, fetchingFilm } =
-    useSelector((state) => state.movie);
+  const { data, isCrewOpen, selectedMovie, fetchingFilm } = useSelector(
+    (state) => state.movie
+  );
   const { languageSelected } = useSelector((state) => state.app);
   const film = data.info;
   const crew = data.people
@@ -30,15 +31,20 @@ const MoviePage = () => {
   };
   const indexLang = getIndexLanguage(languageSelected);
 
-  const {id} = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
-      const input = {
-        selectedMovie: id,
-        languageSelected,
-      };
-      dispatch(getFilm(input));
+    const input = {
+      selectedMovie: id,
+      languageSelected,
+    };
+    dispatch(getFilm(input));
   }, [languageSelected, id]);
+
+  const history = useHistory();
+  if (!film.title && !fetchingFilm) {
+    history.push("/noFound");
+  }
   return (
     <div>
       {!fetchingFilm ? (
