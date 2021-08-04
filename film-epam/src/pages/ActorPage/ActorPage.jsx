@@ -9,6 +9,7 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useHistory, useParams } from "react-router";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -26,14 +27,11 @@ const ActorPage = () => {
     dispatch(getActorInfo(inputs));
   }, [id, languageSelected]);
 
-  const history = useHistory();
-  if (!person.name && !fetchingActor) {
-    history.push("/noFound");
-  }
-
   return (
     <div>
-      {!fetchingActor ? (
+      {!person.name && !fetchingActor && <NotFoundPage />}
+      {fetchingActor && <LoaderPlaceholder />}
+      {!fetchingActor && person.name && (
         <div className={styles.actor_page}>
           <div className={styles.actor_info}>
             <div>
@@ -53,7 +51,7 @@ const ActorPage = () => {
                 title={actorPageTranslation.biography[indexLang]}
                 meta={person.biography}
               />
-              <h2 className={!data.photo.length && styles.hide}>
+              <h2 className={!data?.photo?.length && styles.hide}>
                 {actorPageTranslation.photos[indexLang]}
               </h2>
               <div className={styles.actor_grid}>
@@ -70,8 +68,6 @@ const ActorPage = () => {
               data.knownBy.map((el) => <FilmCard key={el.id} el={el} />)}
           </div>
         </div>
-      ) : (
-        <LoaderPlaceholder />
       )}
     </div>
   );

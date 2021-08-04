@@ -7,11 +7,12 @@ import People from "../../components/People/People";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
 import { getIndexLanguage, minToTime } from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
-import { crewOpenChange } from "../../redux/actions/movieAction";
+import { crewOpenChange, setMovie } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
 import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
 import { useHistory, useParams } from "react-router";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const MoviePage = () => {
   const { data, isCrewOpen, selectedMovie, fetchingFilm } = useSelector(
@@ -41,13 +42,11 @@ const MoviePage = () => {
     dispatch(getFilm(input));
   }, [languageSelected, id]);
 
-  const history = useHistory();
-  if (!film.title && !fetchingFilm) {
-    history.push("/noFound");
-  }
   return (
     <div>
-      {!fetchingFilm ? (
+      {!film.title && !fetchingFilm && <NotFoundPage />}
+      {fetchingFilm && <LoaderPlaceholder />}
+      {!fetchingFilm && film.title && (
         <div>
           <div className={styles.film_info}>
             <FilmCover el={film} />
@@ -112,8 +111,6 @@ const MoviePage = () => {
               data.known.map((el) => <FilmCard key={el.id} el={el} />)}
           </div>
         </div>
-      ) : (
-        <LoaderPlaceholder />
       )}
     </div>
   );

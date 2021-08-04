@@ -30,7 +30,6 @@ const SearchPage = () => {
     dispatch(getSearchData(input));
   }, [id, searchPage, languageSelected]);
 
-  console.log(searchResults);
   return (
     <div>
       {!isFetchingSearch ? (

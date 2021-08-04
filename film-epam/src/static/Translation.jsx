@@ -56,9 +56,9 @@ export const searchTranslation = {
 
 export const notFoundPageTranslation = {
   h1: [
-    "Unfortunately, there is no such page",
+    "Unfortunately, there is no page",
     "К сожалению такой страницы не существует",
-    "Malheureusement, une telle page n'existe pas",
+    "Malheureusement, page n'existe pas",
   ],
   headline: [
     "But we have a lot of interesting things:",
