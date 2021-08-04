@@ -4,15 +4,18 @@ import styles from "./FilmCard.module.sass";
 import { genresIndexToString, getFilmCover } from "../../utils/functrions";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { setSearchValue } from "../../redux/actions/appAction";
 
 const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
   const { genresMap } = useSelector((state) => state.app);
   const history = useHistory();
+  const location = useLocation();
   const openFilm = () => {
-    dispatch(setSearchValue(""));
+    if (location.pathname.indexOf("search") !== -1) {
+      dispatch(setSearchValue(""));
+    }
     history.push(`/movie/${el.id}`);
   };
   const cx = classNames.bind(styles);

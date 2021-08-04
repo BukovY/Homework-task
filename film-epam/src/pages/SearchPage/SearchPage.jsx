@@ -10,9 +10,10 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 import { searchTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";
+import {setSearchValue} from "../../redux/actions/appAction";
 
 const SearchPage = () => {
-  const { languageSelected } = useSelector((state) => state.app);
+  const { languageSelected, search } = useSelector((state) => state.app);
   const { searchResults, searchPage, searchMaxPage, isFetchingSearch } =
     useSelector((state) => state.search);
   const dispatch = useDispatch();
@@ -28,7 +29,12 @@ const SearchPage = () => {
       languageSelected,
     };
     dispatch(getSearchData(input));
+    const searchInput = id.split('%20')
+    if(searchInput !== search){
+      dispatch(setSearchValue(searchInput))
+    }
   }, [id, searchPage, languageSelected]);
+
 
   return (
     <div>

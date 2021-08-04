@@ -5,7 +5,11 @@ import FilmCard from "../../components/FilmCard/FilmCard";
 import MetaBlock from "../../components/MetaBlock/MetaBlock";
 import People from "../../components/People/People";
 import PhotoCard from "../../components/PhotoCard/PhotoCard";
-import { getIndexLanguage, minToTime } from "../../utils/functrions";
+import {
+  getIndexLanguage,
+  matchOnlyNumber,
+  minToTime,
+} from "../../utils/functrions";
 import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
@@ -13,6 +17,7 @@ import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlacehol
 import { moviePageTranslation } from "../../static/Translation";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import IncorrectRequest from "../../components/IncorrectRequest/IncorrectRequest";
 
 const MoviePage = () => {
   const { data, isCrewOpen, fetchingFilm } = useSelector(
@@ -33,20 +38,24 @@ const MoviePage = () => {
   const indexLang = getIndexLanguage(languageSelected);
 
   const { id } = useParams();
+  const isRequestCorrect = matchOnlyNumber(id);
 
   useEffect(() => {
-    const input = {
-      selectedMovie: id,
-      languageSelected,
-    };
-    dispatch(getFilm(input));
+    if (isRequestCorrect) {
+      const input = {
+        selectedMovie: id,
+        languageSelected,
+      };
+      dispatch(getFilm(input));
+    }
   }, [languageSelected, id]);
 
   return (
     <div>
-      {!film.title && !fetchingFilm && <NotFoundPage />}
+      {!film.title && !fetchingFilm && isRequestCorrect && <NotFoundPage />}
+      {!isRequestCorrect && <IncorrectRequest path={"*/movie/"} />}
       {fetchingFilm && <LoaderPlaceholder />}
-      {!fetchingFilm && film.title && (
+      {!fetchingFilm && film.title && isRequestCorrect && (
         <div>
           <div className={styles.film_info}>
             <FilmCover el={film} />

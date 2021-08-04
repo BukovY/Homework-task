@@ -42,3 +42,5 @@ export const getPaginationRange = (maxPage) =>
 export const getIndexLanguage = (lang) => {
   return lang === "EN" ? 0 : lang === "RU" ? 1 : 2;
 };
+
+export const matchOnlyNumber = (str) => /^\d+$/.test(str);

@@ -10,6 +10,8 @@ import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import { matchOnlyNumber } from "../../utils/functrions";
+import IncorrectRequest from "../../components/IncorrectRequest/IncorrectRequest";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -18,20 +20,24 @@ const ActorPage = () => {
   const dispatch = useDispatch();
   const indexLang = getIndexLanguage(languageSelected);
   const { id } = useParams();
+  const isRequestCorrect = matchOnlyNumber(id);
 
   useEffect(() => {
-    const inputs = {
-      actorId: id,
-      languageSelected,
-    };
-    dispatch(getActorInfo(inputs));
+    if(isRequestCorrect){
+      const inputs = {
+        actorId: id,
+        languageSelected,
+      };
+      dispatch(getActorInfo(inputs));
+    }
   }, [id, languageSelected]);
 
   return (
     <div>
-      {!person.name && !fetchingActor && <NotFoundPage />}
-      {fetchingActor && <LoaderPlaceholder />}
-      {!fetchingActor && person.name && (
+      {!person.name && !fetchingActor && isRequestCorrect && <NotFoundPage />}
+      {!isRequestCorrect && <IncorrectRequest path={'*/actor/'}/>}
+      {fetchingActor && isRequestCorrect && <LoaderPlaceholder />}
+      {!fetchingActor && person.name && isRequestCorrect && (
         <div className={styles.actor_page}>
           <div className={styles.actor_info}>
             <div>
