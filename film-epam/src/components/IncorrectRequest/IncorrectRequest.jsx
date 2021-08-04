@@ -1,17 +1,27 @@
-import styles from'./IncorrectRequest.module.sass'
+import styles from "./IncorrectRequest.module.sass";
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getIndexLanguage } from "../../utils/functrions";
+import { incorrectRequestTranslation } from "../../static/Translation";
 
-const IncorrectRequest = ({path}) => {
-    return(
-        <div className={styles.center}>
-            <h1>Некорректный запрос</h1>
-            <p>Пожалуйста проверьте корректность введенного запроса в строку браузера.</p>
-            <p>Путь после <span>{path}</span> должен содержать только цифры</p>
-            <p>Либо вернитесь на главную.</p>
-            <Link to={'/'}>На главную</Link>
-        </div>
-    )
-}
+const IncorrectRequest = ({ path }) => {
+  const { languageSelected } = useSelector((state) => state.app);
+  const indLang = getIndexLanguage(languageSelected);
+  return (
+    <div className={styles.center}>
+      <h1>{incorrectRequestTranslation.title[indLang]}</h1>
+      <p>{incorrectRequestTranslation.headline[indLang]}</p>
+      <p>
+        {incorrectRequestTranslation.spanPrefix[indLang]} <span>{path}</span>{" "}
+        {incorrectRequestTranslation.spanPostfix[indLang]}
+      </p>
+      <p>{incorrectRequestTranslation.navDescriptor[indLang]}</p>
+      <Link to={"/"}>
+        {incorrectRequestTranslation.homepageButton[indLang]}
+      </Link>
+    </div>
+  );
+};
 
-export default IncorrectRequest
+export default IncorrectRequest;

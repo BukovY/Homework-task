@@ -69,3 +69,24 @@ export const notFoundPageTranslation = {
   topRated: ["Best Movies", "Лучшие фильмы", "Meilleurs films"],
   upcoming: ["Fresh films", "Свежие фильмы", "Films frais"],
 };
+
+export const incorrectRequestTranslation = {
+  title: ["Invalid request", "Некорректный запрос", "Requête invalide"],
+  headline: [
+    "Please check the correctness of the entered request in the browser line.",
+    "Пожалуйста проверьте корректность введенного запроса в строку браузера.",
+    "Veuillez vérifier l'exactitude de la demande saisie dans la ligne du navigateur.",
+  ],
+  spanPrefix: ["Way after", "Путь после", "Bien après"],
+  spanPostfix: [
+    "should only contain numbers.",
+    "должен содержать только цифры.",
+    "ne doit contenir que des chiffres",
+  ],
+  navDescriptor: [
+    "Or return to the main page.",
+    "Либо вернитесь на главную.",
+    "Ou retournez à la page principale.",
+  ],
+  homepageButton: ["To main", "На главную", "Au principal"],
+};
