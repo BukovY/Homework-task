@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_KEY, SET_ACTOR } from "../constants";
+import { API_KEY } from "../constants";
 
 const initialState = {
-  actorId: "",
   fetchingActor: false,
   actorNeedUpdate: false,
   data: {
@@ -50,11 +49,6 @@ const actor = createSlice({
       .addCase(getActorInfo.fulfilled, (state, action) => {
         state.fetchingActor = false;
         state.data = action.payload.data;
-        state.actorId = action.payload.actorId;
-      })
-      .addCase(SET_ACTOR, (state, action) => {
-        state.actorId = action.payload;
-        state.fetchingActor = true;
       });
   },
 });

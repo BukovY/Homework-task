@@ -1,15 +1,11 @@
 import React from "react";
 import styles from "./People.module.sass";
-import { useDispatch } from "react-redux";
 import { getPeopleCard } from "../../utils/functrions";
-import { setActor } from "../../redux/actions/actorAction";
 import { useHistory } from "react-router-dom";
 
 const People = ({ el }) => {
-  const dispatch = useDispatch();
   const history = useHistory();
   const selectActor = () => {
-    dispatch(setActor(el.id));
     history.push(`/actor/${el.id}`);
   };
   return (
