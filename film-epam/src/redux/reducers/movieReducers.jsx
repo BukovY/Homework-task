@@ -54,7 +54,7 @@ const movie = createSlice({
       })
       .addCase(CREW_OPEN_CHANGE, (state, action) => {
         state.isCrewOpen = action.payload;
-      })
+      });
   },
 });
 

@@ -35,7 +35,7 @@ const ActorPage = () => {
   return (
     <div>
       {!person.name && !fetchingActor && isRequestCorrect && <NotFoundPage />}
-      {!isRequestCorrect && <IncorrectRequest path={'*/actor/'}/>}
+      {!isRequestCorrect && <IncorrectRequest path={"*/actor/"} />}
       {fetchingActor && isRequestCorrect && <LoaderPlaceholder />}
       {!fetchingActor && person.name && isRequestCorrect && (
         <div className={styles.actor_page}>
