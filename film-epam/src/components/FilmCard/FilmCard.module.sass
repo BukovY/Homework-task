@@ -1,0 +1,47 @@
+.card
+  color: white
+  .title
+    font-size: 18px
+  .genres
+    font-size: 14px
+
+.film_cover
+  width: 100%
+  height: auto
+  cursor: pointer
+  position: relative
+  aspect-ratio: 0.68
+  img + img
+    width: 50%
+    border-radius: 5px
+  &:hover .block
+    visibility: visible
+
+
+.block
+  position: absolute
+  left: 25%
+  top: 30%
+  padding: 5px
+  display: block
+  visibility: hidden
+
+.rating
+  position: relative
+  top: 35px
+  left: -5px
+  width: 30px
+  text-align: center
+  border-radius: 5px
+  z-index: 1
+
+.rating_up
+  background-color: green
+
+.rating_down
+  background-color: gray
+
+.rating_hide
+  color: #00ff0000
+  background-color: #00ff0000
+

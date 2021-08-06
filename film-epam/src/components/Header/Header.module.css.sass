@@ -1,0 +1,21 @@
+header
+  display: flex
+  justify-content: space-between
+  align-content: center
+  align-items: center
+  background: #202020
+  padding: 5px 10px
+  & img
+    height: 40px
+    width: auto
+    cursor: pointer
+  form
+    padding: 5px 0
+    padding-left: 58px
+  @media screen and (max-width: 650px)
+    form
+      padding-left: 15px
+
+@media screen and (max-width: 650px)
+  header
+    flex-direction: column

@@ -1,3 +1,3 @@
 # Homework-task
 RD lab epam
-Part 1
+Part 2
