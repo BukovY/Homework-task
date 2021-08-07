@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
 import { getSearchData } from "../../redux/reducers/searchReducers";
-import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoaderPlaceholder";
 import { searchTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";

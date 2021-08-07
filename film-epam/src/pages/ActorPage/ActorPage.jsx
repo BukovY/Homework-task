@@ -5,7 +5,7 @@ import { PhotoCard } from "../../components/PhotoCard";
 import { FilmCard } from "../../components/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getActorInfo } from "../../redux/reducers/actorReducers";
-import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoaderPlaceholder";
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";

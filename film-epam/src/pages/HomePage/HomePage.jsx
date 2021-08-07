@@ -5,7 +5,7 @@ import { FilmCard } from "../../components/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
 import { setPaginationPage } from "../../redux/actions/appAction";
 import { Tabs } from "../../components/Tabs";
-import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoaderPlaceholder";
 import { getFilmsData } from "../../redux/reducers/appReducers";
 
 const HomePage = () => {

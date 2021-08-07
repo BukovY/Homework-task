@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <Pagination/> Component Pagination view correct 1`] = `
+<div
+  className="pagination_box"
+>
+  <div
+    className="pagination"
+    onClick={[Function]}
+  >
+    1
+  </div>
+  <div
+    className="pagination"
+    onClick={[Function]}
+  >
+    2
+  </div>
+  <div
+    className="pagination"
+    onClick={[Function]}
+  >
+    3
+  </div>
+  <div
+    className="pagination"
+    onClick={[Function]}
+  >
+    4
+  </div>
+  <div
+    className="pagination"
+    onClick={[Function]}
+  >
+    5
+  </div>
+</div>
+`;

@@ -13,7 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
-import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoaderPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";

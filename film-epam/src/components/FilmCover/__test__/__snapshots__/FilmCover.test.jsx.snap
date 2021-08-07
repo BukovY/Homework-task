@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <FilmCover/> Component renders correctly 1`] = `
+<div>
+  <div
+    className="rating rating_up"
+  >
+    7.8
+  </div>
+  <div
+    className="film_cover"
+  >
+    <img
+      alt="cover"
+      className="film_cover"
+      src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+    />
+  </div>
+</div>
+`;

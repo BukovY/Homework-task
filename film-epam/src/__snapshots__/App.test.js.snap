@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <App/> Component App view correct 1`] = `
+<div>
+  <header
+    className="Header.module.css.sass"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="logo"
+        onClick={[Function]}
+        src="logo.png"
+      />
+    </a>
+    <form>
+      <input
+        className="search"
+        onChange={[Function]}
+        placeholder="Movies, person, movie, theaters"
+        type="text"
+        value=""
+      />
+      <button
+        onClick={[Function]}
+      >
+        <img
+          alt="search"
+          className="search_icon"
+          src="search.png"
+        />
+      </button>
+    </form>
+    <div>
+      <div
+        className="language_select"
+        onClick={[Function]}
+      >
+        EN
+      </div>
+    </div>
+  </header>
+  <div>
+    <div
+      className="flexToCenter"
+    >
+      <div
+        className="tabs"
+      >
+        <div
+          className="tab active"
+          onClick={[Function]}
+        >
+          Popular
+        </div>
+        <div
+          className="tab"
+          onClick={[Function]}
+        >
+          Top rated
+        </div>
+        <div
+          className="tab"
+          onClick={[Function]}
+        >
+          Upcoming
+        </div>
+      </div>
+      <div
+        className="clearFix"
+      />
+    </div>
+    <div>
+      <div
+        className="film_card_grid"
+      />
+      <div
+        className="pagination_box"
+      >
+        <div
+          className="pagination active"
+          onClick={[Function]}
+        >
+          1
+        </div>
+        <div
+          className="pagination"
+          onClick={[Function]}
+        >
+          2
+        </div>
+        <div
+          className="pagination"
+          onClick={[Function]}
+        >
+          3
+        </div>
+        <div
+          className="pagination"
+          onClick={[Function]}
+        >
+          4
+        </div>
+        <div
+          className="pagination"
+          onClick={[Function]}
+        >
+          5
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
