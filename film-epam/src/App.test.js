@@ -15,24 +15,8 @@ import People from "./components/People/People";
 import FilmCard from "./components/FilmCard/FilmCard";
 import FilmCover from "./components/FilmCover/FilmCover";
 import Tab from "./components/Tabs/Tab/Tab";
+import { wrapper, routerWrapper } from "./utils/functrions";
 
-const wrapper = (component) => {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>{component}</BrowserRouter>
-    </Provider>
-  );
-};
-
-const routerWrapper = (path) => {
-  return (
-    <Provider store={store}>
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    </Provider>
-  );
-};
 describe("Markup testing", () => {
   it("Tab in document ", () => {
     render(wrapper(<App />));

@@ -1,3 +1,9 @@
+import { Provider } from "react-redux";
+import store from "../redux/store";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import React from "react";
+import App from "../App";
+
 export const genresIndexToString = (arr, map) => {
   const genresToRender = [];
   for (let i of map) {
@@ -44,3 +50,21 @@ export const getIndexLanguage = (lang) => {
 };
 
 export const matchOnlyNumber = (str) => /^\d+$/.test(str);
+
+export const wrapper = (component) => {
+  return (
+    <Provider store={store}>
+      <BrowserRouter>{component}</BrowserRouter>
+    </Provider>
+  );
+};
+
+export const routerWrapper = (path) => {
+  return (
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    </Provider>
+  );
+};
