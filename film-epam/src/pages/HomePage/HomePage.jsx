@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import styles from "./HomePage.module.sass";
-import Paginations from "../../components/Pagination/Paginations";
-import FilmCard from "../../components/FilmCard/FilmCard";
+import { Paginations } from "../../components/Pagination";
+import { FilmCard } from "../../components/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
 import { setPaginationPage } from "../../redux/actions/appAction";
-import Tabs from "../../components/Tabs/Tabs";
-import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { Tabs } from "../../components/Tabs";
+import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
 import { getFilmsData } from "../../redux/reducers/appReducers";
 
 const HomePage = () => {

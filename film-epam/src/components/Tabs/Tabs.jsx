@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Tabs.module.sass";
-import Tab from "./Tab/Tab";
+import { Tab } from "./components/Tab";
 import { useSelector } from "react-redux";
 import { tabTranslation } from "../../static/Translation";
 
-const Tabs = () => {
+export const Tabs = () => {
   const { filter } = useSelector((state) => state.app);
 
   return (
@@ -18,5 +18,3 @@ const Tabs = () => {
     </div>
   );
 };
-
-export default Tabs;

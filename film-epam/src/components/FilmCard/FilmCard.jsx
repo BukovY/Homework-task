@@ -7,7 +7,7 @@ import classNames from "classnames/bind";
 import { useHistory, useLocation } from "react-router-dom";
 import { setSearchValue } from "../../redux/actions/appAction";
 
-const FilmCard = ({ el }) => {
+export const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
   const { genresMap } = useSelector((state) => state.app);
   const history = useHistory();
@@ -48,5 +48,3 @@ const FilmCard = ({ el }) => {
     </div>
   );
 };
-
-export default FilmCard;

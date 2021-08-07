@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getIndexLanguage } from "../../utils/functrions";
 import { incorrectRequestTranslation } from "../../static/Translation";
 
-const IncorrectRequest = ({ path }) => {
+export const IncorrectRequest = ({ path }) => {
   const { languageSelected } = useSelector((state) => state.app);
   const indLang = getIndexLanguage(languageSelected);
   return (
@@ -23,5 +23,3 @@ const IncorrectRequest = ({ path }) => {
     </div>
   );
 };
-
-export default IncorrectRequest;

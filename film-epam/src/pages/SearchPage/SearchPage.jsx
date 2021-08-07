@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import styles from "./SearchPage.module.sass";
-import FilmCard from "../../components/FilmCard/FilmCard";
-import Paginations from "../../components/Pagination/Paginations";
+import { FilmCard } from "../../components/FilmCard";
+import { Paginations } from "../../components/Pagination";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
 import { getSearchData } from "../../redux/reducers/searchReducers";
-import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
 import { searchTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";

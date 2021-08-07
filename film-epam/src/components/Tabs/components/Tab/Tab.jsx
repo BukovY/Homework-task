@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./Tab.module.sass";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter } from "../../../redux/actions/appAction";
+import { setFilter } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
-import { getIndexLanguage } from "../../../utils/functrions";
+import { getIndexLanguage } from "../../../../utils/functrions";
 
-const Tab = ({ label, display }) => {
+export const Tab = ({ label, display }) => {
   const { activeFilter, languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const changeTab = (label) => {
@@ -19,4 +19,3 @@ const Tab = ({ label, display }) => {
     </div>
   );
 };
-export default Tab;

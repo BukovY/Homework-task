@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./LanguageTooltip.module.sass";
-import LanguageSelect from "./LanguageSelect/LanguageSelect";
+import { LanguageSelect } from "../LanguageSelect";
 import { useSelector } from "react-redux";
-import { langTranslation } from "../../../static/Translation";
-import { getIndexLanguage } from "../../../utils/functrions";
+import { langTranslation } from "../../../../static/Translation";
+import { getIndexLanguage } from "../../../../utils/functrions";
 
-const LanguageTooltip = ({ close }) => {
+export const LanguageTooltip = ({ close }) => {
   const { languages, languageSelected } = useSelector((state) => state.app);
   const langInd = getIndexLanguage(languageSelected);
 
@@ -23,4 +23,3 @@ const LanguageTooltip = ({ close }) => {
     </div>
   );
 };
-export default LanguageTooltip;

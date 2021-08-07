@@ -4,17 +4,17 @@ import App from "./App";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import PhotoCard from "./components/PhotoCard/PhotoCard";
-import Search from "./components/Search/Search";
-import Paginations from "./components/Pagination/Paginations";
-import MetaBlock from "./components/MetaBlock/MetaBlock";
-import IncorrectRequest from "./components/IncorrectRequest/IncorrectRequest";
-import LanguageSelect from "./components/Language/LanguageTooltip/LanguageSelect/LanguageSelect";
-import Pagination from "./components/Pagination/Item/Pagination";
-import People from "./components/People/People";
-import FilmCard from "./components/FilmCard/FilmCard";
-import FilmCover from "./components/FilmCover/FilmCover";
-import Tab from "./components/Tabs/Tab/Tab";
+import { PhotoCard } from "./components/PhotoCard";
+import { Search } from "./components/Search";
+import { Paginations } from "./components/Pagination";
+import { MetaBlock } from "./components/MetaBlock";
+import { IncorrectRequest } from "./components/IncorrectRequest";
+import { LanguageSelect } from "./components/Language/components/LanguageSelect";
+import { Pagination } from "./components/Pagination/components/Parination";
+import { People } from "./components/People";
+import { FilmCard } from "./components/FilmCard";
+import { FilmCover } from "./components/FilmCover";
+import { Tab } from "./components/Tabs/components/Tab";
 
 const wrapper = (component) => {
   return (

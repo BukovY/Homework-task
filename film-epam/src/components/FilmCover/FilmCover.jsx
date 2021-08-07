@@ -3,7 +3,7 @@ import styles from "./FilmCover.module.sass";
 import { getFilmCover } from "../../utils/functrions";
 import classNames from "classnames/bind";
 
-const FilmCover = ({ el }) => {
+export const FilmCover = ({ el }) => {
   const ratingToRender = el.vote_average;
   const cx = classNames.bind(styles);
   const filmCardClass = cx(
@@ -27,5 +27,3 @@ const FilmCover = ({ el }) => {
     </div>
   );
 };
-
-export default FilmCover;

@@ -1,0 +1,1 @@
+export { FilmCover } from "./FilmCover";

@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import styles from "./ActorPage.module.sass";
-import MetaBlock from "../../components/MetaBlock/MetaBlock";
-import PhotoCard from "../../components/PhotoCard/PhotoCard";
-import FilmCard from "../../components/FilmCard/FilmCard";
+import { MetaBlock } from "../../components/MetaBlock";
+import { PhotoCard } from "../../components/PhotoCard";
+import { FilmCard } from "../../components/FilmCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getActorInfo } from "../../redux/reducers/actorReducers";
-import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
 import { actorPageTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import { matchOnlyNumber } from "../../utils/functrions";
-import IncorrectRequest from "../../components/IncorrectRequest/IncorrectRequest";
+import { IncorrectRequest } from "../../components/IncorrectRequest";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -23,7 +23,7 @@ const ActorPage = () => {
   const isRequestCorrect = matchOnlyNumber(id);
 
   useEffect(() => {
-    if(isRequestCorrect){
+    if (isRequestCorrect) {
       const inputs = {
         actorId: id,
         languageSelected,

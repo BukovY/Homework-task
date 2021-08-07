@@ -1,6 +1,6 @@
 import styles from "./LoaderPlaceholder.module.sass";
 
-const LoaderPlaceholder = () => {
+export const LoaderPlaceholder = () => {
   return (
     <div className={styles.multi_spinner_container}>
       <div className={styles.multi_spinner}>
@@ -17,4 +17,3 @@ const LoaderPlaceholder = () => {
     </div>
   );
 };
-export default LoaderPlaceholder;

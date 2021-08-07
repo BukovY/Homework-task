@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import styles from "./MoviePage.module.sass";
-import FilmCover from "../../components/FilmCover/FilmCover";
-import FilmCard from "../../components/FilmCard/FilmCard";
-import MetaBlock from "../../components/MetaBlock/MetaBlock";
-import People from "../../components/People/People";
-import PhotoCard from "../../components/PhotoCard/PhotoCard";
+import { FilmCover } from "../../components/FilmCover";
+import { FilmCard } from "../../components/FilmCard";
+import { MetaBlock } from "../../components/MetaBlock";
+import { People } from "../../components/People";
+import { PhotoCard } from "../../components/PhotoCard";
 import {
   getIndexLanguage,
   matchOnlyNumber,
@@ -13,11 +13,11 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { crewOpenChange } from "../../redux/actions/movieAction";
 import { getFilm } from "../../redux/reducers/movieReducers";
-import LoaderPlaceholder from "../../components/LoarerPlaceholder/LoaderPlaceholder";
+import { LoaderPlaceholder } from "../../components/LoarerPlaceholder";
 import { moviePageTranslation } from "../../static/Translation";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import IncorrectRequest from "../../components/IncorrectRequest/IncorrectRequest";
+import { IncorrectRequest } from "../../components/IncorrectRequest";
 
 const MoviePage = () => {
   const { data, isCrewOpen, fetchingFilm } = useSelector(

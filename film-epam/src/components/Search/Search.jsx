@@ -8,7 +8,7 @@ import { headerTranslation } from "../../static/Translation";
 import { getSearchData } from "../../redux/reducers/searchReducers";
 import { useHistory } from "react-router-dom";
 
-const Search = () => {
+export const Search = () => {
   const { search, languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -44,5 +44,3 @@ const Search = () => {
     </form>
   );
 };
-
-export default Search;
