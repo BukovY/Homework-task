@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Paginations.module.sass";
-import Pagination from "./Item/Pagination";
+import { Pagination } from "./components/Parination";
 import { getPaginationRange } from "../../utils/functrions";
 
-const Paginations = ({ selected, max, handler }) => {
+export const Paginations = ({ selected, max, handler }) => {
   return (
     <div className={styles.pagination_box}>
       {getPaginationRange(max).map((el) => (
@@ -17,5 +17,3 @@ const Paginations = ({ selected, max, handler }) => {
     </div>
   );
 };
-
-export default Paginations;

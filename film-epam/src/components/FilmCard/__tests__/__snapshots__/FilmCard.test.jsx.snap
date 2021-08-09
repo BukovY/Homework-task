@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <FilmCard/> Component renders correctly 1`] = `
+<div
+  className="card"
+  onClick={[Function]}
+>
+  <div
+    className="rating rating_up"
+  >
+    7.8
+  </div>
+  <div
+    className="film_cover"
+  >
+    <img
+      alt="Title film"
+      className="film_cover"
+      onClick={[Function]}
+      src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+    />
+    <img
+      alt="play"
+      className="block"
+      src="play.svg"
+    />
+  </div>
+  <div
+    className="title"
+  >
+    Title film
+  </div>
+</div>
+`;

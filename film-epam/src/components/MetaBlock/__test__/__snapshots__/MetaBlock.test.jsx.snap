@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <MetaBlock/> Component Metcblock view correct 1`] = `
+<div
+  className=""
+>
+  <p
+    className="meta_title"
+  >
+    title
+    :
+  </p>
+  <p>
+    prefix
+    meta text
+  </p>
+</div>
+`;

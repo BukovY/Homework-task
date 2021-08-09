@@ -1,9 +1,9 @@
 import React from "react";
-import { ErrorBoundary } from "./components/ErrorBoundary/Error Boundary";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./App.css";
-import Header from "./components/Header/Header";
-import HomePage from "./pages/HomePage/HomePage.jsx";
-import MoviePage from "./pages/MoviePage/MoviePage.jsx";
+import { Header } from "./components/Header";
+import HomePage from "./pages/HomePage/HomePage";
+import MoviePage from "./pages/MoviePage/MoviePage";
 import ActorPage from "./pages/ActorPage/ActorPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import { Route, Switch } from "react-router-dom";

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MetaBlock.module.sass";
 import classNames from "classnames/bind";
 
-const MetaBlock = ({ title, meta, prefix }) => {
+export const MetaBlock = ({ title, meta, prefix }) => {
   const cx = classNames.bind(styles);
   const metaBlockClass = cx({
     hide: !meta,
@@ -17,4 +17,3 @@ const MetaBlock = ({ title, meta, prefix }) => {
     </div>
   );
 };
-export default MetaBlock;

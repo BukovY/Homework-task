@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Pagination.module.sass";
 import classNames from "classnames/bind";
 
-const Pagination = ({ num, isSelect, handler }) => {
+export const Pagination = ({ num, isSelect, handler }) => {
   const selectPaginationPage = () => {
     handler(num);
   };
@@ -14,5 +14,3 @@ const Pagination = ({ num, isSelect, handler }) => {
     </div>
   );
 };
-
-export default Pagination;

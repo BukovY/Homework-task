@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <Search/> Component renders correctly 1`] = `
+<form>
+  <input
+    className="search"
+    onChange={[Function]}
+    placeholder="Movies, person, movie, theaters"
+    type="text"
+    value=""
+  />
+  <button
+    onClick={[Function]}
+  >
+    <img
+      alt="search"
+      className="search_icon"
+      src="search.png"
+    />
+  </button>
+</form>
+`;

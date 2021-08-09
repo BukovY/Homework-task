@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <IncorrectRequest/> Component IncorrectRequest view correct 1`] = `
+<div
+  className="center"
+>
+  <h1>
+    Invalid request
+  </h1>
+  <p>
+    Please check the correctness of the entered request in the browser line.
+  </p>
+  <p>
+    Way after
+     
+    <span>
+      path
+    </span>
+     
+    should only contain numbers.
+  </p>
+  <p>
+    Or return to the main page.
+  </p>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    To main
+  </a>
+</div>
+`;

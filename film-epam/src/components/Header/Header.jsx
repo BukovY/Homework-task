@@ -1,13 +1,13 @@
 import React from "react";
 import logo from "../../static/img/logo.png";
 import styles from "./Header.module.css.sass";
-import Language from "../Language/Language";
-import Search from "../Search/Search";
+import { Language } from "../Language";
+import { Search } from "../Search";
 import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/actions/appAction";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+export const Header = () => {
   const dispatch = useDispatch();
   const goHomepage = () => {
     dispatch(resetFilters());
@@ -22,5 +22,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

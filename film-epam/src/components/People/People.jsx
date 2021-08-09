@@ -3,7 +3,7 @@ import styles from "./People.module.sass";
 import { getPeopleCard } from "../../utils/functrions";
 import { useHistory } from "react-router-dom";
 
-const People = ({ el }) => {
+export const People = ({ el }) => {
   const history = useHistory();
   const selectActor = () => {
     history.push(`/actor/${el.id}`);
@@ -22,4 +22,3 @@ const People = ({ el }) => {
     </div>
   );
 };
-export default People;
