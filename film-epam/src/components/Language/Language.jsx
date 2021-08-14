@@ -8,6 +8,7 @@ import { useComponentVisible } from "../../utils/customHoocs";
 import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
 
+// https://material-ui.com/ru/components/menus/ здесь юзай переключатель языка
 export const Language = () => {
   const { languageSelected } = useSelector((state) => state.app);
   const dispatch = useDispatch();

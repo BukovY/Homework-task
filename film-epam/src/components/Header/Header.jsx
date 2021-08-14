@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Header.module.css.sass";
 import { Language } from "../Language";
 import { Search } from "../Search";
 import { useDispatch } from "react-redux";
@@ -12,13 +11,18 @@ import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
-    backgroundColor: '#202020',
+    backgroundColor: "#202020",
   },
   flex: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    padding: "5px 10px",
+    "& form": {
+      padding: "5px 0",
+      paddingLeft: "58px",
+    },
   },
   title: {
     cursor: "pointer",
@@ -36,7 +40,7 @@ export const Header = () => {
     dispatch(resetFilters());
   };
   return (
-    <AppBar position="static"  className={classes.bg}>
+    <AppBar position="static" className={classes.bg}>
       <Container className={classes.flex}>
         <Typography className={classes.title}>
           <Link to={"/"} onClick={goHomepage}>
