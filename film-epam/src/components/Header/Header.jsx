@@ -8,14 +8,17 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
+  bg: {
+    backgroundColor: '#202020',
   },
   flex: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   title: {
     cursor: "pointer",
@@ -33,8 +36,8 @@ export const Header = () => {
     dispatch(resetFilters());
   };
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.flex}>
+    <AppBar position="static"  className={classes.bg}>
+      <Container className={classes.flex}>
         <Typography className={classes.title}>
           <Link to={"/"} onClick={goHomepage}>
             Film App
@@ -42,7 +45,7 @@ export const Header = () => {
         </Typography>
         <Search />
         <Language />
-      </AppBar>
-    </div>
+      </Container>
+    </AppBar>
   );
 };

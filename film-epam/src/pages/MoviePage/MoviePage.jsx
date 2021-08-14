@@ -18,6 +18,10 @@ import { moviePageTranslation } from "../../static/Translation";
 import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import { IncorrectRequest } from "../../components/IncorrectRequest";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 const MoviePage = () => {
   const { data, isCrewOpen, fetchingFilm } = useSelector(
@@ -31,11 +35,23 @@ const MoviePage = () => {
       : data.people.slice(0, 6)
     : false;
   const dispatch = useDispatch();
-  const changeOpenCrew = (status) => {
-    let toDispatch = status;
+  const changeOpenCrew = () => {
+    let toDispatch = isCrewOpen;
     dispatch(crewOpenChange(!toDispatch));
   };
   const indexLang = getIndexLanguage(languageSelected);
+  const texts = {
+    title: moviePageTranslation.title[indexLang],
+    overview: moviePageTranslation.overview[indexLang],
+    releaseDate: moviePageTranslation.releaseDate[indexLang],
+    revenue: moviePageTranslation.revenue[indexLang],
+    duration: moviePageTranslation.duration[indexLang],
+    topBiledCast: moviePageTranslation.topBiledCast[indexLang],
+    images: moviePageTranslation.images[indexLang],
+    recomendations: moviePageTranslation.recomendations[indexLang],
+    close: moviePageTranslation.close[indexLang],
+    showAll: moviePageTranslation.showAll[indexLang],
+  };
 
   const { id } = useParams();
   const isRequestCorrect = matchOnlyNumber(id);
@@ -51,77 +67,80 @@ const MoviePage = () => {
   }, [languageSelected, id]);
 
   return (
-    <div>
+    <Container>
       {!film.title && !fetchingFilm && isRequestCorrect && <NotFoundPage />}
       {!isRequestCorrect && <IncorrectRequest path={"*/movie/"} />}
       {fetchingFilm && <LoaderPlaceholder />}
       {!fetchingFilm && film.title && isRequestCorrect && (
-        <div>
-          <div className={styles.film_info}>
+        <Box>
+          <Box className={styles.film_info}>
             <FilmCover el={film} />
-            <div>
-              <p>{moviePageTranslation.title[indexLang]}</p>
-              <h1>{film.title}</h1>
+            <Box>
+              <Typography variant="body2">{texts.title}</Typography>
+              <Typography variant="h2">{film.title}</Typography>
+              <MetaBlock title={texts.overview} meta={film.overview} />
+              <MetaBlock title={texts.releaseDate} meta={film.release_date} />
+              <MetaBlock title={texts.revenue} meta={film.revenue} prefix="$" />
               <MetaBlock
-                title={moviePageTranslation.overview[indexLang]}
-                meta={film.overview}
-              />
-              <MetaBlock
-                title={moviePageTranslation.releaseDate[indexLang]}
-                meta={film.release_date}
-              />
-              <MetaBlock
-                title={moviePageTranslation.revenue[indexLang]}
-                meta={film.revenue}
-                prefix="$"
-              />
-              <MetaBlock
-                title={moviePageTranslation.duration[indexLang]}
+                title={texts.duration}
                 meta={minToTime(film.runtime)}
               />
               {film.genres &&
                 film.genres.map((el) => (
-                  <div key={el.name} className={styles.genre}>
+                  <Box key={el.name} className={styles.genre}>
                     {el.name}
-                  </div>
+                  </Box>
                 ))}
-              <div>
-                <div className={styles.crew_box_head}>
-                  <h2>{moviePageTranslation.topBiledCast[indexLang]}</h2>
-                  <button
-                    className={isCrewOpen && styles.active}
-                    onClick={() => changeOpenCrew(isCrewOpen)}
-                  >
-                    {isCrewOpen
-                      ? moviePageTranslation.close[indexLang]
-                      : moviePageTranslation.showAll[indexLang]}
-                  </button>
-                </div>
-                <div className={styles.card_grid}>
+              <Box>
+                <Box
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Box>
+                    <Typography variant="h3">{texts.topBiledCast}</Typography>
+                  </Box>
+                  <Box>
+                    <Button
+                      variant="contained"
+                      onClick={changeOpenCrew}
+                      color={isCrewOpen ? "" : "secondary"}
+                    >
+                      {isCrewOpen ? texts.close : texts.showAll}
+                    </Button>
+                  </Box>
+                </Box>
+                <Box className={styles.card_grid}>
                   {crew && crew.map((el) => <People key={el.id} el={el} />)}
-                </div>
-              </div>
-              <h2 className={!data?.images?.length && styles.hide}>
-                {moviePageTranslation.images[indexLang]}
-              </h2>
-              <div className={styles.images_grid}>
+                </Box>
+              </Box>
+              <Typography
+                variant="h3"
+                className={!data?.images?.length && styles.hide}
+              >
+                {texts.images}
+              </Typography>
+              <Box className={styles.images_grid}>
                 {data.images &&
                   data.images.map((el) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
-              </div>
-            </div>
-          </div>
-          <h2 className={!data?.known?.length && styles.hide}>
-            {moviePageTranslation.recomendations[indexLang]}
-          </h2>
-          <div className={styles.card_grid}>
+              </Box>
+            </Box>
+          </Box>
+          <Typography
+            variant="h3"
+            className={!data?.known?.length && styles.hide}
+          >
+            {texts.recomendations}
+          </Typography>
+          <Box className={styles.card_grid}>
             {data.known &&
               data.known.map((el) => <FilmCard key={el.id} el={el} />)}
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
-    </div>
+    </Container>
   );
 };
 export default MoviePage;

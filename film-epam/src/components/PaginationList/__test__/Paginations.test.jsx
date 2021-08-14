@@ -1,16 +1,16 @@
 import React from "react";
 import rerender from "react-test-renderer";
-import { Paginations } from "../Paginations";
+import { Pagination } from "../PaginationList";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Pagination } from "../components/Parination";
 import { wrapperProvider } from "../../../utils/functrions";
 
-describe("Testing <Paginations/> Component", () => {
+describe("Testing <Pagination/> Component", () => {
   it("Pagination view correct", () => {
     const tree = rerender
       .create(
         wrapperProvider(
-          <Paginations
+          <Pagination
             handler={() => {
               return null;
             }}
@@ -26,7 +26,7 @@ describe("Testing <Paginations/> Component", () => {
 describe("Event testing Pagination", () => {
   it("Change pagination", () => {
     const handleClick = jest.fn();
-    render(wrapperProvider(<Paginations handler={handleClick} max={5} />));
+    render(wrapperProvider(<Pagination handler={handleClick} max={5} />));
     fireEvent.click(screen.getByText(/1/i));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });

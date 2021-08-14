@@ -11,9 +11,8 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   return (
-    <div>
+    <>
       <Header />
-
       <Switch>
         <Route path="/" exact>
           <ErrorBoundary>
@@ -39,7 +38,7 @@ const App = () => {
           <NotFoundPage />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };
 

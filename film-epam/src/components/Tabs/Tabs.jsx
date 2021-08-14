@@ -1,20 +1,57 @@
 import React from "react";
-import styles from "./Tabs.module.sass";
-import { Tab } from "./components/Tab";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { tabTranslation } from "../../static/Translation";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { makeStyles } from "@material-ui/core/styles";
+import { getIndexLanguage } from "../../utils/functrions";
+import { setFilter } from "../../redux/actions/appAction";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    marginTop: "10px",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+    "@media screen and (max-width: 680px)": {
+      alignItems: "center",
+    },
+  },
+}));
 export const Tabs = () => {
-  const { filter } = useSelector((state) => state.app);
+  const classes = useStyles();
+  const { languageSelected, activeFilter } = useSelector((state) => state.app);
+  const indLang = getIndexLanguage(languageSelected);
+  const dispatch = useDispatch();
 
+  const changeTab = (label) => {
+    dispatch(setFilter(label));
+  };
   return (
-    <div className={styles.flexToCenter}>
-      <div className={styles.tabs}>
-        {filter.map((el, index) => (
-          <Tab key={el} label={el} display={tabTranslation[index]} />
-        ))}
-      </div>
-      <div className={styles.clearFix}></div>
+    <div className={classes.root}>
+      <ButtonGroup variant="contained">
+        <Button
+          color={activeFilter === "Popular" && "primary"}
+          onClick={() => changeTab("Popular")}
+        >
+          {tabTranslation[0][indLang]}
+        </Button>
+        <Button
+          color={activeFilter === "Top rated" && "primary"}
+          onClick={() => changeTab("Top rated")}
+        >
+          {tabTranslation[1][indLang]}
+        </Button>
+        <Button
+          color={activeFilter === "Upcoming" && "primary"}
+          onClick={() => changeTab("Upcoming")}
+        >
+          {tabTranslation[2][indLang]}
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };

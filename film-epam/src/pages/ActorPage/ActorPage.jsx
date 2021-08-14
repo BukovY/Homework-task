@@ -12,6 +12,9 @@ import { useParams } from "react-router";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import { matchOnlyNumber } from "../../utils/functrions";
 import { IncorrectRequest } from "../../components/IncorrectRequest";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -19,6 +22,13 @@ const ActorPage = () => {
   const person = data.info;
   const dispatch = useDispatch();
   const indexLang = getIndexLanguage(languageSelected);
+  const texts = {
+    birthday: actorPageTranslation.birthday[indexLang],
+    place: actorPageTranslation.placeOfBirth[indexLang],
+    biography: actorPageTranslation.biography[indexLang],
+    photo: actorPageTranslation.photos[indexLang],
+    known: actorPageTranslation.knownBy[indexLang],
+  };
   const { id } = useParams();
   const isRequestCorrect = matchOnlyNumber(id);
 
@@ -33,49 +43,43 @@ const ActorPage = () => {
   }, [id, languageSelected]);
 
   return (
-    <div>
+    <Container>
       {!person.name && !fetchingActor && isRequestCorrect && <NotFoundPage />}
       {!isRequestCorrect && <IncorrectRequest path={"*/actor/"} />}
       {fetchingActor && isRequestCorrect && <LoaderPlaceholder />}
       {!fetchingActor && person.name && isRequestCorrect && (
-        <div className={styles.actor_page}>
-          <div className={styles.actor_info}>
-            <div>
+        <Box className={styles.actor_page}>
+          <Box className={styles.actor_info}>
+            <Box>
               <PhotoCard path={person.profile_path} />
-            </div>
-            <div>
-              <h1>{person.name}</h1>
-              <MetaBlock
-                title={actorPageTranslation.birthday[indexLang]}
-                meta={person.birthday}
-              />
-              <MetaBlock
-                title={actorPageTranslation.placeOfBirth[indexLang]}
-                meta={person.place_of_birth}
-              />
-              <MetaBlock
-                title={actorPageTranslation.biography[indexLang]}
-                meta={person.biography}
-              />
-              <h2 className={!data?.photo?.length && styles.hide}>
-                {actorPageTranslation.photos[indexLang]}
-              </h2>
-              <div className={styles.actor_grid}>
+            </Box>
+            <Box>
+              <Typography variant="h1">{person.name}</Typography>
+              <MetaBlock title={texts.birthday} meta={person.birthday} />
+              <MetaBlock title={texts.place} meta={person.place_of_birth} />
+              <MetaBlock title={texts.biography} meta={person.biography} />
+              <Typography
+                variant="h3"
+                className={!data?.photo?.length && styles.hide}
+              >
+                {texts.photo}
+              </Typography>
+              <Box className={styles.actor_grid}>
                 {data.photo &&
                   data.photo.map((el) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
-              </div>
-            </div>
-          </div>
-          <h2>{actorPageTranslation.knownBy[indexLang]}</h2>
-          <div className={styles.actor_grid}>
+              </Box>
+            </Box>
+          </Box>
+          <Typography variant="h3">{texts.known}</Typography>
+          <Box className={styles.actor_grid}>
             {data.knownBy &&
               data.knownBy.map((el) => <FilmCard key={el.id} el={el} />)}
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
-    </div>
+    </Container>
   );
 };
 

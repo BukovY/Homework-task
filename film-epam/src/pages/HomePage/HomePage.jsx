@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import styles from "./HomePage.module.sass";
-import { Paginations } from "../../components/Pagination";
 import { FilmCard } from "../../components/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
 import { setPaginationPage } from "../../redux/actions/appAction";
 import { Tabs } from "../../components/Tabs";
 import { LoaderPlaceholder } from "../../components/LoaderPlaceholder";
 import { getFilmsData } from "../../redux/reducers/appReducers";
-
+import Container from "@material-ui/core/Container";
+import { PaginationList } from "../../components/PaginationList";
+import Box from "@material-ui/core/Box";
 const HomePage = () => {
   const {
     filmData,
@@ -31,25 +32,25 @@ const HomePage = () => {
     dispatch(getFilmsData(inputs));
   }, [paginationPage, languageSelected, activeFilter]);
   return (
-    <div>
+    <Container>
       <Tabs />
       {!isFetching ? (
-        <div>
-          <div className={styles.film_card_grid}>
+        <Box>
+          <Box className={styles.film_card_grid}>
             {filmData.map((el) => (
               <FilmCard key={el.id} el={el} />
             ))}
-          </div>
-          <Paginations
-            selected={paginationPage}
+          </Box>
+          <PaginationList
             max={paginationMax}
+            selected={paginationPage}
             handler={selectPaginationPage}
           />
-        </div>
+        </Box>
       ) : (
         <LoaderPlaceholder />
       )}
-    </div>
+    </Container>
   );
 };
 

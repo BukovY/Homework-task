@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./SearchPage.module.sass";
 import { FilmCard } from "../../components/FilmCard";
-import { Paginations } from "../../components/Pagination";
+import { PaginationList } from "../../components/PaginationList";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setSearchPage } from "../../redux/actions/searchAction";
@@ -11,6 +11,9 @@ import { searchTranslation } from "../../static/Translation";
 import { getIndexLanguage } from "../../utils/functrions";
 import { useParams } from "react-router";
 import { setSearchValue } from "../../redux/actions/appAction";
+import Container from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 const SearchPage = () => {
   const { languageSelected, search } = useSelector((state) => state.app);
@@ -21,6 +24,9 @@ const SearchPage = () => {
     dispatch(setSearchPage(num));
   };
   const indexLang = getIndexLanguage(languageSelected);
+  const texts = {
+    warning: searchTranslation.searchWarning[indexLang],
+  };
   const { id } = useParams();
   useEffect(() => {
     const input = {
@@ -36,30 +42,28 @@ const SearchPage = () => {
   }, [id, searchPage, languageSelected]);
 
   return (
-    <div>
+    <Container>
       {!isFetchingSearch ? (
-        <div>
+        <Box>
           {!searchResults?.length && (
-            <h1 className={styles.h1}>
-              {searchTranslation.searchWarning[indexLang]}
-            </h1>
+            <Typography variant="h2">{texts.warning}</Typography>
           )}
-          <div className={styles.card_grid}>
+          <Box className={styles.card_grid}>
             {searchResults &&
               searchResults.map((el) => <FilmCard key={el.id} el={el} />)}
-          </div>
+          </Box>
           {searchResults && (
-            <Paginations
+            <PaginationList
               selected={searchPage}
               max={searchMaxPage}
               handler={changeSearchPaginationPage}
             />
           )}
-        </div>
+        </Box>
       ) : (
         <LoaderPlaceholder />
       )}
-    </div>
+    </Container>
   );
 };
 
