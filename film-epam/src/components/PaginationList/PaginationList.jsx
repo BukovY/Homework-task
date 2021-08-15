@@ -8,6 +8,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     margin: "10px 0",
     cursor: "pointer",
+    "& button": {
+      color: "white",
+    },
+    '& .Mui-selected': {
+      backgroundColor: 'rgb(251 251 251 / 22%)'
+    }
   },
 }));
 
