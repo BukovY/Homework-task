@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
     "& button": {
       color: "white",
     },
-    '& .Mui-selected': {
-      backgroundColor: 'rgb(251 251 251 / 22%)'
-    }
+    "& .Mui-selected": {
+      backgroundColor: "rgb(251 251 251 / 22%)",
+    },
   },
 }));
 

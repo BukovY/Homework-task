@@ -58,5 +58,3 @@ export const wrapperProvider = (component) => {
     </Provider>
   );
 };
-
-
