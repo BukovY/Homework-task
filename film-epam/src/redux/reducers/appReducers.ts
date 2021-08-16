@@ -79,7 +79,7 @@ const app = createSlice({
         state.isFetching = false;
         state.genresMap = action.payload;
       })
-      .addCase(SEARCH_CHANGE, (state, action: any) => {
+      .addCase(SEARCH_CHANGE, (state, action:any) => {
         state.search = action.payload;
       })
       .addCase(LANGUAGE_TOOLTIP_CHANGE, (state, action: any) => {

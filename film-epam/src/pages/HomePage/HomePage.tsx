@@ -9,6 +9,9 @@ import { getFilmsData } from "../../redux/reducers/appReducers";
 import Container from "@material-ui/core/Container";
 import { PaginationList } from "../../components/PaginationList";
 import Box from "@material-ui/core/Box";
+import { RootState } from "../../redux/store";
+import { movieDetails } from "../../types/movie";
+
 const HomePage = () => {
   const {
     filmData,
@@ -17,9 +20,9 @@ const HomePage = () => {
     activeFilter,
     languageSelected,
     isFetching,
-  } = useSelector((state) => state.app);
+  } = useSelector((state: RootState) => state.app);
   const dispatch = useDispatch();
-  const selectPaginationPage = (num) => {
+  const selectPaginationPage = (num: number) => {
     dispatch(setPaginationPage(num));
   };
 
@@ -37,7 +40,7 @@ const HomePage = () => {
       {!isFetching ? (
         <Box>
           <Box className={styles.film_card_grid}>
-            {filmData.map((el) => (
+            {filmData.map((el: movieDetails) => (
               <FilmCard key={el.id} el={el} />
             ))}
           </Box>

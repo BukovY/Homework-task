@@ -9,6 +9,6 @@ import {
 
 export const setLanguage = createAction(LANGUAGE_TOOLTIP_CHANGE);
 export const setFilter = createAction(FILTER_CHANGE);
-export const setPaginationPage = createAction(PAGINATION_CHANGE);
-export const setSearchValue = createAction(SEARCH_CHANGE);
+export const setPaginationPage = createAction<number>(PAGINATION_CHANGE);
+export const setSearchValue = createAction<string>(SEARCH_CHANGE);
 export const resetFilters = createAction(RESET_FILTERS);
