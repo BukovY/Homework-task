@@ -34,9 +34,14 @@ export const getGenresMap = createAsyncThunk(
   }
 );
 
+interface InputsType {
+  languageSelected: String;
+  activeFilter: String;
+  paginationPage: number;
+}
 export const getFilmsData = createAsyncThunk(
   "app/getFilmsData",
-  async (inputs) => {
+  async (inputs: InputsType) => {
     let languageIn = inputs.languageSelected;
     let categoryIn = inputs.activeFilter;
     return fetch(
@@ -57,6 +62,7 @@ export const getFilmsData = createAsyncThunk(
 const app = createSlice({
   name: "app",
   initialState,
+  reducers:{},
   extraReducers: (builder) => {
     builder
       .addCase(getFilmsData.pending, (state, action) => {
@@ -73,16 +79,16 @@ const app = createSlice({
         state.isFetching = false;
         state.genresMap = action.payload;
       })
-      .addCase(SEARCH_CHANGE, (state, action) => {
+      .addCase(SEARCH_CHANGE, (state, action: any) => {
         state.search = action.payload;
       })
-      .addCase(LANGUAGE_TOOLTIP_CHANGE, (state, action) => {
+      .addCase(LANGUAGE_TOOLTIP_CHANGE, (state, action: any) => {
         state.languageSelected = action.payload;
       })
-      .addCase(FILTER_CHANGE, (state, action) => {
+      .addCase(FILTER_CHANGE, (state, action: any) => {
         state.activeFilter = action.payload;
       })
-      .addCase(PAGINATION_CHANGE, (state, action) => {
+      .addCase(PAGINATION_CHANGE, (state, action: any) => {
         state.paginationPage = action.payload;
       })
       .addCase(RESET_FILTERS, (state, action) => {
@@ -92,5 +98,4 @@ const app = createSlice({
       });
   },
 });
-
 export default app.reducer;

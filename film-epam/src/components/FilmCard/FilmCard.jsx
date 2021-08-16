@@ -9,7 +9,7 @@ import { setSearchValue } from "../../redux/actions/appAction";
 
 export const FilmCard = ({ el }) => {
   const dispatch = useDispatch();
-  const { genresMap } = useSelector((state) => state.app);
+  const { genresMap } = useSelector((state) => state);
   const history = useHistory();
   const location = useLocation();
   const openFilm = () => {
@@ -42,7 +42,7 @@ export const FilmCard = ({ el }) => {
       {el.title && <div className={styles.title}>{el.title}</div>}
       {el.genre_ids && (
         <div className={styles.genres}>
-          {genresIndexToString(el.genre_ids, genresMap).join(" ")}
+          {genresMap && genresIndexToString(el.genre_ids, genresMap).join(" ")}
         </div>
       )}
     </div>

@@ -5,19 +5,27 @@ const initialState = {
   fetchingActor: false,
   actorNeedUpdate: false,
   data: {
-    info: {},
+    info: Object as Object | undefined,
     photo: [],
     knownBy: [],
   },
 };
-
+interface InputsType {
+  languageSelected: String;
+  actorId: any;
+}
 export const getActorInfo = createAsyncThunk(
   "actor/getActorInfo",
-  async (inputs) => {
+  async (inputs: InputsType) => {
     let languageIn = inputs.languageSelected;
     const index = inputs.actorId;
     const obj = {
-      data: {},
+      data: {
+        info: Object,
+        photo: [],
+        knownBy: [],
+      },
+      actorId: 0,
     };
     await fetch(
       `https://api.themoviedb.org/3/person/${index}?api_key=${API_KEY}&language=${languageIn.toLowerCase()}`
@@ -41,6 +49,7 @@ https://api.themoviedb.org/3/person/${index}/movie_credits?api_key=${API_KEY}&la
 const actor = createSlice({
   name: "actor",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getActorInfo.pending, (state) => {

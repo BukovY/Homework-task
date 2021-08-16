@@ -5,16 +5,21 @@ import actor from "./reducers/actorReducers";
 import search from "./reducers/searchReducers";
 import thunk from "redux-thunk";
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   actor,
   app,
   movie,
   search,
 });
 
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));

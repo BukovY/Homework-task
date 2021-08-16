@@ -15,6 +15,7 @@ import { IncorrectRequest } from "../../components/IncorrectRequest";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { RootState } from "../../redux/store";
 
 const ActorPage = () => {
   const { data, fetchingActor } = useSelector((state) => state.actor);
@@ -34,7 +35,7 @@ const ActorPage = () => {
 
   useEffect(() => {
     if (isRequestCorrect) {
-      const inputs = {
+      const inputs= {
         actorId: id,
         languageSelected,
       };

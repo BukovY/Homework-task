@@ -7,11 +7,18 @@ const initialState = {
   searchMaxPage: 1,
   isFetchingSearch: false,
 };
-
+interface InputsType {
+  search: any;
+  searchPage: Number;
+  languageSelected: String;
+}
 export const getSearchData = createAsyncThunk(
   "search/getSearchData",
-  async (input) => {
-    const obj = {};
+  async (input: InputsType) => {
+    const obj = {
+      data: [],
+      searchMaxPage: Number,
+    };
     await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=${
         input.languageSelected
@@ -31,17 +38,18 @@ export const getSearchData = createAsyncThunk(
 const search = createSlice({
   name: "search",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getSearchData.pending, (state, action) => {
         state.isFetchingSearch = true;
       })
-      .addCase(getSearchData.fulfilled, (state, action) => {
+      .addCase(getSearchData.fulfilled, (state, action: any) => {
         state.searchResults = action.payload.data;
         state.searchMaxPage = action.payload.searchMaxPage;
         state.isFetchingSearch = false;
       })
-      .addCase(SET_SEARCH_PAGE, (state, action) => {
+      .addCase(SET_SEARCH_PAGE, (state, action: any) => {
         state.searchPage = action.payload;
       });
   },
