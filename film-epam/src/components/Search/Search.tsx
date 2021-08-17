@@ -9,6 +9,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
+import { RootState } from "../../redux/store";
+import { getIndexLanguage } from "../../utils/functrions";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -53,11 +55,13 @@ const useStyles = makeStyles((theme) => ({
 
 export const Search = () => {
   const classes = useStyles();
-  const { search, languageSelected } = useSelector((state) => state.app);
+  const { search, languageSelected } = useSelector(
+    (state: RootState) => state.app
+  );
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const goToSearch = (e) => {
+  const goToSearch = (e: any) => {
     e.preventDefault();
     if (search.length !== 0) {
       dispatch(setSearchPage(1));
@@ -72,6 +76,7 @@ export const Search = () => {
       alert("Введите поисковой элемент");
     }
   };
+  const indLang = getIndexLanguage(languageSelected);
 
   return (
     <form>
@@ -82,7 +87,7 @@ export const Search = () => {
         <InputBase
           onChange={(el) => dispatch(setSearchValue(el.target.value))}
           value={search}
-          placeholder={headerTranslation.search[languageSelected]}
+          placeholder={headerTranslation[indLang]}
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
@@ -90,10 +95,9 @@ export const Search = () => {
           inputProps={{ "aria-label": "search" }}
         />
       </Box>
-      <button
-        onClick={(e) => goToSearch(e)}
-        style={{ display: "none" }}
-      ></button>
+      <button onClick={(e) => goToSearch(e)} style={{ display: "none" }}>
+        search
+      </button>
     </form>
   );
 };

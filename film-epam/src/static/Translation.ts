@@ -1,10 +1,9 @@
-export const headerTranslation = {
-  search: {
-    EN: "Movies, person, movie, theaters",
-    RU: "Найдите фильм...",
-    FR: "Trouver un film",
-  },
-};
+export const headerTranslation = [
+  "Movies, person, movie, theaters",
+  "Найдите фильм...",
+  "Trouver un film",
+];
+
 export const tabTranslation = [
   ["Popular", "Популярное", "Populaire"],
   ["Top rated", "Лучшее", "Le meilleur"],

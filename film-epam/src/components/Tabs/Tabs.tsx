@@ -6,6 +6,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import { makeStyles } from "@material-ui/core/styles";
 import { getIndexLanguage } from "../../utils/functrions";
 import { setFilter } from "../../redux/actions/appAction";
+import { RootState } from "../../redux/store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,30 +24,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const Tabs = () => {
   const classes = useStyles();
-  const { languageSelected, activeFilter } = useSelector((state) => state.app);
+  const { languageSelected, activeFilter } = useSelector(
+    (state: RootState) => state.app
+  );
   const indLang = getIndexLanguage(languageSelected);
   const dispatch = useDispatch();
 
-  const changeTab = (label) => {
+  const changeTab = (label: string) => {
     dispatch(setFilter(label));
   };
   return (
     <div className={classes.root}>
       <ButtonGroup variant="contained">
         <Button
-          color={activeFilter === "Popular" && "primary"}
+          color={activeFilter === "Popular" ? "primary" : undefined}
           onClick={() => changeTab("Popular")}
         >
           {tabTranslation[0][indLang]}
         </Button>
         <Button
-          color={activeFilter === "Top rated" && "primary"}
+          color={activeFilter === "Top rated" ? "primary" : undefined}
           onClick={() => changeTab("Top rated")}
         >
           {tabTranslation[1][indLang]}
         </Button>
         <Button
-          color={activeFilter === "Upcoming" && "primary"}
+          color={activeFilter === "Upcoming" ? "primary" : undefined}
           onClick={() => changeTab("Upcoming")}
         >
           {tabTranslation[2][indLang]}

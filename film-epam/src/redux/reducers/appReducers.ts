@@ -23,7 +23,7 @@ const initialState = {
 
 export const getGenresMap = createAsyncThunk(
   "app/getGenresMap",
-  async (languageSelected) => {
+  async (languageSelected:string) => {
     return fetch(
       `https://api.themoviedb.org/3/genre/movie/list?language=${languageSelected}&api_key=${API_KEY}`
     )

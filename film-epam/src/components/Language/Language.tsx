@@ -7,10 +7,11 @@ import { getGenresMap } from "../../redux/reducers/appReducers";
 import { useComponentVisible } from "../../utils/customHoocs";
 import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
+import { RootState } from "../../redux/store";
 
 // https://material-ui.com/ru/components/menus/ здесь юзай переключатель языка
 export const Language = () => {
-  const { languageSelected } = useSelector((state) => state.app);
+  const { languageSelected } = useSelector((state:RootState) => state.app);
   const dispatch = useDispatch();
 
   useEffect(() => {
