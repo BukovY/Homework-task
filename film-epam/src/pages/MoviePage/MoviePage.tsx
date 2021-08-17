@@ -22,13 +22,16 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import { RootState } from "../../redux/store";
+import { movieDetails } from "../../types/movie";
+import { QuizParams } from "../../types/useParams";
 
 const MoviePage = () => {
   const { data, isCrewOpen, fetchingFilm } = useSelector(
-    (state) => state.movie
+    (state: RootState) => state.movie
   );
-  const { languageSelected } = useSelector((state) => state.app);
-  const film = data.info;
+  const { languageSelected } = useSelector((state: RootState) => state.app);
+  const film: any = data.info;
   const crew = data.people
     ? isCrewOpen
       ? data.people
@@ -53,7 +56,7 @@ const MoviePage = () => {
     showAll: moviePageTranslation.showAll[indexLang],
   };
 
-  const { id } = useParams();
+  const { id } = useParams<QuizParams>();
   const isRequestCorrect = matchOnlyNumber(id);
 
   useEffect(() => {
@@ -65,6 +68,10 @@ const MoviePage = () => {
       dispatch(getFilm(input));
     }
   }, [languageSelected, id]);
+
+  const colorButton = isCrewOpen ? undefined : "secondary";
+  const classImages = !data?.images?.length ? undefined : styles.hide;
+  const classRecomendations = !data?.known?.length ? undefined : styles.hide;
 
   return (
     <Container>
@@ -78,15 +85,24 @@ const MoviePage = () => {
             <Box>
               <Typography variant="body2">{texts.title}</Typography>
               <Typography variant="h2">{film.title}</Typography>
-              <MetaBlock title={texts.overview} meta={film.overview} />
-              <MetaBlock title={texts.releaseDate} meta={film.release_date} />
+              <MetaBlock
+                title={texts.overview}
+                meta={film.overview}
+                prefix=""
+              />
+              <MetaBlock
+                title={texts.releaseDate}
+                meta={film.release_date}
+                prefix=""
+              />
               <MetaBlock title={texts.revenue} meta={film.revenue} prefix="$" />
               <MetaBlock
                 title={texts.duration}
                 meta={minToTime(film.runtime)}
+                prefix=""
               />
               {film.genres &&
-                film.genres.map((el) => (
+                film.genres.map((el: { name: string }) => (
                   <Box key={el.name} className={styles.genre}>
                     {el.name}
                   </Box>
@@ -104,39 +120,38 @@ const MoviePage = () => {
                     <Button
                       variant="contained"
                       onClick={changeOpenCrew}
-                      color={isCrewOpen ? "" : "secondary"}
+                      color={colorButton}
                     >
                       {isCrewOpen ? texts.close : texts.showAll}
                     </Button>
                   </Box>
                 </Box>
                 <Box className={styles.card_grid}>
-                  {crew && crew.map((el) => <People key={el.id} el={el} />)}
+                  {crew &&
+                    crew.map((el: { id: number }) => (
+                      <People key={el.id} el={el} />
+                    ))}
                 </Box>
               </Box>
-              <Typography
-                variant="h3"
-                className={!data?.images?.length && styles.hide}
-              >
+              <Typography variant="h3" className={classImages}>
                 {texts.images}
               </Typography>
               <Box className={styles.images_grid}>
                 {data.images &&
-                  data.images.map((el) => (
+                  data.images.map((el: { file_path: string }) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
               </Box>
             </Box>
           </Box>
-          <Typography
-            variant="h3"
-            className={!data?.known?.length && styles.hide}
-          >
+          <Typography variant="h3" className={classRecomendations}>
             {texts.recomendations}
           </Typography>
           <Box className={styles.card_grid}>
             {data.known &&
-              data.known.map((el) => <FilmCard key={el.id} el={el} />)}
+              data.known.map((el: movieDetails) => (
+                <FilmCard key={el.id} el={el} />
+              ))}
           </Box>
         </Box>
       )}

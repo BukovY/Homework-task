@@ -14,20 +14,25 @@ import { setSearchValue } from "../../redux/actions/appAction";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { RootState } from "../../redux/store";
+import { QuizParams } from "../../types/useParams";
+import { movieDetails } from "../../types/movie";
 
 const SearchPage = () => {
-  const { languageSelected, search } = useSelector((state) => state.app);
+  const { languageSelected, search } = useSelector(
+    (state: RootState) => state.app
+  );
   const { searchResults, searchPage, searchMaxPage, isFetchingSearch } =
-    useSelector((state) => state.search);
+    useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
-  const changeSearchPaginationPage = (num) => {
+  const changeSearchPaginationPage = (num: number) => {
     dispatch(setSearchPage(num));
   };
   const indexLang = getIndexLanguage(languageSelected);
   const texts = {
     warning: searchTranslation.searchWarning[indexLang],
   };
-  const { id } = useParams();
+  const { id } = useParams<QuizParams>();
   useEffect(() => {
     const input = {
       search: id,
@@ -35,7 +40,7 @@ const SearchPage = () => {
       languageSelected,
     };
     dispatch(getSearchData(input));
-    const searchInput = id.split("%20");
+    const searchInput = id.split("%20").join('');
     if (searchInput !== search) {
       dispatch(setSearchValue(searchInput));
     }
@@ -50,7 +55,7 @@ const SearchPage = () => {
           )}
           <Box className={styles.card_grid}>
             {searchResults &&
-              searchResults.map((el) => <FilmCard key={el.id} el={el} />)}
+              searchResults.map((el: movieDetails) => <FilmCard key={el.id} el={el} />)}
           </Box>
           {searchResults && (
             <PaginationList
