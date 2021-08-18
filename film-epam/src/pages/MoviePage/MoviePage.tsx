@@ -128,7 +128,7 @@ const MoviePage = () => {
                 </Box>
                 <Box className={styles.card_grid}>
                   {crew &&
-                    crew.map((el: { id: number }) => (
+                    crew.map((el: any) => (
                       <People key={el.id} el={el} />
                     ))}
                 </Box>
@@ -138,7 +138,7 @@ const MoviePage = () => {
               </Typography>
               <Box className={styles.images_grid}>
                 {data.images &&
-                  data.images.map((el: { file_path: string }) => (
+                  data.images.map((el:any) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
               </Box>
