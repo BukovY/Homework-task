@@ -17,17 +17,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PaginationList = ({ selected, max, handler }) => {
+export const PaginationList = (props: {
+  selected: number;
+  max: number;
+  handler: any;
+}) => {
   const classes = useStyles();
   return (
     <Pagination
       className={classes.root}
       variant="outlined"
-      boundaryCount={max}
-      count={max}
-      defaultPage={selected}
+      boundaryCount={props.max}
+      count={props.max}
+      defaultPage={props.selected}
       onChange={(e, value) => {
-        handler(value);
+        props.handler(value);
       }}
     />
   );

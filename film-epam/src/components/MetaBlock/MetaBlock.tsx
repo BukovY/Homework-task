@@ -3,17 +3,21 @@ import styles from "./MetaBlock.module.sass";
 import classNames from "classnames/bind";
 import Typography from "@material-ui/core/Typography";
 
-export const MetaBlock = ({title, meta, prefix }) => {
+export const MetaBlock = (props: {
+  title: string;
+  meta: string;
+  prefix: string;
+}) => {
   const cx = classNames.bind(styles);
   const metaBlockClass = cx("padding", {
-    hide: !meta,
+    hide: !props.meta,
   });
   return (
     <div className={metaBlockClass}>
-      <Typography variant="body2">{title}:</Typography>
+      <Typography variant="body2">{props.title}:</Typography>
       <Typography variant="body1">
-        {prefix}
-        {meta}
+        {props.prefix}
+        {props.meta}
       </Typography>
     </div>
   );

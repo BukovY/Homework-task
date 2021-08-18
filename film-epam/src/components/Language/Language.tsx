@@ -9,9 +9,8 @@ import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
 import { RootState } from "../../redux/store";
 
-// https://material-ui.com/ru/components/menus/ здесь юзай переключатель языка
 export const Language = () => {
-  const { languageSelected } = useSelector((state:RootState) => state.app);
+  const { languageSelected } = useSelector((state: RootState) => state.app);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,19 +23,21 @@ export const Language = () => {
   const langClass = cx("language_select", { open: isComponentVisible });
   const langInd = getIndexLanguage(languageSelected);
 
+  const visibleHandler = (flag: boolean) => {
+    setIsComponentVisible(flag);
+  };
+
   return (
     <div ref={ref}>
       <div
         className={langClass}
         onClick={() =>
-          isComponentVisible
-            ? setIsComponentVisible(false)
-            : setIsComponentVisible(true)
+          isComponentVisible ? visibleHandler(false) : visibleHandler(true)
         }
       >
         {langTranslation[langInd][langInd]}
       </div>
-      {isComponentVisible && <LanguageTooltip close={setIsComponentVisible} />}
+      {isComponentVisible && <LanguageTooltip close={visibleHandler} />}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { incorrectRequestTranslation } from "../../static/Translation";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { RootState } from "../../redux/store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const IncorrectRequest = ({ path }) => {
-  const { languageSelected } = useSelector((state) => state.app);
+export const IncorrectRequest = (props: { path: string }) => {
+  const { languageSelected } = useSelector((state: RootState) => state.app);
   const indLang = getIndexLanguage(languageSelected);
   const texts = {
     title: incorrectRequestTranslation.title[indLang],
@@ -37,7 +38,7 @@ export const IncorrectRequest = ({ path }) => {
       <Typography variant="h1">{texts.title}</Typography>
       <Typography variant="body1">{texts.headline}</Typography>
       <Typography variant="body1">
-        {texts.spanPrefix} <span style={{ color: "red" }}>{path}</span>{" "}
+        {texts.spanPrefix} <span style={{ color: "red" }}>{props.path}</span>{" "}
         {texts.spanPostfix}
       </Typography>
       <Typography variant="body1">{texts.navDescriptor}</Typography>

@@ -8,4 +8,6 @@ export interface movieDetails {
     title: string;
     id: number;
     vote_average: number;
+    poster_path: string;
+    genre_ids: [];
 }
