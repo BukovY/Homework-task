@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./ActorPage.module.sass";
 import { MetaBlock } from "../../components/MetaBlock";
 import { PhotoCard } from "../../components/PhotoCard";
@@ -16,13 +16,15 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
-import {QuizParams} from "../../types/useParams";
-import {movieDetails} from "../../types/movie";
+import { QuizParams } from "../../types/useParams";
+import { MovieDetailsInterface } from "../../types/movie";
 
-const ActorPage = () => {
-  const { data, fetchingActor } = useSelector((state:RootState) => state.actor);
-  const { languageSelected } = useSelector((state:RootState) => state.app);
-  const person:any = data.info;
+const ActorPage: FC = () => {
+  const { data, fetchingActor } = useSelector(
+    (state: RootState) => state.actor
+  );
+  const { languageSelected } = useSelector((state: RootState) => state.app);
+  const person: any = data.info;
   const dispatch = useDispatch();
   const indexLang = getIndexLanguage(languageSelected);
   const texts = {
@@ -37,7 +39,7 @@ const ActorPage = () => {
 
   useEffect(() => {
     if (isRequestCorrect) {
-      const inputs= {
+      const inputs = {
         actorId: id,
         languageSelected,
       };
@@ -45,8 +47,7 @@ const ActorPage = () => {
     }
   }, [id, languageSelected]);
 
-
-  const photoClass = !data?.photo?.length ? undefined : styles.hide
+  const photoClass = !data?.photo?.length ? undefined : styles.hide;
   return (
     <Container>
       {!person.name && !fetchingActor && isRequestCorrect && <NotFoundPage />}
@@ -60,18 +61,27 @@ const ActorPage = () => {
             </Box>
             <Box>
               <Typography variant="h1">{person.name}</Typography>
-              <MetaBlock title={texts.birthday} meta={person.birthday} prefix=''/>
-              <MetaBlock title={texts.place} meta={person.place_of_birth} prefix=''/>
-              <MetaBlock title={texts.biography} meta={person.biography} prefix=''/>
-              <Typography
-                variant="h3"
-                className={photoClass}
-              >
+              <MetaBlock
+                title={texts.birthday}
+                meta={person.birthday}
+                prefix=""
+              />
+              <MetaBlock
+                title={texts.place}
+                meta={person.place_of_birth}
+                prefix=""
+              />
+              <MetaBlock
+                title={texts.biography}
+                meta={person.biography}
+                prefix=""
+              />
+              <Typography variant="h3" className={photoClass}>
                 {texts.photo}
               </Typography>
               <Box className={styles.actor_grid}>
                 {data.photo &&
-                  data.photo.map((el:{file_path: string}) => (
+                  data.photo.map((el: { file_path: string }) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
               </Box>
@@ -80,7 +90,9 @@ const ActorPage = () => {
           <Typography variant="h3">{texts.known}</Typography>
           <Box className={styles.actor_grid}>
             {data.knownBy &&
-              data.knownBy.map((el: movieDetails) => <FilmCard key={el.id} el={el} />)}
+              data.knownBy.map((el: MovieDetailsInterface) => (
+                <FilmCard key={el.id} el={el} />
+              ))}
           </Box>
         </Box>
       )}

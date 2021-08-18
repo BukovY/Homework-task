@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./MoviePage.module.sass";
 import { FilmCover } from "../../components/FilmCover";
 import { FilmCard } from "../../components/FilmCard";
@@ -23,10 +23,10 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
-import { movieDetails } from "../../types/movie";
+import { MovieDetailsInterface } from "../../types/movie";
 import { QuizParams } from "../../types/useParams";
 
-const MoviePage = () => {
+const MoviePage: FC = () => {
   const { data, isCrewOpen, fetchingFilm } = useSelector(
     (state: RootState) => state.movie
   );
@@ -128,9 +128,7 @@ const MoviePage = () => {
                 </Box>
                 <Box className={styles.card_grid}>
                   {crew &&
-                    crew.map((el: any) => (
-                      <People key={el.id} el={el} />
-                    ))}
+                    crew.map((el: any) => <People key={el.id} el={el} />)}
                 </Box>
               </Box>
               <Typography variant="h3" className={classImages}>
@@ -138,7 +136,7 @@ const MoviePage = () => {
               </Typography>
               <Box className={styles.images_grid}>
                 {data.images &&
-                  data.images.map((el:any) => (
+                  data.images.map((el: any) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
                   ))}
               </Box>
@@ -149,7 +147,7 @@ const MoviePage = () => {
           </Typography>
           <Box className={styles.card_grid}>
             {data.known &&
-              data.known.map((el: movieDetails) => (
+              data.known.map((el: MovieDetailsInterface) => (
                 <FilmCard key={el.id} el={el} />
               ))}
           </Box>

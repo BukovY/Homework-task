@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./HomePage.module.sass";
 import { FilmCard } from "../../components/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,9 +10,9 @@ import Container from "@material-ui/core/Container";
 import { PaginationList } from "../../components/PaginationList";
 import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
-import { movieDetails } from "../../types/movie";
+import { MovieDetailsInterface } from "../../types/movie";
 
-const HomePage = () => {
+const HomePage: FC = () => {
   const {
     filmData,
     paginationPage,
@@ -40,7 +40,7 @@ const HomePage = () => {
       {!isFetching ? (
         <Box>
           <Box className={styles.film_card_grid}>
-            {filmData.map((el: movieDetails) => (
+            {filmData.map((el: MovieDetailsInterface) => (
               <FilmCard key={el.id} el={el} />
             ))}
           </Box>

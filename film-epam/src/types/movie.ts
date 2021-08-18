@@ -1,4 +1,4 @@
-export interface movieDetails {
+export interface MovieDetailsInterface {
     backdrop_path: string;
     revenue: number;
     overview: string;

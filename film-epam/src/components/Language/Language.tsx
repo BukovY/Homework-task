@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./Language.module.sass";
 import { LanguageTooltip } from "./components/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
 import { RootState } from "../../redux/store";
 
-export const Language = () => {
+export const Language: FC = () => {
   const { languageSelected } = useSelector((state: RootState) => state.app);
   const dispatch = useDispatch();
 
@@ -23,21 +23,19 @@ export const Language = () => {
   const langClass = cx("language_select", { open: isComponentVisible });
   const langInd = getIndexLanguage(languageSelected);
 
-  const visibleHandler = (flag: boolean) => {
-    setIsComponentVisible(flag);
-  };
-
   return (
     <div ref={ref}>
       <div
         className={langClass}
         onClick={() =>
-          isComponentVisible ? visibleHandler(false) : visibleHandler(true)
+          isComponentVisible
+            ? setIsComponentVisible(false)
+            : setIsComponentVisible(true)
         }
       >
         {langTranslation[langInd][langInd]}
       </div>
-      {isComponentVisible && <LanguageTooltip close={visibleHandler} />}
+      {isComponentVisible && <LanguageTooltip close={setIsComponentVisible} />}
     </div>
   );
 };

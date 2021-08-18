@@ -7,9 +7,9 @@ import ActorPage from "./pages/ActorPage/ActorPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import { Route, Switch } from "react-router";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import React from "react";
+import React, { FC } from "react";
 
-const App: React.FunctionComponent = () => {
+const App: FC = () => {
   return (
     <>
       <Header />

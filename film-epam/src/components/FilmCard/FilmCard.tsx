@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import play from "../../static/img/play.svg";
 import styles from "./FilmCard.module.sass";
 import { genresIndexToString, getFilmCover } from "../../utils/functrions";
@@ -6,10 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
 import { useHistory, useLocation } from "react-router-dom";
 import { setSearchValue } from "../../redux/actions/appAction";
-import { movieDetails } from "../../types/movie";
 import { RootState } from "../../redux/store";
+import { MovieDetailsInterface } from "../../types/movie";
 
-export const FilmCard = (props: { el: movieDetails }) => {
+type MovieDetailsPropsType = {
+  el: MovieDetailsInterface;
+};
+
+export const FilmCard: FC<MovieDetailsPropsType> = ({ el }) => {
   const dispatch = useDispatch();
   const { genresMap } = useSelector((state: RootState) => state.app);
   const history = useHistory();
@@ -23,29 +27,28 @@ export const FilmCard = (props: { el: movieDetails }) => {
   const cx = classNames.bind(styles);
   const filmCardClass = cx(
     "rating",
-    { rating_up: props.el.vote_average >= 7 },
-    { rating_down: props.el.vote_average > 1 && props.el.vote_average < 7 },
-    { rating_hide: props.el.vote_average <= 1 }
+    { rating_up: el.vote_average >= 7 },
+    { rating_down: el.vote_average > 1 && el.vote_average < 7 },
+    { rating_hide: el.vote_average <= 1 }
   );
   return (
-    <div className={styles.card} onClick={() => openFilm(props.el.id)}>
+    <div className={styles.card} onClick={() => openFilm(el.id)}>
       <div className={filmCardClass}>
-        {props.el.vote_average && props.el.vote_average.toFixed(1)}
+        {el.vote_average && el.vote_average.toFixed(1)}
       </div>
       <div className={styles.film_cover}>
         <img
-          src={getFilmCover(props.el.poster_path)}
+          src={getFilmCover(el.poster_path)}
           className={styles.film_cover}
-          alt={props.el.title}
-          onClick={() => openFilm(props.el.id)}
+          alt={el.title}
+          onClick={() => openFilm(el.id)}
         />
         <img src={play} className={styles.block} alt="play" />
       </div>
-      {props.el.title && <div className={styles.title}>{props.el.title}</div>}
-      {props.el.genre_ids && (
+      {el.title && <div className={styles.title}>{el.title}</div>}
+      {el.genre_ids && (
         <div className={styles.genres}>
-          {genresMap &&
-            genresIndexToString(props.el.genre_ids, genresMap).join(" ")}
+          {genresMap && genresIndexToString(el.genre_ids, genresMap).join(" ")}
         </div>
       )}
     </div>

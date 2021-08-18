@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Language } from "../Language";
 import { Search } from "../Search";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   bg: {
     backgroundColor: "#202020",
   },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header = () => {
+export const Header: FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const goHomepage = () => {

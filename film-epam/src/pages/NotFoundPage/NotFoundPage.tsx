@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { setFilter } from "../../redux/actions/appAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,15 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import {RootState} from "../../redux/store";
+import { RootState } from "../../redux/store";
 
-const NotFoundPage = () => {
+const NotFoundPage: FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { filter, languageSelected } = useSelector((state: RootState) => state.app);
-  const goTo = (label:string) => {
+  const { filter, languageSelected } = useSelector(
+    (state: RootState) => state.app
+  );
+  const goTo = (label: string) => {
     dispatch(setFilter(label));
     history.push("/");
   };

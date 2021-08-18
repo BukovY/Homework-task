@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/actions/appAction";
 import { setSearchPage } from "../../redux/actions/searchAction";
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Search = () => {
+export const Search: FC = () => {
   const classes = useStyles();
   const { search, languageSelected } = useSelector(
     (state: RootState) => state.app

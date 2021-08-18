@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getIndexLanguage } from "../../utils/functrions";
@@ -16,7 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const IncorrectRequest = (props: { path: string }) => {
+type RequestType = {
+  path: string;
+};
+
+export const IncorrectRequest: FC<RequestType> = ({ path }) => {
   const { languageSelected } = useSelector((state: RootState) => state.app);
   const indLang = getIndexLanguage(languageSelected);
   const texts = {
@@ -38,7 +42,10 @@ export const IncorrectRequest = (props: { path: string }) => {
       <Typography variant="h1">{texts.title}</Typography>
       <Typography variant="body1">{texts.headline}</Typography>
       <Typography variant="body1">
-        {texts.spanPrefix} <span style={{ color: "red" }}>{props.path}</span>{" "}
+        {texts.spanPrefix}
+        <Typography display="inline" color="error">
+          {` ${path} `}
+        </Typography>
         {texts.spanPostfix}
       </Typography>
       <Typography variant="body1">{texts.navDescriptor}</Typography>

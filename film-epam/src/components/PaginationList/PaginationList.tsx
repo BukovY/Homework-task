@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
 
@@ -17,21 +17,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const PaginationList = (props: {
+type PaginationListProps = {
   selected: number;
   max: number;
-  handler: any;
+  handler: (value:number) => void;
+};
+export const PaginationList: FC<PaginationListProps> = ({
+  selected,
+  max,
+  handler,
 }) => {
   const classes = useStyles();
   return (
     <Pagination
       className={classes.root}
       variant="outlined"
-      boundaryCount={props.max}
-      count={props.max}
-      defaultPage={props.selected}
+      boundaryCount={max}
+      count={max}
+      defaultPage={selected}
       onChange={(e, value) => {
-        props.handler(value);
+        handler(value);
       }}
     />
   );

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import styles from "./SearchPage.module.sass";
 import { FilmCard } from "../../components/FilmCard";
 import { PaginationList } from "../../components/PaginationList";
@@ -16,9 +16,9 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
 import { QuizParams } from "../../types/useParams";
-import { movieDetails } from "../../types/movie";
+import { MovieDetailsInterface } from "../../types/movie";
 
-const SearchPage = () => {
+const SearchPage: FC = () => {
   const { languageSelected, search } = useSelector(
     (state: RootState) => state.app
   );
@@ -40,7 +40,7 @@ const SearchPage = () => {
       languageSelected,
     };
     dispatch(getSearchData(input));
-    const searchInput = id.split("%20").join('');
+    const searchInput = id.split("%20").join("");
     if (searchInput !== search) {
       dispatch(setSearchValue(searchInput));
     }
@@ -55,7 +55,9 @@ const SearchPage = () => {
           )}
           <Box className={styles.card_grid}>
             {searchResults &&
-              searchResults.map((el: movieDetails) => <FilmCard key={el.id} el={el} />)}
+              searchResults.map((el: MovieDetailsInterface) => (
+                <FilmCard key={el.id} el={el} />
+              ))}
           </Box>
           {searchResults && (
             <PaginationList

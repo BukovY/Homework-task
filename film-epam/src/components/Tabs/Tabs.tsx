@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tabTranslation } from "../../static/Translation";
 import Button from "@material-ui/core/Button";
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-export const Tabs = () => {
+export const Tabs: FC = () => {
   const classes = useStyles();
   const { languageSelected, activeFilter } = useSelector(
     (state: RootState) => state.app
