@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import styles from "./MoviePage.module.sass";
 import { FilmCover } from "../../components/FilmCover";
 import { FilmCard } from "../../components/FilmCard";
 import { MetaBlock } from "../../components/MetaBlock";
@@ -25,8 +24,54 @@ import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
 import { MovieDetailsInterface } from "../../types/movie";
 import { QuizParams } from "../../types/useParams";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  hide: {
+    display: "none",
+  },
+  genre: {
+    backgroundColor: "#66bf3c",
+    borderRadius: "5px",
+    display: "inline",
+    marginRight: "5px",
+    padding: "0 10px",
+  },
+  filmInfo: {
+    display: "grid",
+    gridTemplateColumns: "1fr 4fr",
+    gridGap: "10px",
+    marginTop: "10px",
+    "@media screen and (max-width: 1300px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
+    "@media screen and (max-width: 670px)": {
+      gridTemplateColumns: "1fr",
+    },
+  },
+  cardGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(6, 1fr)",
+    gridGap: "10px",
+    "@media screen and (max-width: 1300px)": {
+      gridTemplateColumns: "1fr 1fr",
+    },
+    "@media screen and (max-width: 850px)": {
+      gridTemplateColumns: "repeat(1, 1fr)",
+    },
+  },
+  imagesGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gridGap: "10px",
+    "@media screen and (max-width: 850px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
+  },
+}));
 
 const MoviePage: FC = () => {
+  const classes = useStyles();
   const { data, isCrewOpen, fetchingFilm } = useSelector(
     (state: RootState) => state.movie
   );
@@ -70,8 +115,8 @@ const MoviePage: FC = () => {
   }, [languageSelected, id]);
 
   const colorButton = isCrewOpen ? undefined : "secondary";
-  const classImages = !data?.images?.length ? undefined : styles.hide;
-  const classRecomendations = !data?.known?.length ? undefined : styles.hide;
+  const classImages = data?.images?.length ? undefined : classes.hide;
+  const classRecomendations = data?.known?.length ? undefined : classes.hide;
 
   return (
     <Container>
@@ -80,7 +125,7 @@ const MoviePage: FC = () => {
       {fetchingFilm && <LoaderPlaceholder />}
       {!fetchingFilm && film.title && isRequestCorrect && (
         <Box>
-          <Box className={styles.film_info}>
+          <Box className={classes.filmInfo}>
             <FilmCover el={film} />
             <Box>
               <Typography variant="body2">{texts.title}</Typography>
@@ -103,7 +148,7 @@ const MoviePage: FC = () => {
               />
               {film.genres &&
                 film.genres.map((el: { name: string }) => (
-                  <Box key={el.name} className={styles.genre}>
+                  <Box key={el.name} className={classes.genre}>
                     {el.name}
                   </Box>
                 ))}
@@ -126,7 +171,7 @@ const MoviePage: FC = () => {
                     </Button>
                   </Box>
                 </Box>
-                <Box className={styles.card_grid}>
+                <Box className={classes.cardGrid}>
                   {crew &&
                     crew.map((el: any) => <People key={el.id} el={el} />)}
                 </Box>
@@ -134,7 +179,7 @@ const MoviePage: FC = () => {
               <Typography variant="h3" className={classImages}>
                 {texts.images}
               </Typography>
-              <Box className={styles.images_grid}>
+              <Box className={classes.imagesGrid}>
                 {data.images &&
                   data.images.map((el: any) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
@@ -145,7 +190,7 @@ const MoviePage: FC = () => {
           <Typography variant="h3" className={classRecomendations}>
             {texts.recomendations}
           </Typography>
-          <Box className={styles.card_grid}>
+          <Box className={classes.cardGrid}>
             {data.known &&
               data.known.map((el: MovieDetailsInterface) => (
                 <FilmCard key={el.id} el={el} />

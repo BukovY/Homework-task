@@ -12,7 +12,7 @@ import { RootState } from "../../redux/store";
 import { MovieDetailsInterface } from "../../types/movie";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "grid",
     gridTemplateColumns: "repeat(5, 1fr)",
