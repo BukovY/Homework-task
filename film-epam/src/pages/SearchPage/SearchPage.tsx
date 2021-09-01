@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import styles from "./SearchPage.module.sass";
 import { FilmCard } from "../../components/FilmCard";
 import { PaginationList } from "../../components/PaginationList";
 import { useSelector } from "react-redux";
@@ -17,8 +16,24 @@ import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
 import { QuizParams } from "../../types/useParams";
 import { MovieDetailsInterface } from "../../types/movie";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "grid",
+    gridTemplateColumns: "repeat(6, 1fr)",
+    gridGap: "10px",
+    "@media screen and (max-width: 1300px)": {
+      gridTemplateColumns: "repeat(3, 1fr)",
+    },
+    "@media screen and (max-width: 850px)": {
+      gridTemplateColumns: "repeat(1, 1fr)",
+    },
+  },
+}));
 
 const SearchPage: FC = () => {
+  const classes = useStyles();
   const { languageSelected, search } = useSelector(
     (state: RootState) => state.app
   );
@@ -53,7 +68,7 @@ const SearchPage: FC = () => {
           {!searchResults?.length && (
             <Typography variant="h2">{texts.warning}</Typography>
           )}
-          <Box className={styles.card_grid}>
+          <Box className={classes.root}>
             {searchResults &&
               searchResults.map((el: MovieDetailsInterface) => (
                 <FilmCard key={el.id} el={el} />

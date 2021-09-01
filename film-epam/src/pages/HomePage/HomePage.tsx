@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import styles from "./HomePage.module.sass";
 import { FilmCard } from "../../components/FilmCard";
 import { useSelector, useDispatch } from "react-redux";
 import { setPaginationPage } from "../../redux/actions/appAction";
@@ -11,8 +10,24 @@ import { PaginationList } from "../../components/PaginationList";
 import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
 import { MovieDetailsInterface } from "../../types/movie";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "grid",
+    gridTemplateColumns: "repeat(5, 1fr)",
+    gridGap: "10px",
+    "@media screen and (max-width: 1300px)": {
+      gridTemplateColumns: "repeat(3, 1fr)",
+    },
+    "@media screen and (max-width: 850px)": {
+      gridTemplateColumns: "repeat(1, 1fr)",
+    },
+  },
+}));
 
 const HomePage: FC = () => {
+  const classes = useStyles();
   const {
     filmData,
     paginationPage,
@@ -39,7 +54,7 @@ const HomePage: FC = () => {
       <Tabs />
       {!isFetching ? (
         <Box>
-          <Box className={styles.film_card_grid}>
+          <Box className={classes.root}>
             {filmData.map((el: MovieDetailsInterface) => (
               <FilmCard key={el.id} el={el} />
             ))}
