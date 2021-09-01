@@ -3,6 +3,7 @@ import { getFilmCover } from "../../utils/functrions";
 import classNames from "classnames/bind";
 import { MovieDetailsInterface } from "../../types/movie";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 type MovieDetailsPropsType = {
   el: MovieDetailsInterface;
@@ -49,17 +50,17 @@ export const FilmCover: FC<MovieDetailsPropsType> = ({ el }) => {
     { ratingHide: el.vote_average <= 1 }
   );
   return (
-    <div>
-      <div className={filmCardClass}>
+    <Box>
+      <Box className={filmCardClass}>
         {ratingToRender && ratingToRender.toFixed(1)}
-      </div>
-      <div className={classes.filmCover}>
+      </Box>
+      <Box className={classes.filmCover}>
         <img
           src={getFilmCover(el.poster_path)}
           className={classes.filmCover}
           alt="cover"
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };

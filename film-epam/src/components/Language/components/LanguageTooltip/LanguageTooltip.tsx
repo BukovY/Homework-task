@@ -5,6 +5,7 @@ import { langTranslation } from "../../../../static/Translation";
 import { getIndexLanguage } from "../../../../utils/functrions";
 import { RootState } from "../../../../redux/store";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 type LanguageTooltipProps = {
   close: (value: boolean) => void;
@@ -54,8 +55,8 @@ export const LanguageTooltip: FC<LanguageTooltipProps> = ({ close }) => {
   const langInd = getIndexLanguage(languageSelected);
 
   return (
-    <div className={classes.tooltip} onClick={() => close(false)}>
-      <div className={classes.tooltipBox}>
+    <Box className={classes.tooltip} onClick={() => close(false)}>
+      <Box className={classes.tooltipBox}>
         {languages.map((el, ind) => (
           <LanguageSelect
             key={el}
@@ -63,7 +64,7 @@ export const LanguageTooltip: FC<LanguageTooltipProps> = ({ close }) => {
             display={langTranslation[ind][langInd]}
           />
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };

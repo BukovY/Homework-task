@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { getIndexLanguage } from "../../utils/functrions";
 import { setFilter } from "../../redux/actions/appAction";
 import { RootState } from "../../redux/store";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +35,7 @@ export const Tabs: FC = () => {
     dispatch(setFilter(label));
   };
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <ButtonGroup variant="contained">
         <Button
           color={activeFilter === "Popular" ? "primary" : undefined}
@@ -55,6 +56,6 @@ export const Tabs: FC = () => {
           {tabTranslation[2][indLang]}
         </Button>
       </ButtonGroup>
-    </div>
+    </Box>
   );
 };

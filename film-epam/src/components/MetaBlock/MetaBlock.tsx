@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import classNames from "classnames/bind";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 type MetaBlockProps = {
   title: string;
   meta: string;
@@ -24,12 +25,12 @@ export const MetaBlock: FC<MetaBlockProps> = ({ title, meta, prefix }) => {
     hide: !meta,
   });
   return (
-    <div className={metaBlockClass}>
+    <Box className={metaBlockClass}>
       <Typography variant="body2">{title}:</Typography>
       <Typography variant="body1">
         {prefix}
         {meta}
       </Typography>
-    </div>
+    </Box>
   );
 };

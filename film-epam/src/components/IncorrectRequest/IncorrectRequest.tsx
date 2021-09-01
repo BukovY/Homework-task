@@ -7,8 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { RootState } from "../../redux/store";
+import Box from "@material-ui/core/Box";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -38,7 +39,7 @@ export const IncorrectRequest: FC<RequestType> = ({ path }) => {
 
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <Box className={classes.root}>
       <Typography variant="h1">{texts.title}</Typography>
       <Typography variant="body1">{texts.headline}</Typography>
       <Typography variant="body1">
@@ -52,6 +53,6 @@ export const IncorrectRequest: FC<RequestType> = ({ path }) => {
       <Button variant="contained" onClick={goHomepage}>
         {texts.homepageButton}
       </Button>
-    </div>
+    </Box>
   );
 };

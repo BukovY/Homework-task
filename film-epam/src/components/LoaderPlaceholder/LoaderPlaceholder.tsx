@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(() => ({
   "@-webkit-keyframes spin": {
@@ -45,18 +46,18 @@ const useStyles = makeStyles(() => ({
 export const LoaderPlaceholder: FC = () => {
   const classes = useStyles();
   return (
-    <div className={classes.multiSpinnerContainer}>
-      <div className={classes.multiSpinner}>
-        <div className={classes.multiSpinner}>
-          <div className={classes.multiSpinner}>
-            <div className={classes.multiSpinner}>
-              <div className={classes.multiSpinner}>
-                <div className={classes.multiSpinner}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Box className={classes.multiSpinnerContainer}>
+      <Box className={classes.multiSpinner}>
+        <Box className={classes.multiSpinner}>
+          <Box className={classes.multiSpinner}>
+            <Box className={classes.multiSpinner}>
+              <Box className={classes.multiSpinner}>
+                <Box className={classes.multiSpinner}></Box>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };

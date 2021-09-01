@@ -8,6 +8,7 @@ import { setSearchValue } from "../../redux/actions/appAction";
 import { RootState } from "../../redux/store";
 import { MovieDetailsInterface } from "../../types/movie";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 type MovieDetailsPropsType = {
   el: MovieDetailsInterface;
@@ -40,8 +41,8 @@ const useStyles = makeStyles(() => ({
   block: {
     position: "absolute",
     top: "30%",
-    left: '20%',
-    right: '20%',
+    left: "20%",
+    right: "20%",
     padding: "5px",
     display: "block",
     visibility: "hidden",
@@ -87,11 +88,11 @@ export const FilmCard: FC<MovieDetailsPropsType> = ({ el }) => {
     { ratingHide: el.vote_average <= 1 }
   );
   return (
-    <div className={classes.card} onClick={() => openFilm(el.id)}>
-      <div className={filmCardClass}>
+    <Box className={classes.card} onClick={() => openFilm(el.id)}>
+      <Box className={filmCardClass}>
         {el.vote_average && el.vote_average.toFixed(1)}
-      </div>
-      <div className={classes.filmCover}>
+      </Box>
+      <Box className={classes.filmCover}>
         <img
           src={getFilmCover(el.poster_path)}
           className={classes.filmCover}
@@ -99,13 +100,13 @@ export const FilmCard: FC<MovieDetailsPropsType> = ({ el }) => {
           onClick={() => openFilm(el.id)}
         />
         <img src={play} className={classes.block} alt="play" />
-      </div>
-      {el.title && <div className={classes.title}>{el.title}</div>}
+      </Box>
+      {el.title && <Box className={classes.title}>{el.title}</Box>}
       {el.genre_ids && (
-        <div className={classes.genres}>
+        <Box className={classes.genres}>
           {genresMap && genresIndexToString(el.genre_ids, genresMap).join(" ")}
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };

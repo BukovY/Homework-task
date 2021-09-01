@@ -4,6 +4,7 @@ import { setLanguage } from "../../../../redux/actions/appAction";
 import classNames from "classnames/bind";
 import { RootState } from "../../../../redux/store";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 type LanguageSelectProps = {
   language: string;
@@ -40,8 +41,8 @@ export const LanguageSelect: FC<LanguageSelectProps> = ({
     select: languageSelected === language,
   });
   return (
-    <div className={languageClass} onClick={() => selectLanguage(language)}>
+    <Box className={languageClass} onClick={() => selectLanguage(language)}>
       {display}
-    </div>
+    </Box>
   );
 };

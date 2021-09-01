@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { getPeopleCard } from "../../utils/functrions";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 
 type PeopleProps = {
   el: {
@@ -13,9 +15,6 @@ type PeopleProps = {
 };
 
 const useStyles = makeStyles(() => ({
-  peopleTitle: {
-    fontSize: "20px ",
-  },
   peopleCover: {
     width: "100%",
     height: "auto",
@@ -41,16 +40,16 @@ export const People: FC<PeopleProps> = ({ el }) => {
     history.push(`/actor/${el.id}`);
   };
   return (
-    <div onClick={selectActor}>
-      <div className={classes.peopleImg}>
+    <Box onClick={selectActor}>
+      <Box className={classes.peopleImg}>
         <img
           src={getPeopleCard(el.profile_path)}
           className={classes.peopleCover}
           alt={el.original_name}
         />
-      </div>
-      <p className={classes.peopleTitle}>{el.original_name}</p>
-      <p>{el.known_for_department}</p>
-    </div>
+      </Box>
+      <Typography variant="h5">{el.original_name}</Typography>
+      <Typography variant="body2">{el.known_for_department}</Typography>
+    </Box>
   );
 };

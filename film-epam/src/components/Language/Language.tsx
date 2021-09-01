@@ -8,6 +8,7 @@ import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
 import { RootState } from "../../redux/store";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles(() => ({
   languageSelect: {
@@ -51,7 +52,7 @@ export const Language: FC = () => {
 
   return (
     <div ref={ref}>
-      <div
+      <Box
         className={langClass}
         onClick={() =>
           isComponentVisible
@@ -60,7 +61,7 @@ export const Language: FC = () => {
         }
       >
         {langTranslation[langInd][langInd]}
-      </div>
+      </Box>
       {isComponentVisible && <LanguageTooltip close={setIsComponentVisible} />}
     </div>
   );

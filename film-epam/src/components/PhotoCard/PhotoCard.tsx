@@ -5,7 +5,7 @@ type PhotoCardProps = {
   path: string;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
     height: "auto",
@@ -16,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
 export const PhotoCard: FC<PhotoCardProps> = ({ path }) => {
   const classes = useStyles();
   return (
-    <img
-      src={getPhotoCard(path)}
-      className={classes.root}
-      alt="PhotoCard"
-    />
+    <img src={getPhotoCard(path)} className={classes.root} alt="PhotoCard" />
   );
 };
