@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import styles from "./Language.module.sass";
 import { LanguageTooltip } from "./components/LanguageTooltip";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
@@ -8,8 +7,35 @@ import { useComponentVisible } from "../../utils/customHoocs";
 import { getIndexLanguage } from "../../utils/functrions";
 import { langTranslation } from "../../static/Translation";
 import { RootState } from "../../redux/store";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  languageSelect: {
+    width: "40px",
+    height: "25px",
+    backgroundColor: "#202020",
+    color: "white",
+    fontWeight: 500,
+    border: "2px solid white",
+    borderRadius: "5px",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: "50px",
+    paddingBottom: "1px",
+    "@media screen and (max-width: 650px)": {
+      marginRight: "0px",
+    },
+  },
+  open: {
+    backgroundColor: "white",
+    color: "#202020",
+  },
+}));
 
 export const Language: FC = () => {
+  const classes = useStyles();
   const { languageSelected } = useSelector((state: RootState) => state.app);
   const dispatch = useDispatch();
 
@@ -19,8 +45,8 @@ export const Language: FC = () => {
 
   const { ref, isComponentVisible, setIsComponentVisible } =
     useComponentVisible(false);
-  const cx = classNames.bind(styles);
-  const langClass = cx("language_select", { open: isComponentVisible });
+  const cx = classNames.bind(classes);
+  const langClass = cx("languageSelect", { open: isComponentVisible });
   const langInd = getIndexLanguage(languageSelected);
 
   return (

@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import styles from "./ActorPage.module.sass";
 import { MetaBlock } from "../../components/MetaBlock";
 import { PhotoCard } from "../../components/PhotoCard";
 import { FilmCard } from "../../components/FilmCard";
@@ -18,8 +17,38 @@ import Box from "@material-ui/core/Box";
 import { RootState } from "../../redux/store";
 import { QuizParams } from "../../types/useParams";
 import { MovieDetailsInterface } from "../../types/movie";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  actorPage: {
+    marginTop: "15px",
+  },
+  hide: {
+    display: "none",
+  },
+  actorInfo: {
+    display: "grid",
+    gridTemplateColumns: "300px 1fr",
+    gridGap: "10px",
+    "@media screen and (max-width: 670px)": {
+      gridTemplateColumns: "1fr",
+    },
+  },
+  actorGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(6, 1fr)",
+    gridGap: "10px",
+    "@media screen and (max-width: 1300px)": {
+      gridTemplateColumns: "repeat(3, 1fr)",
+    },
+    "@media screen and (max-width: 850px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
+  },
+}));
 
 const ActorPage: FC = () => {
+  const classes = useStyles();
   const { data, fetchingActor } = useSelector(
     (state: RootState) => state.actor
   );
@@ -47,15 +76,15 @@ const ActorPage: FC = () => {
     }
   }, [id, languageSelected]);
 
-  const photoClass = !data?.photo?.length ? undefined : styles.hide;
+  const photoClass = data?.photo?.length ? undefined : classes.hide;
   return (
     <Container>
       {!person.name && !fetchingActor && isRequestCorrect && <NotFoundPage />}
       {!isRequestCorrect && <IncorrectRequest path={"*/actor/"} />}
       {fetchingActor && isRequestCorrect && <LoaderPlaceholder />}
       {!fetchingActor && person.name && isRequestCorrect && (
-        <Box className={styles.actor_page}>
-          <Box className={styles.actor_info}>
+        <Box className={classes.actorPage}>
+          <Box className={classes.actorInfo}>
             <Box>
               <PhotoCard path={person.profile_path} />
             </Box>
@@ -79,7 +108,7 @@ const ActorPage: FC = () => {
               <Typography variant="h3" className={photoClass}>
                 {texts.photo}
               </Typography>
-              <Box className={styles.actor_grid}>
+              <Box className={classes.actorGrid}>
                 {data.photo &&
                   data.photo.map((el: { file_path: string }) => (
                     <PhotoCard key={el.file_path} path={el.file_path} />
@@ -88,7 +117,7 @@ const ActorPage: FC = () => {
             </Box>
           </Box>
           <Typography variant="h3">{texts.known}</Typography>
-          <Box className={styles.actor_grid}>
+          <Box className={classes.actorGrid}>
             {data.knownBy &&
               data.knownBy.map((el: MovieDetailsInterface) => (
                 <FilmCard key={el.id} el={el} />
