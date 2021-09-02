@@ -1,18 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing <FilmCover/> Component renders correctly 1`] = `
-<div>
+<div
+  className="MuiBox-root MuiBox-root-6"
+>
   <div
-    className="rating rating_up"
+    className="MuiBox-root MuiBox-root-7 makeStyles-rating-2 makeStyles-ratingUp-3"
   >
     7.8
   </div>
   <div
-    className="film_cover"
+    className="MuiBox-root MuiBox-root-8 makeStyles-filmCover-1"
   >
     <img
       alt="cover"
-      className="film_cover"
+      className="makeStyles-filmCover-1"
       src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
     />
   </div>
