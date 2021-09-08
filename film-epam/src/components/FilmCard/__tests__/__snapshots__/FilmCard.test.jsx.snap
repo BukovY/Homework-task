@@ -2,31 +2,31 @@
 
 exports[`Testing <FilmCard/> Component renders correctly 1`] = `
 <div
-  className="card"
+  className="MuiBox-root MuiBox-root-10 makeStyles-card-1"
   onClick={[Function]}
 >
   <div
-    className="rating rating_up"
+    className="MuiBox-root MuiBox-root-11 makeStyles-rating-6 makeStyles-ratingUp-7"
   >
     7.8
   </div>
   <div
-    className="film_cover"
+    className="MuiBox-root MuiBox-root-12 makeStyles-filmCover-4"
   >
     <img
       alt="Title film"
-      className="film_cover"
+      className="makeStyles-filmCover-4"
       onClick={[Function]}
       src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
     />
     <img
       alt="play"
-      className="block"
+      className="makeStyles-block-5"
       src="play.svg"
     />
   </div>
   <div
-    className="title"
+    className="MuiBox-root MuiBox-root-13 makeStyles-title-3"
   >
     Title film
   </div>

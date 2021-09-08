@@ -2,15 +2,17 @@
 
 exports[`Testing <MetaBlock/> Component Metcblock view correct 1`] = `
 <div
-  className=""
+  className="MuiBox-root MuiBox-root-3 makeStyles-padding-2"
 >
   <p
-    className="meta_title"
+    className="MuiTypography-root MuiTypography-body2"
   >
     title
     :
   </p>
-  <p>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
     prefix
     meta text
   </p>

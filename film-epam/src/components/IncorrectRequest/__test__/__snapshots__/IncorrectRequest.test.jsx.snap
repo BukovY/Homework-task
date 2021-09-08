@@ -2,31 +2,57 @@
 
 exports[`Testing <IncorrectRequest/> Component IncorrectRequest view correct 1`] = `
 <div
-  className="center"
+  className="MuiBox-root MuiBox-root-2 makeStyles-root-1"
 >
-  <h1>
+  <h1
+    className="MuiTypography-root MuiTypography-h1"
+  >
     Invalid request
   </h1>
-  <p>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
     Please check the correctness of the entered request in the browser line.
   </p>
-  <p>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
     Way after
-     
-    <span>
-      path
-    </span>
-     
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorError MuiTypography-displayInline"
+    >
+       path 
+    </p>
     should only contain numbers.
   </p>
-  <p>
+  <p
+    className="MuiTypography-root MuiTypography-body1"
+  >
     Or return to the main page.
   </p>
-  <a
-    href="/"
+  <button
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+    disabled={false}
+    onBlur={[Function]}
     onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
   >
-    To main
-  </a>
+    <span
+      className="MuiButton-label"
+    >
+      To main
+    </span>
+  </button>
 </div>
 `;

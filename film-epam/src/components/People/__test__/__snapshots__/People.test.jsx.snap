@@ -2,23 +2,26 @@
 
 exports[`Testing <People/> Component renders correctly 1`] = `
 <div
+  className="MuiBox-root MuiBox-root-3"
   onClick={[Function]}
 >
   <div
-    className="people_img"
+    className="MuiBox-root MuiBox-root-4 makeStyles-peopleImg-2"
   >
     <img
       alt="Sara Connor"
-      className="people_cover"
+      className="makeStyles-peopleCover-1"
       src="https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg"
     />
   </div>
-  <p
-    className="people_title"
+  <h5
+    className="MuiTypography-root MuiTypography-h5"
   >
     Sara Connor
-  </p>
-  <p>
+  </h5>
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+  >
     HR
   </p>
 </div>
